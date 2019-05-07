@@ -24,11 +24,19 @@ This is a repository for the CPSCS 128 "Introductory Programming using Python" c
 # git cheatsheet
 
 If created new file, first tell `git` to track it
-`git add mycode.py`
+```
+git add mycode.py
+```
+
 If a new file added or a current file is modified, save it via
-`git commit -m 'commit message' mycode.py`
+```
+git commit -m 'commit message' mycode.py
+```
+
 Push local updates to github
-`git push`
+```
+git push
+```
 
 # python cheatsheet
 
