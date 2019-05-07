@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Note) Operation #1: Input</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="05_TheWorldOfTheComputer.html" />
+  <link rel="Next" href="07_Processing.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Operation #1: Input</h1>
+<p>The first programming operation is <strong>input</strong>. A quick glance at our functional
+diagram will show you that the computer is empty, there is nothing in memory.
+We can't do any processing until we have something to process. The way we get
+something to process is to input it into the computer. An input statement
+accepts one value from the input channel and stores it in memory. An example
+will illustrate the details.</p>
+<p>Conveniently Python names the input command <code>input</code>. To input a value and store it with the name <code>speed</code> and then input a second value and store it with the name <code>duration</code> we use the
+commands,</p>
+<pre><code>speed = input()
+duration = input()</code></pre>
+<p>Each of these statements will look to the input channel, take the next
+value from it, store it in memory and label the value. The first statement
+labels the value it stores <code>speed</code> and the second labels its value
+<code>duration</code>. Why label them? So we have a way to refer to them
+later when we want to use them. The effect on our computer is shown below
+(assuming the values entered are 90 and 4).</p>
+<p class="img"><img alt="." src="06_ComputerPostInput.gif"
+width="491" height="333" /></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

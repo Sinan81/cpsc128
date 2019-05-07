@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Using the Python Shell</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="14_SixOperationsSummary.html" />
+  <link rel="Next" href="16_M01_Assignment.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Using the Python Shell</h1>
+<p>Python is an interpreted language as opposed to a compiled language. This means that 
+the commands making up a Python program are translated and executed one at a time as they
+are encountered. This is in contrast to compiled languages where all the commands making
+up the program are translated at once to produce an executable program that is run after 
+compilation is complete.</p>
+<p>One handy consequence of  interpreted languages is that you can "speak" to the interpreter
+directly by entering Python commands at a prompt. The commands are executed and their effects
+are immediately visible. This is helpful both for learning Python commands by exploring their
+results and for debugging because you can run chunks of statements on their own to verify
+that they are producing what you expect.</p>
+<p>One way to speak to the interpreter is to enter Python commands in the Python Shell. The shell is always running a REPL, which 
+just stands for <strong>R</strong>ead <strong>E</strong>valuate <strong>P</strong>rint <strong>L</strong>oop. That means that it will read whatever you type, try to evaluate it as a Python expression, and then print the result. The loop part means that it continues to do this forever.
+<p class="img"><img alt="." src="15_IDLE_Window.png" /></p>
+<p>The three greater-than signs, <code>&gt;&gt;&gt;</code>, are the shell's prompt that it is ready for you to enter a Python expression. You can enter any of the Python
+commands we have seen so far at these prompts. The shell will interpret and execute the commands
+and display their output.</p>
+<p>Here is a sample session that demonstrates 
+a few commands that will be useful on the assignment. You should read through it noticing what commands produce what output, and then
+try recreating it in your own shell. Then you can try Part II of <a href="16_M01_Assignment.html">Assignment 1</a>.</p>
+<p class="img"><img alt="." src="15_IDLE_Session.png" /></p>
+<p>Remember that the text after the <code>&gt;&gt;&gt;</code> signs is what I typed and the rest is what the Python shell produced.</p>
+<p>Points to ponder:</p>
+<ul>
+<li>What is the difference between the mathematical operators <code>*</code> and <code>**</code>?</li>
+<li><code>Traceback</code>'s are error messages. You'll see many of those.</li>
+<li>What does the <code>import</code> command seem to do?</li>
+</ul>
+
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CPSC 128 Spring 2018-2019</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <!--<link rel="stylesheet" type="text/css" href="CPSC128F12.css" />-->
+  <style type="text/css">
+    html { overflow-y: scroll; }
+    body { 	font: 12px/20px verdana, sans-serif; margin: 5%; }
+    h1 { font-family: verdana, sans-serif; }
+    h1, h2, h3 { color: black; }
+    h1 { margin-bottom: 1em; font-weight: 500; } 
+    dt {
+      font-size: 100%; color: #039; background: #f2f6f7;
+      margin-bottom: 0; padding: 6px 0;	padding-left: 0.5em; border-top: 0.0926em solid #ccc;
+      cursor: pointer;
+    }
+    a {
+			color: #039; /*#a00f27;*/
+			text-decoration: none;
+			/*border-bottom: none; */
+		}
+    a:hover { font-weight: bold; border: none; }
+    ul { margin-top: 0; }
+    li { list-style-type: none; margin-left: 0; padding: 6px 0; border-top: 1px solid #c0cedb; }
+    li ul { border-top: none; margin-top: 6px; margin-bottom: 0; }
+  </style>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+<h1>CPSC 128
+Course Notes and Assignments</h1>
+<dl class="dynamic">
+<dt>Week 0. Course Preparation</dt>
+<dd>
+  <li><a
+    href="M00_Orientation/01_M00_Overview.html"><s>Task List</s></a></li>
+ <li>Course Information 
+    <ul>
+      <!--<li><a
+        href="M00_Orientation/02_CPSC128W14_Course_Outline.pdf">Official Course Outline</a> [PDF]</li>-->
+      <li><a
+        href="M00_Orientation/03_CoursePhilosophy.html">Course
+        Philosophy</a></li>
+      <li><a
+        href="M00_Orientation/04_CourseSchedule.html">Course
+        Schedule</a></li>
+      <li><a
+        href="M00_Orientation/05_WhatLanguage.html">What
+        Language?</a></li>
+      <li><a
+        href="M00_Orientation/06_Textbooks.html">Textbooks</a></li>
+      <li><a
+        href="M00_Orientation/07_ExaminableTopicsPointer.html"><s>Learning
+        Outcomes &rarr; Examinable Topics</s></a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M00_Orientation/08_InstallingPython.html"><s>Installing Python</s></a></li>
+  <li><a
+    href="M00_Orientation/09_MyYC_Fall2013.pdf"><s>Logging in to MyYC for the first time</s></a> [PDF]</li>
+  <li><a
+    href="M00_Orientation/10_ConfiguringEmailForwardingInMyYC.pdf"><s>Configuring email forwarding in MyYC</s></a> [PDF]</li>
+</dd>
+<dt>Week 1. Course Introduction</dt>
+<dd>
+  <li><a
+    href="M01_Introduction/01_M01_Overview.html">Week Overview (includes task list!)</a></li>
+  <li>Introduction to Computers and Programming 
+    <ul>
+      <li><a
+        href="M01_Introduction/02_BigPicture1_CS.html">Big
+        Picture 1: Computer Science</a></li>
+      <li><a
+        href="M01_Introduction/03_BigPicture2_ComputersAndPrograms.html">Pig
+        Picture 2: Computers and Programs</a></li>
+      <li><a
+        href="M01_Introduction/04_BigPicture3_Programming.html">Big
+        Picture 3: Computer Programming</a></li>
+      <li><a
+        href="M01_Introduction/05_TheWorldOfTheComputer.html">The
+        World of the Computer</a></li>
+      <li><a
+        href="M01_Introduction/06_Input.html">Operation
+        #1: Input</a></li>
+      <li><a
+        href="M01_Introduction/07_Processing.html">Operation
+        #2: Processing</a></li>
+      <li><a
+        href="M01_Introduction/08_Output.html">Operation
+        #3: Output</a></li>
+      <li><a
+        href="M01_Introduction/09_ControlStructures.html">Control
+        Structures</a></li>
+      <li><a
+        href="M01_Introduction/10_Sequence.html">Operation
+        #4: Sequential Execution</a></li>
+      <li><a
+        href="M01_Introduction/11_Selection.html">Operation
+        #5: Selection</a></li>
+      <li><a
+        href="M01_Introduction/12_Repetition.html">Operation
+        #6: Repetition</a></li>
+      <li><a
+        href="M01_Introduction/13_Modularity.html">Bonus
+        Operation: Modularity</a></li>
+      <li><a
+        href="M01_Introduction/14_SixOperationsSummary.html">Summary</a></li>
+    </ul>
+  </li>
+  <li><a href="M01_Introduction/15_UsingThePythonShell.html">Using the Python shell</a></li>
+  <li><a
+    href="M01_Introduction/16_M01_Assignment.html"><s>Assignment 1</s></a></li>
+</dd>
+<dt>[NA] Week 2. SIPO (Sequential Input, Processing and Output) Programming</dt>
+<dd>
+  <li><a
+    href="M02_SIPO/01_M02_Overview.html">Overview</a></li>
+  <li><a
+    href="M02_SIPO/02_RecallProgrammingIs.html">Recall:
+    Programming is...</a></li>
+  <li>Our first program: f2c 
+    <ul>
+      <li><a
+        href="M02_SIPO/03_OFP_TheProblem_f2c.html">The
+        problem</a></li>
+      <li><a
+        href="M02_SIPO/04_OFP_ByHand.html">Do
+        it by hand</a></li>
+      <li><a
+        href="M02_SIPO/05_OFP_IntoPython.html">Translate
+        into Python</a></li>
+      <li><a
+        href="M02_SIPO/06_OFP_RunAndTest.html">Run
+        and Test</a></li>
+    </ul>
+  </li>
+  <li>[Screencast] <a
+    href="M02_SIPO/07_RunningYourFirstProgram.html">Running your first program</a></li>
+  <li><a
+    href="M02_SIPO/08_NamingValues.html">Naming
+    Values</a></li>
+  <li><a
+    href="M02_SIPO/09_OnscreenAppearance.html">Onscreen
+    Appearance</a></li>
+  <li><a
+    href="M02_SIPO/10_Documentation.html">Documentation</a></li>
+  <li><a
+    href="M02_SIPO/11_OurSecondProgram_c2f.html">Our
+    second program: c2f</a></li>
+  <li><a
+    href="M02_SIPO/12_OurThirdProgram_dhms2s.html">Our
+    third program: dhms2s</a></li>
+  <li><a
+    href="M02_SIPO/13_SIPOSummary.html">SIPO
+    Summary</a></li>
+  <li>Packaging Quantities 
+    <ul>
+      <li><a
+        href="M02_SIPO/14_PQ_TheProblem.html">The
+        Problem</a></li>
+      <li><a
+        href="M02_SIPO/15_PQ_ByHand.html">Do
+        it by hand</a></li>
+      <li><a
+        href="M02_SIPO/16_PQ_IntoPython.html">Translate
+        into Python</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M02_SIPO/17_Modulo.html">Modulo</a></li>
+  <li><a
+    href="M02_SIPO/18_SymbolicConstants.html">Symbolic
+    Constants</a></li>
+  <li><a
+    href="M02_SIPO/19_IntermissionSummary.html">Intermission:
+    Summary</a></li>
+  <li><a
+    href="M02_SIPO/20_Object_Types_1.html">Object
+    Types 1: Integers and Floating Point</a></li>
+  <li><a
+    href="M02_SIPO/21_pTreeCircumference_s.html">Example:
+    Radius of a tree</a></li>
+  <li><a
+    href="M02_SIPO/22_pChange_ValueOf_s.html">Example:
+    Value of change</a></li>
+  <li><a
+    href="M02_SIPO/23_pChange_Making_s.html">Example:
+    Making change</a></li>
+  <li><a
+    href="M02_SIPO/24_pOilSpill_s.html">Example:
+    Area of an Oil Spill</a></li>
+  <li>Some Pythonic Details 
+    <ul>
+      <li><a
+        href="M02_SIPO/25_PythonDetails.html">Some
+        Pythonic Details</a></li>
+      <li><a
+        href="M02_SIPO/26_TripleQuotes.html">Triple
+        quotes</a></li>
+      <li><a
+        href="M02_SIPO/27_ContinuationCharacter.html">The
+        Continuation Character</a></li>
+      <li><a
+        href="M02_SIPO/28_TheDoneTrick.html">The
+        done trick</a></li>
+      <li>Link: Using IDLE to compose Python Programs</li>
+      <li><a
+        href="M02_SIPO/29_M02_CheatSheet.html">Week 2 Cheat Sheet</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M02_SIPO/MarkingScheme.html">Marking
+    Scheme</a></li>
+  <li><a
+    href="M02_SIPO/30_M02_Assignment.html">
+    Assignment 2</a></li>
+</dd>
+<dt>[NA] Week 3. Selection Control Structures</dt>
+<dd>
+  <li><a
+    href="M03_Selection/01_M03_Overview.html">Week
+    3 Overview</a></li>
+  <li><a
+    href="M03_Selection/02_ASimpleExample.html">A
+    Simple Example: Positive or Negative?</a></li>
+  <li><a
+    href="M03_Selection/03_ACorrection.html">A
+    Correction</a></li>
+  <li><a
+    href="M03_Selection/04_IfSyntax.html">if
+    Statement Syntax</a></li>
+  <li><a
+    href="M03_Selection/05_RelationalExpressions.html">Relational
+    Expressions</a></li>
+  <li><a
+    href="M03_Selection/06_CompoundStatementsAndIndentation.html">Compound
+    Statements and Indentation</a></li>
+  <li><a
+    href="M03_Selection/07_f2cOrc2f.html">Example:
+    Converting Fahrenheit to Celsius or vice versa</a></li>
+  <li>Case Study: Converting numerical grades to letter grades
+    <ul>
+      <li><a
+        href="M03_Selection/08_GC_TheProblem.html">The
+        Problem</a></li>
+      <li><a
+        href="M03_Selection/09_GC_Version1.html">Solution:
+        Version 1</a></li>
+      <li><a
+        href="M03_Selection/10_GC_Version2.html">Solution:
+        Version 2</a></li>
+      <li><a
+        href="M03_Selection/11_GC_Version3.html">Solution:
+        Version 3</a></li>
+      <li><a
+        href="M03_Selection/12_GC_Testing.html">Testing</a></li>
+      <li><a
+        href="M03_Selection/13_GC_Analysis.html">Analysis</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M03_Selection/14_Abs.html">A
+    final (very small) example: Abs</a></li>
+  <li><a
+    href="M03_Selection/15_Summary.html">Summary</a></li>
+  <li><a
+    href="M03_Selection/16_pGazinta_s.html">Example:
+    Gazinta</a></li>
+  <li><a
+    href="M03_Selection/17_pPythagoras_s.html">Example:
+    Pythagorean theorem</a></li>
+  <li><a
+    href="M03_Selection/18_pUtilityBills_s.html">Example:
+    Utility Bills</a></li>
+  <li><a
+    href="M03_Selection/19_Beaufort_Scale_Example/19_pBeaufortScale_s.html">Example:
+    Beaufort Scale</a></li>
+  <li>Pythonic Details 
+    <ul>
+      <li><a
+        href="M03_Selection/20_Output_Formatting/20_OutputFormatting.html">Output
+        Formatting</a></li>
+      <li><a
+        href="M03_Selection/21_RawInputVsInput.html">raw_input()
+        vs input()</a></li>
+      <li><a
+        href="M03_Selection/22_M03_CheatSheet.html">Week 3 Cheatsheet</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M03_Selection/23_M03_Assignment.html">Assignment 3</a></li>
+</dd>
+<dt>[NA] Week 4. Repetition Control Structures</dt>
+<dd>
+  <li><a
+    href="M04_Repetition/M04_Overview.html">Week
+    4 Overview</a></li>
+  <li>The Basics 
+    <ul>
+      <li><a
+        href="M04_Repetition/TheIdea.html">The
+        idea</a></li>
+      <li><a
+        href="M04_Repetition/Flowchart.html">Flowchart</a></li>
+      <li><a
+        href="M04_Repetition/Syntax.html">Syntax</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/HiHiHi.html">A
+        simple completely artificial example: HiHiHi</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/InfiniteLoops.html">Beware!
+        Infinite loops</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/ValidatingInput.html">Example:
+        Validating input</a></li>
+      <li><a
+        href="M04_Repetition/RepeatingAProgram.html">Repeating
+        an entire program</a></li>
+      <li><a
+        href="M04_Repetition/RepeatingCalculations.html">Repeating
+        calculations: A conversion table</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/FindTheAverage.html">Example:
+        Find the average</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/SentinelControlledInput.html">Sentinel
+        controlled input</a></li>
+      <li><a
+        href="M04_Repetition/pSmallestLargest.html">Example:
+        Smallest and Largest Values</a></li>
+      <li><a
+        href="M04_Repetition/GuessingGame_P.html">Problem:
+        The guessing game</a></li>
+      <li><a
+        href="M04_Repetition/RandomNumbers.html">Aside:
+        Generating Random Numbers</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/GuessingGame.html">Solution:
+        The guessing game</a></li>
+      <li><a
+        href="M04_Repetition/Puzzle.html">A
+        puzzle: What output does this produce?</a></li>
+      <li><a
+        href="M04_Repetition/NestingLoops.html">Nesting
+        while Loops</a></li>
+      <li><a
+        href="M04_Repetition/forLoops.html">for
+        loops: Python's other repetition structure</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/hihihi_for.html">Completely
+        artificial example revisited: using for</a></li>
+      <li><a
+        href="M04_Repetition/forvswhile.html">for
+        vs while</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/f2c_for.html">f2c
+        revisited: Fahrenheit to Celsius conversion table using for</a></li>
+      <li>[Screencast] <a
+        href="M04_Repetition/NestingForLoops.html">Nesting
+        for loops</a></li>
+      <li><a
+        href="M04_Repetition/pDrawASquare.html">Example:
+        Draw a square</a></li>
+      <li><a
+        href="M04_Repetition/M04_Summary.html">Summary</a></li>
+    </ul>
+  </li>
+  <li>Applications 
+    <ul>
+      <li><a
+        href="M04_Repetition/BruteForce.html">Brute
+        Force</a></li>
+      <li>Simulations 
+        <ul>
+          <li><a
+            href="M04_Repetition/Simulation.html">Simulation</a></li>
+          <li>[Screencast] <a
+            href="M04_Repetition/pAllGirlFamilies.html">Example:
+            What are the chances: four children, all girls?</a></li>
+          <li><a
+            href="M04_Repetition/DuellingIncompetents.html">Example:
+            Duelling Incompetents</a></li>
+          <!--<li><a
+            href="M04_Repetition/pHockeyPlayoffs.html">Example:
+            Hockey Playoffs</a></li>-->
+        </ul>
+      </li>
+      <li>Crunching Numbers 
+        <ul>
+          <li><a
+            href="M04_Repetition/pFactors.html">Example:
+            Factors</a></li>
+          <li><a
+            href="M04_Repetition/pArmstrongNumbers.html">Example:
+            Armstrong Numbers</a></li> 
+       </ul>
+      </li>
+      <li>Cryptarithms 
+        <ul>
+          <li><a
+            href="M04_Repetition/Cryptarithms.html">Example:
+            Send + More = Money</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Pythonic Details 
+    <ul>
+      <li><a
+        href="M04_Repetition/PythonStyleGuidelines.html">Python
+        Style Guidelines</a></li>
+      <li><a
+        href="M04_Repetition/range.html">The
+        range function</a></li>
+      <li><a
+        href="M04_Repetition/TimingPrograms.html">Timing
+        Programs</a></li>
+      <li><a
+        href="M04_Repetition/M04_CheatSheet.html">Week 4 Cheatsheet</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M04_Repetition/M04_Assignment.html">Assignment 4</a></li>
+</dd>
+<dt>[NA] Week 5. Aggregate data types 1: Lists &amp; Strings</dt>
+<dd>
+  <li><a
+    href="M05_ListsAndStrings/01_OBP.html">Object-Based
+    Programming</a></li>
+  <li><a
+    href="M05_ListsAndStrings/02_SequenceTypes.html">Sequence
+    Types</a></li>
+  <li><a
+    href="M05_ListsAndStrings/03_Lists.html">Lists</a></li>
+  <li><a
+    href="M05_ListsAndStrings/04_Strings.html">Strings</a></li>
+  <li>List Mechanics 
+    <ul>
+      <li><a
+        href="M05_ListsAndStrings/05_CDShuffle.html">Example:
+        CD Shuffle</a></li>
+      <li><a
+        href="M05_ListsAndStrings/06_DiceOdds.html">Dice
+        Odds</a></li>
+      <li><a
+        href="M05_ListsAndStrings/07_BarGraph.html">Bar
+        Graph</a></li>
+    </ul>
+  </li>
+  <li>Lists for Representation 
+    <ul>
+      <li><a
+        href="M05_ListsAndStrings/08_PlayingCards.html">Representing
+        Playing Cards</a></li>
+      <li><a
+        href="M05_ListsAndStrings/09_PokerHands.html">Poker
+        Hands</a></li>
+      <li><a
+        href="M05_ListsAndStrings/10_AltPlayingCards.html">Alternative
+        Playing Card Representation</a></li>
+    </ul>
+  </li>
+  <li>Multidimensional Lists (Lists of lists) 
+    <ul>
+      <li><a
+        href="M05_ListsAndStrings/11_TicTacToe.html">What
+        is this [ [ 'X', 'O', '' ], [ 'O', 'X', 'O' ], [ '', '', 'X'] ]
+      ?</a></li>
+    </ul>
+  </li>
+  <li>String Processing 
+    <ul>
+      <li><a
+        href="M05_ListsAndStrings/12_Palindrome.html">Palindromes
+        (+Testing)</a></li>
+    </ul>
+  </li>
+  <li>Pythonic Details 
+    <ul>
+      <li><a
+        href="M05_ListsAndStrings/13_TypeConversions.html">Type
+        Conversions</a></li>
+      <li><a
+        href="M05_ListsAndStrings/14_TheMapFunction.html">The
+        map() function</a></li>
+      <li><a
+        href="M05_ListsAndStrings/15_Tuples.html">Tuples</a></li>
+      <li><a
+        href="M05_ListsAndStrings/98_M05_CheatSheet.html">Week 5 Cheat Sheet</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M05_ListsAndStrings/99_M05_Assignment.html">Assignment 5</a></li>
+</dd>
+<dt>[NA] Week 6. Functions and Modules</dt>
+<dd>
+  <li><a
+    href="M06_Functions/01_Modularization.html">Modularization</a></li>
+  <li><a
+    href="M06_Functions/02_Functions.html">Functions
+    (&amp; their jargon)</a></li>
+  <li><a href="M06_Functions/03_WritingFunctions_is_even.html">Writing Functions: is_even()</a></li>
+  <li><a
+    href="M06_Functions/04_WritingFunctionsSyntax.html">Writing
+    Functions: Syntax</a></li>
+  <li><a
+    href="M06_Functions/05_is_odd.html">Example:
+    is_odd</a></li>
+  <li><a
+    href="M06_Functions/06_dice_roll.html">Example:
+    dice_roll</a></li>
+  <li><a
+    href="M06_Functions/07_DefaultArguments.html">Default
+    arguments</a></li>
+  <li><a
+    href="M06_Functions/08_playing_cards_1.html">Example:
+    Playing Card Functions 1</a></li>
+  <li><a
+    href="M06_Functions/09_ReusingFunctions.html">Reusing
+    functions</a></li>
+  <li><a
+    href="M06_Functions/10_Modules.html">Modules</a></li>
+  <li><a
+    href="M06_Functions/11_DocumentingModulesAndFunctions.html">Documenting
+    Modules and Functions</a></li>
+  <li><a
+    href="M06_Functions/12_ModuleLayout.html">Summary:
+    Module Layout</a></li>
+  <li><a
+    href="M06_Functions/13_playing_cards_2.html">Example:
+    Playing Card Functions 2</a></li>
+  <li><a
+    href="M06_Functions/14_RefiningImport.html">Refining
+    import</a></li>
+  <li><a
+    href="M06_Functions/15_Scope.html">Scope</a></li>
+  <li><a
+    href="M06_Functions/16_Mutability.html">The
+    perils of mutability</a></li>
+  <li><a
+    href="M06_Functions/17_ReferenceSemantics.html">Reference
+    Semantics (&amp; diagramming memory)</a></li>
+  <li><a
+    href="M06_Functions/18_UsingVsChangingAList.html">Using
+    vs changing a list</a></li>
+  <li><a
+    href="M06_Functions/19_CopyingAList.html">Copying
+    a list</a></li>
+  <li>Pythonic Details 
+    <ul>
+      <li><a
+        href="M06_Functions/20_ListComprehensions.html">List
+        comprehensions</a></li>
+      <li><a
+        href="M06_Functions/21_pyc_files.html">What
+        are these pyc files?</a></li>
+      <li><a
+        href="M06_Functions/22_FindingTheStandardLib.html">Finding
+        the standard library</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M06_Functions/99_M06_Assignment.html"> Assignment 6</a></li>
+</dd>
+<dt>[NA] Week 7. Aggregate data types 2: Dictionaries</dt>
+<dd>
+  <li><a
+    href="M07_Dictionaries/01_Introduction.html">Introduction</a></li>
+  <li><a
+    href="M07_Dictionaries/02_Dictionary_Derivation.html">Dictionary
+    "derivation"</a></li>
+  <li><a
+    href="M07_Dictionaries/03_Dictionaries.html">What
+    can you do with a dictionary?</a></li>
+  <li><a
+    href="M07_Dictionaries/04_Word_Frequencies.html">Example:
+    Word Frequencies</a></li>
+  <li><a
+    href="M07_Dictionaries/05_Scrabble_Scoring.html">Example:
+    Scrabble scoring</a></li>
+  <li><a
+    href="M07_Dictionaries/06_Book_Database.html">Example:
+    Book database</a></li>
+  <li><a
+    href="M07_Dictionaries/07_List_of_Dictionaries.html">Example:
+    A list of dictionaries</a></li>
+  <li><a
+    href="M07_Dictionaries/99_M07_Assignment.html">Assignment 7</a></li>
+</dd>
+<dt>[NA] Week 8. Persistence: Processing text files</dt>
+<dd>
+  <li><a
+    href="M08_Persistence/01_Persistence.html">Persistence</a></li>
+  <li><a
+    href="M08_Persistence/02_NoteToTheStudent.html">A
+    note to the student</a></li>
+  <li><a
+    href="M08_Persistence/03_TextVsBinaryFiles.html">Text
+    versus binary files</a></li>
+  <li><a
+    href="M08_Persistence/04_ReadingFromTextFiles.html">Reading
+    from text files</a></li>
+  <li><a
+    href="M08_Persistence/05_ExampleSearchingLogFiles.html">Example:
+    Searching log files</a></li>
+  <li><a
+    href="M08_Persistence/06_FilesAreSequential.html">Important
+    note: Files are sequential</a></li>
+  <li><a
+    href="M08_Persistence/07_IsThereMore.html">Is
+    there more?</a></li>
+  <li><a
+    href="M08_Persistence/08_WritingToTextFiles.html">Writing
+    to text files</a></li>
+  <li><a
+    href="M08_Persistence/09_AppendingToFiles.html">Appending
+    to files</a></li>
+  <li><a
+    href="M08_Persistence/10_ReadingNumericData.html">Reading
+    numeric data</a></li>
+  <li><a
+    href="M08_Persistence/11_DesigningFileFormats.html">Designing
+    file formats</a></li>
+  <li><a
+    href="M08_Persistence/12_Pickling.html">Pickling</a></li>
+  <li><a
+    href="M08_Persistence/13_Shelves.html">Shelves</a></li>
+  <li><a
+    href="M08_Persistence/14_ShelveGotcha.html">Gotcha!
+    Shelves update on assignment not mutation (?!)</a></li>
+  <li><a
+    href="M08_Persistence/15_Controller.html">A
+    controller for our database</a></li>
+  <li><a
+    href="M08_Persistence/16_TheMainEventLoop.html">The
+    main event loop</a></li>
+  <li><a
+    href="M08_Persistence/90_M08_Assignment.html">Assignment 8</a></li>
+</dd>
+<dt>[NA] Week 9. Object-Oriented Programming 1: Encapsulation</dt>
+<dd>
+  <li><a
+    href="M09_OOP1/01_ObjectOrientedProgramming.html">Object-Oriented
+    Programming</a></li>
+  <li><a
+    href="M09_OOP1/02_Encapsulation.html">Encapsulation</a></li>
+  <li><a
+    href="M09_OOP1/03_Inheritance.html">Inheritance</a></li>
+  <li><a
+    href="M09_OOP1/04_Polymorphism.html">Polymorphism</a></li>
+  <li><a
+    href="M09_OOP1/05_ThePlan.html">The
+    Plan for the next three Weeks</a></li>
+  <li><a
+    href="M09_OOP1/06_die_class_0.html">A
+    small example: A dice class</a></li>
+  <li><a
+    href="M09_OOP1/07_PythonOOPSyntax.html">Python
+    OOP Syntax</a></li>
+  <li>An Extended Example: Playing Card Classes 
+    <ul>
+      <li><a
+        href="M09_OOP1/20_PCC_Specification.html">The
+        Specification</a></li>
+      <li><a
+        href="M09_OOP1/21_PCC_ClassIdentification.html">Identifying
+        the necessary classes</a></li>
+      <li><a
+        href="M09_OOP1/22_PCC_MethodIdentification.html">Identifying
+        the classes' methods</a></li>
+      <li><a
+        href="M09_OOP1/23_PCC_Skeleton_1.html">Program
+        Skeleton 1</a></li>
+      <li><a
+        href="M09_OOP1/24_PCC_InvisibleMethod.html">An
+        invisible method!</a></li>
+      <li><a
+        href="M09_OOP1/25_PCC_Skeleton_2.html">Program
+        Skeleton 2</a></li>
+      <li><a
+        href="M09_OOP1/26_PCC_InvisibleClass.html">An
+        invisible class too! (And program skeleton 3)</a></li>
+      <li><a
+        href="M09_OOP1/27_PCC_DeckMethods.html">Deck
+        Methods</a></li>
+      <li><a
+        href="M09_OOP1/28_PCC_HandMethods.html">Hand
+        Methods</a></li>
+      <li><a
+        href="M09_OOP1/29_PCC_CardMethods.html">Card
+        Methods</a></li>
+      <li><a
+        href="M09_OOP1/30_PCC_PuttingItAllTogether.html">Putting
+        all the pieces together</a></li>
+      <li><a
+        href="M09_OOP1/31_PCC_RunningTheWholeThing.html">Running
+        the whole thing</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M09_OOP1/40_ProgrammingObservation.html">A
+    programming observation</a></li>
+  <li><a
+    href="M09_OOP1/90_M09_Assignment.html">Assignment 9</a></li>
+</dd>
+<dt>[NA] Week 10. Object-Oriented Design (OOD)</dt>
+<dd>
+  <li><a
+    href="M10_OOD/01_ObjectOrientedDesign.html">Object
+    Oriented Design</a></li>
+  <li>Extended example: Hunt the Wumpus 
+    <ul>
+      <li><a
+        href="M10_OOD/10_HTW_Preamble.html">Preamble</a></li>
+      <li><a
+        href="M10_OOD/11_HTW_About.html">About
+        Hunt the Wumpus</a></li>
+      <li><a
+        href="M10_OOD/12_HTW_OOAnalysis.html">OO
+        Analysis</a></li>
+      <li><a
+        href="M10_OOD/13_HTW_ObjectAttributesAndMethods.html">Object
+        Attributes and Methods</a></li>
+      <li><a
+        href="M10_OOD/14_HTW_TheCaveSystem.html">The
+        cave system object(s)</a></li>
+      <li><a
+        href="M10_OOD/15_HTW_MainRoutinePseudocode.html">Main
+        routine pseudocode</a></li>
+      <li><a
+        href="M10_OOD/16_HTW_classCaveSystem.html">class
+        Cave_System</a></li>
+      <li><a
+        href="M10_OOD/17_HTW_AsideIterativeDesign.html">Aside:
+        Iterative design</a></li>
+      <li><a
+        href="M10_OOD/18_HTW_classRoom.html">class
+        Room</a></li>
+      <li><a
+        href="M10_OOD/19_HTW_classPit.html">class
+        Pit</a></li>
+      <li><a
+        href="M10_OOD/20_HTW_classBat.html">class
+        Bat</a></li>
+      <li><a
+        href="M10_OOD/21_HTW_classWumpus.html">class
+        Wumpus</a></li>
+      <li><a
+        href="M10_OOD/22_HTW_classPlayer.html">class
+        Player</a></li>
+      <li><a
+        href="M10_OOD/23_HTW_PuttingThePiecesTogether.html">Putting
+        the pieces together</a></li>
+      <li><a
+        href="M10_OOD/24_HTW_NewCodeInitializingTheBats.html">New
+        code: Initializing the bats</a></li>
+      <li><a
+        href="M10_OOD/25_HTW_NewCodeShootAndArrows.html">New
+        code (pointing to a missing class): shoot and Arrows</a></li>
+      <li><a
+        href="M10_OOD/26_HTW_NewCodeShow_cheats.html">New
+        code: show_cheats()</a></li>
+      <li><a
+        href="M10_OOD/27_HTW_NewCodeDisplayStatusAndWarnings.html">New
+        code: Display status and warnings</a></li>
+      <li><a
+        href="M10_OOD/28_HTW_MemoryDiagram.html">Memory
+        diagram</a></li>
+      <li><a
+        href="M10_OOD/29_HTW_BugMostlyFixingSnatch.html">Bug:
+        Mostly fixing snatch</a></li>
+      <li><a
+        href="M10_OOD/30_HTW_DataStructureMaintenance.html">Aside:
+        Data structure maintenance</a></li>
+      <li><a
+        href="M10_OOD/31_HTW_TwoMoreProblems.html">Two
+        more (small) problems</a></li>
+      <li><a
+        href="M10_OOD/32_HTW_HowdWeDo.html">How'd
+        we do?</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M10_OOD/90_M10_Assignment.html">Assignment 10</a></li>
+</dd>
+<dt>[NA] Week 11. Object-Oriented Programming 2: Polymorphism &amp;
+Inheritance</dt>
+<dd>
+  <li><a
+    href="M11_OOP2/01_InheritanceAndPolymorphism.html">Inheritance
+    and Polymorphism</a></li>
+  <li>Inheritance 
+    <ul>
+      <li><a
+        href="M11_OOP2/02_InheritanceExamplePlayingCards.html">Example:
+        Playing Cards</a></li>
+      <li><a
+        href="M11_OOP2/03_classCardCollection.html">class
+        CardCollection</a></li>
+      <li><a
+        href="M11_OOP2/04_classDeck.html">class
+        Deck</a></li>
+      <li><a
+        href="M11_OOP2/05_classHand.html">class
+        Hand</a></li>
+      <li><a
+        href="M11_OOP2/06_PuttingThePiecesTogether.html">Putting
+        the pieces together</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M11_OOP2/07_AsideRefactoring.html">Aside:
+    Refactoring</a></li>
+  <li>Polymorphism 
+    <ul>
+      <li><a
+        href="M11_OOP2/08_Polymorphism.html">Polymorphism</a></li>
+      <li><a
+        href="M11_OOP2/09_ExampleFractions.html">Example:
+        Fractions</a></li>
+      <li><a
+        href="M11_OOP2/10_ReverseEngineering.html">Reverse
+        engineering</a></li>
+      <li><a
+        href="M11_OOP2/11_classFraction.html">class
+        Fraction</a></li>
+      <li><a
+        href="M11_OOP2/12_ExamplePlayingCards.html">Example:
+        Playing Cards</a></li>
+      <li><a
+        href="M11_OOP2/13_ASubtlePointSemantics.html">A
+        subtle point: Semantics</a></li>
+      <li><a
+        href="M11_OOP2/14_ConclusionAddingTypes.html">Conclusion:
+        Adding types</a></li>
+    </ul>
+  </li>
+  <li><a
+    href="M11_OOP2/90_M11_Assignment.html">Assignment 11</a></li>
+</dd>
+<dt>[NA] Week 12. TBD</dt>
+<dd>
+  <li><a
+    href="M12_UML/01_UMLAndTestingIntro.html">UML
+    and Testing with doctest</a></li>
+  <li><a
+    href="M12_UML/02_UnifiedModellingLanguage.html">Unified
+    Modelling Language (UML)</a></li>
+  <li><a
+    href="M12_UML/03_AsideIs-aVersusHas-a.html">Aside:
+    is-a versus has-a</a></li>
+  <li><a
+    href="M12_UML/04_UMLClassDiagramVisualSyntax.html">UML
+    class diagram visual syntax</a></li>
+  <li><a
+    href="M12_UML/05_ExamplePlayingCardClasses.html">UML
+    Example: Playing card classes</a></li>
+  <li><a
+    href="M12_UML/06_TestingWithDoctest.html">Testing
+    with doctest</a></li>
+  <li><a
+    href="M12_UML/90_M12_Assignment.html">Assignment 12 (The last one!)</a></li>
+</dd>
+<dt>[NA] Exam Preparation</dt>
+<dd>
+  <li><a
+    href="M13_ExamPreparation/01_Examinable_Topics.html">Examinable
+    Topics</a></li>
+  <li><a
+    href="M13_ExamPreparation/02_Sample_Exam.pdf">Sample
+    Final Exam</a></li>
+<!--  <li>Final Course Evaluation</li> -->
+</dd>
+</dl>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	
+	$('dl.dynamic > dt').click(function() {
+		$(this).next().slideToggle('fast');
+		return false;
+		}).next().hide();
+	});
+</script>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

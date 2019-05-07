@@ -1,0 +1,174 @@
+/* CPSC128F13.css 
+ * Style sheet for CPSC 128 Fall 2013.
+ *
+ * Author: Tim Topper
+ *
+ * If you see anything you like, by all means take it.
+ *
+ */
+ 
+/* For IE < 9 */
+/*header, footer, nav, article, aside, section {
+    display: block;
+}*/
+/* end IE < 9 block */
+body {
+	background: #e3e7ea; /*#f9f9f9;*/
+	/*padding: 25px; */
+	/*margin: 5%;*/
+	font: 12px/20px verdana, sans-serif;
+	color: #333;
+	/*font-size: 75%; /*12px;*/
+}
+blockquote { font-style: italic; }
+nav, footer, #nav { 
+	width: 700px;
+  margin: 1em auto;
+	padding: 0;
+}
+footer { color: #999; text-align: center; }
+footer a { border-bottom: 1px dotted #999; }
+nav a, footer a, #nav a { text-decoration: none; color: #999;}
+footer a:hover, nav a:hover, #nav a:hover {
+	color: #039;
+}
+
+section, #section {
+	background-color: #ffffff; 
+	width: 700px;
+  margin: 0 auto;
+	/* padding:1em 2em 2em 2em;
+	-moz-border-radius:11px;
+	-khtml-border-radius:11px;
+	-webkit-border-radius:11px;
+	border-radius:11px;
+	border:1px solid #dfdfdf;*/
+
+  padding: 30px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+h1, h2 {	font-family: georgia, serif; }
+h1 {
+  margin: 0em 0 1em 0;
+	/*border-bottom: 1px solid #000;*/
+	border-bottom: 1px solid #e3e7ea; /*#dadada;*/
+	padding-bottom: 0.5em;
+	font-size: 200%;
+	line-height: 100%;
+	color: #454545;
+	font-weight: normal;
+}
+h2 {
+	font-size: 150%;
+	/*color: #a00f27;*/
+	font-weight: normal;
+	margin-top: 1.5em;
+}
+h3 {
+	font-size: 125%;
+	/*color: #a00f27;*/
+	font-weight: 500;
+}
+p {
+	margin: 1em 0 0 0;
+	font-family: verdana, Georgia, "Trebuchet MS", sans-serif;
+	line-height: 175%;
+}
+span.paratitle {
+	font-weight: bold;
+}
+p.footnote { 	border-top:1px solid #dadada; padding-top: 0.5em}
+p.img { text-align: center; }
+p.codeimg { margin-left: 2em; 
+	overflow: auto; /* To get scrollbars. */
+}
+p.attn {
+	background-color: #F6E9EB; /* #EED3D8; */
+	border: 1px dotted #A00F27;
+	text-align: center;
+	width: 80%;
+	padding: 0.5em;
+	line-height: 120%;
+	margin: auto;
+}
+p.intro { /* Box containing page introdution/abstract. */
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 1em;
+	background-color: #EED3D8; /* #eee; */
+	/*border-style: dashed;*/
+	border-width: 1px;
+	padding: 1em 1em 1em 1em;
+	line-height: 120%;
+	text-align: center;
+	font-style: italic;
+}
+p.indent { margin-left: 3em; }
+p.draft {
+	background-color: #a00f27;
+	color: #fff;
+	/*font-weight: bold;*/
+	font-size: 150%;
+	text-align: center;
+	margin: 0 10% 2em 10%;
+	/* margin-right: 10%; margin-left: 10%;
+	margin-bottom: 2em; */
+	padding: 1em;
+}
+p.em {
+	font-weight: bold;
+	margin-left: 3em;
+}
+section a, #section a {
+	color: #039; /*#a00f27;*/
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+section a:hover, #section a:hover {
+	text-decoration: none;
+	border-bottom: 1px solid;
+	border-top: 1px solid;
+}
+ol.tasks { list-style-type:square;}
+table.dark { font-size: 12px; }
+table.dark th{
+	padding: 5px;
+	margin: 1px;
+	background-color: #666;
+	color: #fff;
+  font-weight: normal;
+}
+table.dark td{
+	padding: 5px;
+	margin: 1px;
+	background-color: #ddd;
+}
+table.finelines { border-collapse: collapse; margin-top: 1em; }
+table.finelines td { padding: 0 3px; margin: 0; border: 1px solid #aaa; }
+/*
+ * Displaying code
+ */
+code { font-family: consolas, monospace; font-size: 125%; }
+p code, li code { color: #008080; } /* For inline code. */
+pre {
+	font-family: monospace;
+	background-color: #f0f0f0;
+	/*border: 1px solid #ccc;*/
+	padding: 1em 1.5em;
+	overflow: auto; /* To get scrollbars. */
+	margin-left: 2em;
+}
+pre.pseudo { font-style: italic; }
+pre code.python span.keyword { color: orange; font-weight: bold; }
+pre code.python span.comment { color: #999; font-style: italic; font-weight: normal; }
+pre code.python span.string { color: green; }
+pre code.python span.number { font-weight: bold; }

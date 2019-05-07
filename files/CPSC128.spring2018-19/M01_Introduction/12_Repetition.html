@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Problem|Note|Reference) XXX</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="11_Selection.html" />
+  <link rel="Next" href="13_Modularity.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Operation #6: Repetition</h1>
+<p>Some procedures require even more than SIPO-plus-Selection; they require
+the ability to repeat a group of instructions, e.g.</p>
+<ul>
+  <li>continue firing the boiler while the temperature is below the set
+  point</li>
+  <li>process records from the file until there are none left</li>
+  <li>increase the brightness by 10% for every pixel in the image</li>
+</ul>
+<p>In all these cases the same instructions are carried out multiple times
+(and sometimes on multiple items). The final control structure allows us to
+specify the repetition of commands. Python provides two repetition statements
+<code>while</code>, and <code>for</code>. We will consider <code>while</code>
+here to get a flavour of repetition. The format of the <code>while</code>
+statement is: </p>
+  <pre><code><b>while</b> <i>test</i> :
+    <i>statements to repeat</i></code></pre>
+<p>The effect of this construct is to continue executing the statements "inside"
+the while, as long as the test is true, e.g. </p>
+<pre><code><b>while</b> <i>the temperature is low</i> :</code></p>
+<code>    <i>fire the boiler</i></code></pre>
+<p>Although the italicized portions are not Python statements I hope this
+gives you a sense of the construct. When the program reaches the
+<code>while</code> statement it evaluates the test. If the test is false it
+skips over the indented statements and continues with the next statement in
+the program (i.e. if the temperature is not low we do not fire the boiler).
+If it is true however it executes the statements, and then reevaluates the
+test (i.e. if the temperature is low we fire the boiler and then check to see
+if the temperature is still low). If the test is still true it executes the
+statements and reevaluates the test (i.e. if the temperature is still low,
+fire the boiler again). If the test is still true it executes the statements
+and reevaluates the test. This continues until the test is false. Thus the
+statements are done while the test is true. </p>
+<p>Diagramatically this can be represented as, </p>
+<p class="img"><img src="12_WhileFlowchart.gif" /> </p>
+
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

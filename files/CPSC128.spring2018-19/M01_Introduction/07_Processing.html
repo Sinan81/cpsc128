@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Note) Operation #2: Processing</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="06_Input.html" />
+  <link rel="Next" href="08_Output.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Operation #2: Processing</h1>
+<p>Once we have the necessary data in memory we "process" it. Processing
+refers to the manipulation of data stored in memory. Most procedural
+languages use an assignment statement to specify the processing to be
+performed. The form of an assignment statement is: <i>name</i> =
+<i>expression</i>. The assignment statement instructs the computer to
+calculate the value of <em>expression</em> and to store the result and label
+it <em>name</em>. Here's an example in Python,</p>
+<pre><code>distance = duration * speed </code> </pre>
+<p>This statement causes the processor to retrieve the values of
+<code>duration</code> and <code>speed</code> from memory, multiply them,
+store the result in memory and label it <code>distance</code>. The effect on
+the state of the computer is shown below.</p>
+<p class="img"><img alt="." src="07_ComputerPostProc.gif"
+width="491" height="333" /></p>
+<p>That assignment statement looks a lot like a mathematical equation. This
+is a holdover from one of the earliest programming languages FORTRAN (short
+for FORmula TRANslator), and is both a blessing and a curse. It is a blessing
+because most people have some experience with equations, and assignment
+statements are a lot like equations. It is a curse because they are not
+<em>exactly</em> like equations.</p>
+<p>The first unimportant difference is that the statement above uses an
+asterisk to specify multiplication where we are used to using a times symbol, &times;, that looks like an x. However
+most computer languages can't use an x for multiplication because x could be
+a name, and computers don't have an easy way to tell which x's in your
+program mean perform a multiplication and which ones are names. To avoid
+confusion an entirely different symbol, <code>*</code>, is used for
+multiplication. This is not Python-specific all the mainstream languages use
+the <code>*</code> for multiplication. In fact humans don't really use x for
+both multiplication and names, we just think we do because of the limited
+choices on our computer keyboard. When we write with a more flexible tool
+though, like a pen on paper, we usually use <span style="font-family: Georgia, serif;"><em>x</em></span> as a name and &times;
+for multiplication. The other basic operators are the ones you are used
+to:</p>
+<ul>
+  <li><code>+</code> for addition</li>
+  <li><code>-</code> for subtraction</li>
+  <li><code>/</code> for division</li>
+</ul>
+<p>The other basic operation is exponentiation or informally "powers". When
+we do math on paper we write 2<sup>3</sup> for "two cubed" or 2 &times; 2
+&times; 2 but early programming languages had no easy way to type a
+superscript and so adopted other notations. Python uses <code>**</code> for
+exponentiation so <code>2**3</code> for two-cubed (the other common choice in
+programming languages is ^ or 2^3). The pair of asterisks is to remind us of
+repeated multiplication.</p>
+<p>The fact that assignment statements look a bit like equations, has
+prompted many people to refer to the names of memory locations (i.e.
+<code>rate</code>, <code>duration</code> and <code>distance</code>) as
+<em>variables</em>, and programmers do this too. It's not inaccurate since
+the same name can refer to different values at different times in the life of a program. But it is
+crucial to remember that assignment statements are <em>not</em> equations.
+To emphasize this consider the following example,</p>
+<pre><code>x = x + 1</code></pre>
+<p>Depending on how long it's been since you thought about equations carefully
+this may not look odd at first, but mathematically it is nonsense because
+there is no number that is equal to itself plus 1! 
+<p>It is however perfectly valid and sensible Python. Here's how the computer
+interprets it. </p>
+<blockquote>
+  <p>Fetch the value of x from memory, add 1 to it, and then store the result
+  back in memory labelling the new value x.</p>
+</blockquote>
+<p>So in Python this assignment statement says to increment the value of x by
+1. The key here is that assignment statements should be read from right to
+left. Remember the form of the assignment statement was: <i>name</i> =
+<em>expression</em>. The expression on the right is evaluated and the result
+stored using the name on the left. Note that the expression is always on the
+right and the name always on the left. While it is ok to write <code>x = x +
+1</code> Python will complain and generate an error message if you write
+<code>x + 1 = x</code>. Try it in IDLE and see.</p>
+</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

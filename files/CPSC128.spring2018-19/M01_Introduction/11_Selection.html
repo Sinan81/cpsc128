@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Note) Operation #5: Selection</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="10_Sequence.html" />
+  <link rel="Next" href="12_Repetition.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Operation #5: Selection</h1>
+<p>SIPO style programming is not enough for all situations because there are
+many areas in which the processing to be done depends on the input, e.g.</p>
+<ul>
+  <li>the tax you pay <em>depends</em> on how much you earn</li>
+  <li>the grade you receive <em>depends</em> on the quality of your work</li>
+  <li>the formula to calculate the area of a figure <em>depends</em> on its
+    shape</li>
+  <li>the amount of leave an employee accumulates <em>depends</em> on their
+    employment status</li>
+</ul>
+<p>To accommodate such situations we need the ability to process data
+selectively. Imperative/procedural programming languages (like Python)
+achieve this by using selection statements. To handle the cases above we test
+something (your earnings, your work quality, the shape of the figure, or
+someone's employment status) to determine how processing should proceed. The
+result of the test is used to select the processing to carry out.</p>
+<p>The most common selection command is the <code>if</code> statement. In
+Python the basic <code>if</code> statement looks like this (we'll see some
+variations next week), </p>
+  <pre><code><b>if</b> <i>test</i> :
+    <i>statements to do if the test is true</i>
+<b>else</b>:
+    <i>statements to do if the test is false</i></code></pre>
+<p>The <code><i>test</i></code> evaluates some condition, e.g. that the input
+is  less than 100. If it is (that is, if the test is true), the first
+group of statements are executed, and the second group of statements (after
+<code>else</code>) are skipped. If the test is not true, then the first group
+of statements is skipped, and the second group of statements are executed. In
+either case only one of the two groups of statements is executed. Thus the
+<code>if</code> statement selects which group of statements to execute
+<em>depending</em> on the outcome of the test.</p>
+<p>This can be presented diagramatically by a flowchart like this: </p>
+<p class="img"><img src="11_IfFlowchart.gif" alt="." /> </p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>
