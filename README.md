@@ -25,7 +25,7 @@ See the syllabus: [CPSC 128 Spring 2018-19 Syllabus](files/CPSC_128_outline_2019
 
 ## Slides
 
-
+[May 2](files/cpsc128_slides_may2.pdf)
 
 ## git cheatsheet
 
