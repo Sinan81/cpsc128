@@ -1,6 +1,7 @@
+# CPSC128
 This is a repository for the CPSCS 128 "Introductory Programming using Python" course.
 
-# Outline
+## Outline
 
 0. Course start-up.
 * Part I: Procedural programming
@@ -21,7 +22,7 @@ This is a repository for the CPSCS 128 "Introductory Programming using Python" c
 * Final Examination
 
 
-# git cheatsheet
+## git cheatsheet
 
 If created new file, first tell `git` to track it
 ```
@@ -38,13 +39,13 @@ Push modifications in local repo to the remote git server (github)
 git push
 ```
 
-# python cheatsheet
+## python cheatsheet
 
 - get help via `help()`
 
-# github Markdown (optional)
+## github Markdown (optional)
 
-If you want to create nice looking pages on github (such as README.md), you might want to checkout the following links for examples for Markdown (.md) language:
+If you want to create nice looking pages on github (such as README.md), you might want to checkout the following links for examples of Markdown (.md) language:
 
 * https://guides.github.com/features/mastering-markdown/
 * https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
