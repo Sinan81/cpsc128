@@ -1,6 +1,8 @@
 # CPSC128
 This is a repository for the CPSCS 128 "Introductory Programming using Python" course.
 
+See the syllabus: [CPSC 128 Spring 2018-19 Syllabus](files/CPSC_128_outline_2019.pdf)
+
 ## Outline
 
 0. Course start-up.
@@ -20,6 +22,9 @@ This is a repository for the CPSCS 128 "Introductory Programming using Python" c
 11. Object-oriented programming (OOP) 2: Polymorphism and inheritance.
 12. TBA
 * Final Examination
+
+## Slides
+
 
 
 ## git cheatsheet
