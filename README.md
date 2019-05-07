@@ -41,3 +41,11 @@ git push
 # python cheatsheet
 
 - get help via `help()`
+
+# github Markdown (optional)
+
+If you want to create nice looking pages on github (such as README.md), you might want to checkout the following links for examples for Markdown (.md) language:
+
+* https://guides.github.com/features/mastering-markdown/
+* https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
