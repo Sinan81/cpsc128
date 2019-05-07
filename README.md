@@ -1,7 +1,7 @@
 This is a repository for the CPSCS 128 "Introductory Programming using Python" course.
 # cpsc128
 
-# Syllabus
+# Outline
 
 0. Course start-up.
 * Part I: Procedural programming
@@ -21,3 +21,9 @@ This is a repository for the CPSCS 128 "Introductory Programming using Python" c
 12. TBA
 Final Examination
 
+
+# git cheatsheet
+
+# python cheatsheet
+
+- get help via `help()`
