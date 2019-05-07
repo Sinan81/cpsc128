@@ -33,7 +33,7 @@ If a new file added or a current file is modified, save it via
 git commit -m 'commit message' mycode.py
 ```
 
-Push local updates to github
+Push modifications in local repo to the remote git server (github)
 ```
 git push
 ```
