@@ -19,7 +19,7 @@ This is a repository for the CPSCS 128 "Introductory Programming using Python" c
 10. Object-oriented design (OOD).
 11. Object-oriented programming (OOP) 2: Polymorphism and inheritance.
 12. TBA
-Final Examination
+* Final Examination
 
 
 # git cheatsheet
