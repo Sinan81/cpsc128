@@ -55,6 +55,18 @@ Push modifications in local repo to the remote git server (github)
 git push
 ```
 
+To download github repository:
+
+```
+git clone https://github.com/Sinan81/cpsc128.git
+```
+
+Already downloaded a repo, but want to pull updates to it?. First navigate to the repository folder on git-bash console and do a pull:
+```
+cd ~/cpsc128
+git pull
+```
+
 ## python cheatsheet
 
 - get help via `help()`
