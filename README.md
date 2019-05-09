@@ -59,6 +59,14 @@ git push
 
 - get help via `help()`
 
+- import a module/library and use a method from this module:
+
+```
+import math
+
+math.sqrt(9)
+```
+
 ## github Markdown (optional)
 
 If you want to create nice looking pages on github (such as README.md), you might want to checkout the following links for examples of Markdown (.md) language:
