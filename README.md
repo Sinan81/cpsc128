@@ -36,6 +36,8 @@ After clonin this repository to your computer open the following file on an inte
 
 [May 2](files/cpsc128_slides_may2.pdf)
 
+[May 7](files/cpsc128_slides_may7.pdf)
+
 ## git cheatsheet
 
 If created new file, first tell `git` to track it
