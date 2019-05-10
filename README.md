@@ -97,6 +97,12 @@ If you want to create nice looking pages on github (such as README.md), you migh
 * do `:wq` to save and quit
 * hit '/' to do a search, and 'Esc' to get back to normal mode
 
+## Computing Setup
 
+* python3
+* git: version control
+* github account
+* spyder (optional): Integrated development environment (IDE) for Python
+* jupyter (optional)
 
 
