@@ -95,6 +95,7 @@ If you want to create nice looking pages on github (such as README.md), you migh
 * do `:w` to save
 * do `:q` to quit
 * do `:wq` to save and quit
+* hit '/' to do a search, and 'Esc' to get back to normal mode
 
 
 
