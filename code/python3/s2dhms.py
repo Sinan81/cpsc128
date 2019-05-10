@@ -28,5 +28,5 @@ minutes = remainder // SECS_PER_MINUTE
 remainder = remainder % SECS_PER_MINUTE
 
 # Output.
-print(tot_seconds, "seconds =", days, "days,", hours, "hours,",)
+print(tot_seconds, "seconds =", days, "days,", hours, "hours,",end="")
 print(minutes, "minutes and", remainder, "seconds")
