@@ -10,7 +10,9 @@ In this course, to a significant extent I will be following previous instructor'
 
 After clonin this repository to your computer open the following file on an internet browser: `files/CPSC128.spring2018-19/index.html`
 
+## Assignments
 
+[Assignment 1](assignment1.md) Due May 20, Monday
 
 ## Outline
 
