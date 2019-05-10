@@ -50,7 +50,7 @@ The historian above now wishes to convert some measurements she has made in feet
 
 ## Logistics
 
-Submit your assignment by emailing your python programs to me as a *.zip file.
+Submit your assignment by emailing your python programs to me as a single *.zip file.
 
 ## Copyright
 
