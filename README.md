@@ -86,3 +86,14 @@ If you want to create nice looking pages on github (such as README.md), you migh
 * https://guides.github.com/features/mastering-markdown/
 * https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
+## vim cheats
+
+* hit 'i' to edit
+* hit 'Esc' to escape edit mode
+* do `:w` to save
+* do `:q` to quit
+* do `:wq` to save and quit
+
+
+
+
