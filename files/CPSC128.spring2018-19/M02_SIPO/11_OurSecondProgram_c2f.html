@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Note) Our second program</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="10_Documentation.html" />
+  <link rel="Next" href="12_OurThirdProgram_dhms2s.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Our second program (Same as the first only backwards)</h1>
+<p>Let's write a program to undo the conversion from Fahrenheit to Celsius we
+did above. It should convert a temperature measurement in Celsius to one in
+Fahrenheit. </p>
+<h2>Do it by hand</h2>
+<p>As before we begin by doing it by hand. </p>
+<p>Suppose I want to convert 11 degrees Celsius to its Fahrenheit equivalent.
+I would write: </p>
+<p class="img"><img alt="c2f" src="11_c2f.jpg" width="382"
+height="126" /></p>
+<p>Now we need to look at what we have written, and try to view it in terms
+of the computer operations: input, processing and output operations. </p>
+<p>The input operations gather the necessary information. In this case the
+only information necessary is the value to convert, i.e. 11. </p>
+<p>The processing operations are to take the input value, multiply it by 9/5,
+and add 32. </p>
+<p>The output operation is to display the result, i.e. 51. </p>
+<h2><b>Translate to Python</b></h2>
+<p> Translating each of those steps into Python gives us: </p>
+  <pre><code>temp_in_c = input()
+temp_in_f = temp_in_c * 9/5 + 32
+print temp_in_f</code></pre>
+<p>This is the computational core of our program, but we need to add
+documentation and an interface. By interface we mean that we need to provide
+a way for the user to interact with the program. Specifically we need to give
+the user some initial instructions, and then some meaningful output. Adding a
+minimal set of instructions and pulling all the pieces together gives us this
+program. </p>
+  <pre><code># c2f.py -- converts a temperature in Celsius to its equivalent in Fahrenheit.
+# CPSC 128 Example program
+# Tim Topper, Winter 2013
+
+# Input:
+print "This program converts temperatures from Celsius to Fahrenheit."
+print "Enter a temperature in Celsius (e.g. 10) and press Enter."
+temp_in_c = input("Enter temperature in Celsius: ")
+
+# Processing:
+temp_in_f = temp_in_c * 9/5 + 32
+
+# Output:
+print temp_in_c, "degrees Celsius =", temp_in_f, "degrees Fahrenheit."</code></pre>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

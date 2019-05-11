@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Note) Our third program (dhms2s.py)</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="11_OurSecondProgram_c2f.html" />
+  <link rel="Next" href="13_SIPOSummary.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Our third program (dhms2s.py)</h1>
+<p>We'll finish by writing another program; one that takes several input values
+instead of just one.</p>
+<p>The problem is to convert a time given in days, hours, minutes, and seconds
+to the equivalent number of seconds. </p>
+<p>For example 1 day, 8 hours, 23 minutes and 11 seconds is (doing it by hand)
+1 &times; 24 &times; 60 &times; 60 + 8 &times; 60 &times; 60 + 23 &times; 60 + 11 = 116,591 seconds. The calculation is based
+on the fact that each day has 24 hours, each hour has 60 minutes, and each
+minute has 60 seconds. </p>
+<p>The <strong>input</strong> is the number of days, hours, minutes, and seconds.</p>
+<p>The <strong>processing</strong> is the calculation above.</p>
+<p>And the <strong>output</strong> is the equivalent number of seconds. </p>
+<p>The core (I say core because I am leaving out the documentation and some
+interactive elements so you can better focus on what matters) of a Python
+program to do this calculation might look like this, </p>
+  <pre><code>print "Enter your values now,"
+days = input("Enter days: ")
+hours = input("Enter hours: ")
+minutes = input("Enter minutes: ")
+seconds = input("Enter seconds: ")
+tot_seconds = days*24*60*60 + hours*60*60 + minutes*60 + seconds
+print "Total seconds is", tot_seconds</code></pre>
+
+<p>It seems to work but there is one improvement that can be made. The small
+improvement is that we can rewrite the processing statement so it does fewer
+calculations. As it stands the statement, </p>
+
+  <pre><code>tot_seconds = days*24*60*60 + hours*60*60 + minutes*60 + seconds;</code></pre>
+
+<p>does 3 additions and 6 multiplications. If we factor the expression and
+rewrite it as, </p>
+  <pre><code>tot_seconds = ((days*24 + hours)*60 + minutes)*60 + seconds;</code></pre>
+
+<p>we reduce the count of multiplications from 6 to 3: a significant reduction.
+</p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Note) Naming values</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="07_RunningYourFirstProgram.html" />
+  <link rel="Next" href="09_OnscreenAppearance.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Naming Values</h1>
+<p>What names <em>can</em> you choose for the values you store? The names
+must begin with a letter, but can be followed by any sequence of letters,
+numbers, and the underscore character _. </p>
+<p>A more important question is what names <em>should</em> you choose for
+your values? The names you choose should be,</p>
+<ul>
+  <li>descriptive of the values they refer to to enhance program
+  readability,</li>
+  <li>short, for convenience,</li>
+  <li>all lowercase to adhere to Python convention.</li>
+</ul>
+<p>The computer doesn't care what you call them. For example our program
+would run as well if we changed the variable names to be, </p>
+<pre><code>x = input()
+y = (x - 32) * 5 / 9
+print y</code></pre>
+<p>or even, </p>
+<pre><code>fish_guts = input()
+corn_flakes = (fish_guts - 32) * 5 / 9
+print corn_flakes</code></pre>
+<p>I, however, care very much what you call them, as will the other
+programmers you work with, and even you when you come back to modify your
+code in six months, or six years. The two versions above are respectively,
+obscure, and downright misleading, and would be graded accordingly! </p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

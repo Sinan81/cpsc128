@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Note) Packaging Quantities: Translate into Python</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="15_PQ_ByHand.html" />
+  <link rel="Next" href="17_Modulo.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Translate into Python </h1>
+<p>A literal translation of our manual steps,</p>
+<blockquote>
+  <p>
+  days = 200,000/(24*60*60) = 2<br />
+  remainder = 200,000 - 2*(24*60*60) = 27,200<br />
+  hours = 27,200/(60*60) = 7<br />
+  remainder = 27,200 - 7x(60*60) = 2000<br />
+  minutes = 2,000/60 = 33 <br />
+  seconds = 2,000 - 33*60 = 20</p>
+</blockquote>
+<p> into Python might look like this: </p>
+
+  <pre><code>tot_seconds = input("Enter the number of seconds: ")
+days = tot_seconds / (24*60*60)
+remainder = tot_seconds - days * (24*60*60)
+hours = remainder / (60*60)
+remainder = remainder - hours * (60*60)
+minutes = remainder / 60
+remainder = remainder - minutes*60
+print tot_seconds, "seconds is", days, "days,"
+print hours, "hours,", minutes, "minutes and"
+print remainder, " seconds."</code></pre>
+
+<p>Notes: </p>
+<ul>
+  <li>This is just the core of the program and the instructions are minimal,
+    for now ... </li>
+  <li>Note that the final value output is <code>remainder</code>, do you
+    understand why? </li>
+</ul>
+<p>As written (with the addition of &mdash; you already know this right?
+&mdash; interface and documentation) this program would run and calculate the
+answer correctly, but a couple of improvements are possible.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

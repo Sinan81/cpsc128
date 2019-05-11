@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Note) Object Types 1: ints and floats</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="19_IntermissionSummary.html" />
+  <link rel="Next" href="21_pTreeCircumference_s.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Object Types 1: <code>int</code>s and <code>float</code>s</h1>
+<p class="intro">In which we consider the types of objects for the first, but definitely
+  not the last, time.</p>
+<h2>The Issue</h2>
+<p>Recall our program to convert from Farenheit to Celsius: </p>
+
+  <pre><code># f2c.py -- converts a temperature in Fahrenheit to its equivalent in Celsius.
+# CPSC 128 Example program
+# Tim Topper, Winter 2013
+#
+print "This program converts temperatures from Fahrenheit to Celsius."
+print "Enter a temperature in Fahrenheit (e.g. 10) and press Enter."
+temp_in_f = input("Temperature in Fahrenheit: ")
+temp_in_c = (temp_in_f - 32) * 5 / 9
+print temp_in_f, "degrees Fahrenheit =", temp_in_c, "degrees
+Celsius."</code></pre>
+
+<p>Most students, used to working with hand calculators, are disappointed to
+write programs like this one using integers. They feel that the answers are not
+exact because the "decimals" are being lost. </p>
+<p>Python allows us to work with either integers (positive and negative whole
+numbers without decimals), or floating point values (ones with decimals).
+Converting our program above to work with floating point numbers is as simple
+as introducing floating point constants. </p>
+
+  <pre><code># f2c.py -- converts a temperature in Fahrenheit to its equivalent in Celsius.
+# CPSC 128 Example program
+# Tim Topper, Winter 2013
+#
+print "This program converts temperatures from Fahrenheit to Celsius."
+print "Enter a temperature in Fahrenheit (e.g. 10<span style="color: red;">.0</span>) and press Enter."
+temp_in_f = input("Temperature in Fahrenheit: ")
+temp_in_c = (temp_in_f - 32<span style="color: red;">.0</span>) * 5<span style="color: red;">.0</span> / 9<span style="color: red;">.0</span>
+print temp_in_f, "degrees Fahrenheit =", temp_in_c, "degrees Celsius."</code></pre>
+
+<p>The necessary changes are shown in red. Try running this version of the
+program and see how the output changes. Is it what you wanted? If not stay
+tuned for an update coming soon to a module near you.</p>
+<h2>5 is not the same as 5.0 </h2>
+<p>The changes all consist of adding decimals to our previous integer
+constants. The decimals are necessary to let the computer know that these are
+floating point values, rather than integer ones. The key thing to realize here
+is that 5 and 5.0 are not the same thing. </p>
+<p>When we do math we are used to using 5 and 5.0 interchangeably. We know
+which meaning is intended from the context in which the value occurs. The
+computer, bless its silicon heart, can't take advantage of real-world context to. It needs to be told
+explicitly which interpretation to use, and it stores the values very
+differently internally. </p>
+<h2>Avoid Mixing ints and floats </h2>
+<p>If you make only the second change in the program above (change 32 to 32.0),
+and run the program it will probably work with decimal values and produce
+correct answers. This is because when it is faced with an expression that
+combines several numeric types, e.g. the expression </p>
+
+  <pre><code>temp_in_C = (temp_in_F - 32.0) * 5 / 9</code></pre>
+
+<p>which combines integers and floating point values it does its best to
+convert as needed. In general Python will convert from a "lower" type to a
+"higher" one thus preserving accuracy. But subtle problems can arise and these
+conversions take time to perform, time we are supposed to be conserving and
+using efficiently! Thus we should avoid mixing ints and floats where possible,
+and generally it is possible. If you find yourself combining them you should
+probably rethink your approach to the problem. </p>
+<h2>Type conversions</h2>
+<p>If you must combine types do so consciously and force the type conversion
+yourself. You can convert an object of any type to an integer using the class
+name of integers, <code>int</code>, as a function, e.g. <code>int(4.3)</code>.
+Similarly you can convert an object to a floating point number using the class
+name <code>float</code> as a function, e.g. <code>float(4)</code>. Using a
+class name in this way invokes the class' constructor, a function that tries to
+build an object of the specified type.</p>
+<p>One common occasion where the two types are combined is in finding the
+average of a set of real numbers. Here the sum will be a floating point value,
+but the count of the number of values is best represented by an integer. When
+we divide the sum by the count, we are combining a floating point value with an
+integer.</p>
+<h2><code>int</code> or <code>float</code>?</h2>
+<p>In many problems either <code>int</code>s or <code>float</code>s can be used
+depending on the type of output required. When it is not clear which choice is
+best the following insight and guidelines may be helpful. The insight is that
+most numbers arise as the result of either measurements (the length, duration,
+weight ... of something), or counts (the number of students, cars, bacteria,
+problems, ...). The resulting guidelines are to: </p>
+<ul>
+  <li>Prefer floating point values for measurements.</li>
+  <li>Use integers for counts.</li>
+</ul>
+<p>Note that the second guideline is stricter than the first.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

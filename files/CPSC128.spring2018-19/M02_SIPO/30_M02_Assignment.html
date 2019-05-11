@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Assignment) Module 2 Assignment</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="MarkingScheme.html" />
+  <link rel="Next" href="../M03_Selection/01_M03_Overview.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Assignment 2</h1>
+<h2>Problems</h2>
+<ol>
+  <li><h3>Trivialities</h3>
+    <p>We only know enough Python commands to write simple programs so far,
+    but we do need to practice using what we've got so ... write a program
+    that produces sessions like this one:</p>
+    <pre>Useless Trivia Generator v0.01
+==============================
+How old are you? 28
+And how many pounds do you weigh? 165
+Did you know that you're 196 in dog years!
+But you're also over 883008000 seconds old.
+Did you know that on the moon you would weigh only 27.5 pounds?
+But on the sun, you'd weigh 4471.5 pounds (but not for long!).</pre>
+    <p>Some facts that might be helpful to you in writing your program:</p>
+    <ul>
+      <li>There are seven dog years in each calendar year. </li>
+      <li>There are 60 seconds in a minute, 60 minutes in an hour, 24 hours
+        in a day, and (at least) 365 days in a year. </li>
+      <li>Things weigh 1/6th as much on the moon as they do on the surface of
+        the earth. </li>
+      <li>Things weigh 27.1 times as much on the surface of the sun as they
+        do on the surface of the earth. </li>
+    </ul>
+  </li>
+  <li><h3>Calculating Wind Chill</h3>
+    <p>While the temperature tells us how cold the air outside is, we are
+    often more interested in how quickly we will cool down. The rate at which
+    we lose heat depends on the temperature outside, and also on the speed of
+    the wind: the combined effect of temperature and wind speed is often
+    called the wind chill. The effective
+    temperature,<strong>T<sub>e</sub></strong>, can be calculated using the
+    expression,</p>
+    <p><img alt="." src="30_wind-chill.png" width="367" height="22" /></p>
+    <p>where <strong>V</strong> is the wind speed in kilometres per hour, and
+    <strong>T</strong> is the temperature in Celsius.</p>
+    <p>Write a program that calculates the effective temperature. It should
+    request the temperature and wind speed from the user and output the
+    effective temperature.  </p>
+  </li>
+  <li><h3>Converting from furlongs et al to feet</h3>
+    <p>A historian has come across a large body of material using
+    outdated units of measurement. Specifically, distance measurements are
+    given in terms of feet, yards (1 yard = 3 feet), chains (1 chain = 22
+    yards), and furlongs (1 furlong = 10 chains). Write a program that will
+    let her enter one of the historical measurements in furlongs, chains,
+    yards and feet (e.g. 2 furlongs, 3 chains, 13 yards and 2 feet) and
+    output the equivalent measurement in feet (i.e. 1559 feet).</p>
+  </li>
+  <li><h3>Converting from feet to furlongs et al</h3>
+    <p>The historian above now wishes to convert some measurements she has
+    made in feet into these archaic units. Write a program that will convert
+    from feet to furlongs, chains, yards and feet, so if she inputs 1559 the
+    output should be something like:</p>
+    <pre>1559 feet is equal to:
+  2 furlongs,
+  3 chains,
+ 13 yards, and
+  2 feet.</pre>
+  </li>
+</ol>
+<h2>Logistics</h2>
+<ul>
+  <li>
+    <p>Use the following naming scheme for your program files:
+    <code>a</code><em>assignment#</em><code>p</code><em>problem#</em><code>v</code><em>version#</em><code>.py</code>
+    . So your first attempt at problem 1 on this assignment will be named
+    <code>a2p1v1.py</code> and your second attempt (should there be one) will
+    be named <code>a2p1v2.py</code> .</p>
+  </li>
+  <li>
+    <p>Submit your assignment by emailing your python programs to me. I advise to submit early and submit often, since I will often review your programs as they are submitted and provide feedback that will let you improve them.</p>
+  </li>
+</ul>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>
