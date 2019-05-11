@@ -34,6 +34,14 @@ After clonin this repository to your computer open the following file on an inte
 12. TBA
 * Final Examination
 
+## Online Python Resources
+You might want to check out the following online resources:
+
+* [Official Python Tutorial](https://docs.python.org/3.6/tutorial/)
+* [Think Python: How to Think Like a Computer Scientist](http://greenteapress.com/thinkpython/html/index.html)
+* [Learn Python The Hard Way](https://learnpythonthehardway.org/book/index.html)
+* [Hand-On Python: A Tutorial Introduction for Beginners](http://anh.cs.luc.edu//python/hands-on/handsonHtml/handson.html)
+
 ## Slides
 
 [May 2](files/cpsc128_slides_may2.pdf)
