@@ -44,11 +44,13 @@ You might want to check out the following online resources:
 
 ## Slides
 
-[May 2](files/cpsc128_slides_may2.pdf)
+[May  2](files/cpsc128_slides_may2.pdf)
 
-[May 7](files/cpsc128_slides_may7.pdf)
+[May  7](files/cpsc128_slides_may7.pdf)
 
-[May 9](files/cpsc128_slides_may9.pdf)
+[May  9](files/cpsc128_slides_may9.pdf)
+
+[May 14](files/cpsc128_slides_may14.pdf)
 
 ## git cheatsheet
 
