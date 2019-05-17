@@ -14,6 +14,8 @@ After clonin this repository to your computer open the following file on an inte
 
 [Assignment 1](assignment1.md) Due May 20, Monday
 
+[Assignment 2](assignment2.ipynb) Due May 24, Monday
+
 ## Outline
 
 0. Course start-up.
