@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Selection Summary</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="14_Abs.html" />
+  <link rel="Next" href="16_pGazinta_s.html" />
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Summary: Selection using <code>if</code></h1>
+<p>We have seen three ways of using the <code>if</code> statement to
+<em>select</em> statements to execute.</p>
+<p>One possibility is that we have a statement (simple or compound) to
+execute conditionally. The construct to use is:</p>
+<pre><code>if <i>test-expression</i>:
+<i>    true-statement</i></code></pre>
+<p>A second possibility is that we want to select one of two statements to
+execute. In this case the construct is:</p>
+<pre><code>if <i>test-expression</i>:
+<i>    true-statement</i>
+else:
+<i>    false-statement</i></code></pre>
+<p>The third possibility is that we want to select one of a number of
+mutually exclusive statements to execute. In this case the construct is:</p>
+<pre><code>if <i>test-expression</i>:
+<i>    true-statement</i>
+elif <i>test-expression</i>:
+<i>    true-statement</i>
+...
+else:
+<i>    false-statement</i></code></pre>
+<p>with as many <code>elif</code> statements as required to cover all the
+possibilities, and the <code>else</code> statement usually reserved for
+catching errors (specifically invalid values). </p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Problem) Example: Utility bills</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="17_pPythagoras_s.html" />
+  <link rel="Next" href="19_Beaufort_Scale_Example/19_pBeaufortScale_s.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Utility bills</h1>
+<h2>Problem:</h2>
+    <p>A utility company takes readings each month and charges its customers on the following basis. 
+    </p> 
+    <table cellpadding="5" cellspacing="1"> <tbody> 
+      <tr> 
+        <td style="background-color: #000; color: #fff;">kWh</td> 
+        <td style="background-color: #000; color: #fff;">Rate</td> 
+      </tr> 
+      <tr> 
+        <td style="background-color: #aaa;">Under 500 
+        </td> 
+        <td style="background-color: #aaa;">$20.00 
+        </td> 
+      </tr> 
+      <tr> 
+        <td style="background-color: #aaa;">500 to 1000 
+        </td> 
+        <td style="background-color: #aaa;">$20.00 + $0.03 per kWh over 500 
+        </td> 
+      </tr> 
+      <tr> 
+        <td style="background-color: #aaa;">Over 1000 
+        </td> 
+        <td style="background-color: #aaa;">$35.00 + 0.02 per kWh above 1000 
+        </td> 
+      </tr> </tbody> 
+    </table> 
+    <p>Write a program to calculate a customer's bill amount given the number of kilowatt-hours used. 
+    </p> 
+    <p>Sample runs:</p> 
+<pre><code>===============================
+        Bill calculator
+-------------------------------
+Enter kilowatt-hours used: 300
+Bill amount = $20.00
+</code></pre> 
+<pre><code>===============================
+        Bill calculator
+-------------------------------
+Enter kilowatt-hours used: 600
+Bill amount = $23.00</code></pre> 
+<pre><code>===============================
+        Bill calculator
+-------------------------------
+Enter kilowatt-hours used: 1200
+Bill amount = $39.00</code></pre> 
+<h2>Solution:</h2> 
+<p class="codeimg"><img src="18_pUtilityBills.py.png" alt="." /></p> 
+
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>if: A simple (artificial) example</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="01_M03_Overview.html" />
+  <link rel="Next" href="03_ACorrection.html" />
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1><code>if:</code> A Simple (artificial) Example</h1>
+<p>Consider the problem of checking a number to see if it is positive or
+negative, and outputting an appropriate message. The SIPO statements we have
+used so far are not up to the task. The problem is that the message we output
+depends on the sign of the variable, and that may change from one run of the
+program to the next. That means that both the possible output statements "is
+negative" and "is positive" must be present in the program, and that the
+program must <em>select</em> which one to execute based on the sign of the variable.
+Python has a selection statement called <code>if</code> that allows us to do
+that, like this:</p>
+<pre><code class="python">value = input(<span class="string">"Enter an integer (e.g, 23 or -118): "</span>)
+<span class="keyword">if</span> value &lt; <span class="number">0</span>:
+    <span class="keyword">print</span> value, <span class="string">"is negative"</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> value, <span class="string">" is positive"</span></code></pre>
+    <p>(Note that the statements after the <code>if</code> and <code>else</code>
+statements are indented four spaces.)</p>
+<p>The first statement should look familiar, but here's what happens next. The
+<code>if</code> statement says that if <code>value</code> is less than 0 then
+the first <code>print</code> statement should be executed, otherwise ("else")
+the second <code>print</code> statement should be executed.</p>
+<p>Here's how the execution of the statements takes place. When the program
+reaches the <code>if</code> statement, it evaluates the expression
+<code>value &lt; 0</code>. If the expression is <code>True</code> (the number stored in <code>value</code>
+is less than zero) it executes the first <code>print</code> statement, and then
+skips over the <code>else</code> and the second <code>print</code> statement. On
+the other hand, if the expression is <code>False</code>, it skips the first <code>print</code> statement and
+executes the statement after the <code>else</code>. The key is that in either
+case only one of the <code>print</code> statements is executed, i.e. the
+<code>if</code> statement <em>selects</em> which one to execute based on the
+<em>test</em> <code>value &lt; 0</code>.</p>
+<p>The flow of control of this <code>if</code> statement can be represented
+using a flowchart as shown below. Following the arrows (the <em>flow</em> so to speak) from top to bottom makes it clear that on any run of
+the program only one of the two output statements will be executed.</p>
+<p class="img"><img src="02_if_1.gif" alt=","></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

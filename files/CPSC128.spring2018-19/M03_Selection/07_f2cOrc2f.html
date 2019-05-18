@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Example: One program to convert F to C or C to F</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="06_CompoundStatementsAndIndentation.html" />
+  <link rel="Next" href="08_GC_TheProblem.html" />
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Example: One program to convert F to C <em>or</em> C to F</h1>
+<p>Consider this program to convert temperatures in Fahrenheit to Celsius.</p>
+<pre><code class="python"><span class="keyword">print</span> <span class="string">"This program converts temperatures from Fahrenheit to Celsius."</span>
+temp_in_f = input( <span class="string">"Enter a temperature in Fahrenheit (e.g. 10) and press Enter: "</span> )
+temp_in_c = (temp_in_f - <span class="number">32</span>) * <span class="number">5</span> / <span class="number">9</span>
+<span class="keyword">print</span> temp_in_f, <span class="string">" degrees Fahrenheit = "</span>, temp_in_c, <span class="string">" degrees Celsius."</span></code></pre>
+<p>(For simplicity I have removed the opening comments).</p>
+<p>If instead we wanted to convert temperatures in Celsius to Fahrenheit we
+could write a second very similar program to do so:</p>
+<pre><code class="python"><span class="keyword">print</span> <span class="string">"This program converts temperatures from Celsius to Fahrenheit ."</span>
+temp_in_c= input( <span class="string">"Enter a temperature in Celsius (e.g. 10) and press Enter: "</span> )
+temp_in_f = temp_in_c * <span class="number">9</span> / <span class="number">5</span> + <span class="number">32</span>;
+<span class="keyword">print</span> temp_in_c, <span class="string">" degrees Celsius = "</span>, temp_in_f, <span class="string">" degrees Fahrenheit."</span></code></pre>
+<p>But what if we want a single program that can do either conversion? We
+will need to place both sets of conversion code in one program and then
+choose which one to execute. How will we choose? Based on user input, i.e. we
+will present the choices and let the user choose. The resulting program might
+look like this.</p>
+<pre><code class="python"><span class="comment">###########################################################</span>
+<span class="comment">## tmpcnvrt.py -- allows the user to convert a temperature</span>
+<span class="comment">##        in Fahrenheit to Celsius or vice versa.</span>
+<span class="comment">##</span>
+<span class="comment">## CPSC 128 Demonstration Program</span>
+<span class="comment">##</span>
+<span class="comment">## Tim Topper, Winter 2013</span>
+<span class="comment">###########################################################</span>
+<span class="keyword">print</span> <span class="string">"This program converts temperatures from Fahrenheit to Celsius,"</span>
+<span class="keyword">print</span> <span class="string">"or from Celsius to Fahrenheit."</span>
+<span class="keyword">print</span> <span class="string">"Choose"</span>
+<span class="keyword">print</span> <span class="string">"1 to convert Fahrenheit to Celsius"</span>
+<span class="keyword">print</span> <span class="string">"2 to convert Celsius to Fahrenheit"</span>
+
+choice = input( <span class="string">"Your choice? "</span> )
+
+<span class="keyword">if</span> choice == <span class="number">1</span>:
+    <span class="keyword">print</span> <span class="string">"This program converts temperatures from Fahrenheit to Celsius."</span>
+    temp_in_f = input( <span class="string">"Enter a temperature in Fahrenheit (e.g. 10) and press Enter: "</span> )
+    temp_in_c = (temp_in_f - <span class="number">32</span>) * <span class="number">5</span> / <span class="number">9</span>
+    <span class="keyword">print</span> temp_in_f, <span class="string">" degrees Fahrenheit = "</span>, temp_in_c, <span class="string">" degrees Celsius."</span>
+
+<span class="keyword">elif</span> choice == <span class="number">2</span>:
+    <span class="keyword">print</span> <span class="string">"This program converts temperatures from Celsius to Fahrenheit ."</span>
+    temp_in_c= input( <span class="string">"Enter a temperature in Celsius (e.g. 10) and press Enter: "</span> )
+    temp_in_f = temp_in_c * <span class="number">9</span> / <span class="number">5</span> + <span class="number">32</span>
+    <span class="keyword">print</span> temp_in_c, <span class="string">" degrees Celsius = "</span>, temp_in_f, <span class="string">" degrees Fahrenheit."</span>
+
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> <span class="string">"Error: Your choice not recognized!"</span></code></pre>
+<p>The program begins by displaying a text menu offering the user numbered
+choices. The user types a number and the program tests the number. If it is a
+1, the  block of indented code after the <code>if</code> statement is executed, and 
+the blocks of code after the <code>elif</code> and <code>else</code> below it
+are skipped.</p>
+<p>If it is not a 1, the  block of indented code after the <code>if</code> is
+skipped, and the <code>elif</code> is executed. If this test is <code>True</code> (i.e.
+<code>choice</code> contains 2) the block of code after the <code>elif</code>
+is executed, and the <code>else</code> is skipped.</p>
+<p>If the value of <code>choice</code> is not 2, then the code after the
+<code>else</code> is executed and the message <code>Error: Your choice not
+recognized</code> is displayed.</p>
+<p>Note that the block of code after the <code>if</code> and after the
+<code>elif</code> contain several statements, so they must be consistently
+indented to turn them into single compound statements.</p>
+<p>Also, take careful note of the program formatting. The statements after an
+<code>if</code>, <code>elif</code> or <code>else</code> are all indented 4
+spaces.</p>
+<p>In summary, this program selects one of three actions to carry out based
+on user input.</p>
+<ul>
+  <li>If the initial value entered is 1, it performs a conversion from
+    Fahrenheit to Celsius.</li>
+  <li>If the initial value entered is 2, it performs a conversion from
+    Celsius to Fahrenheit.</li>
+  <li>If any other value is entered it displays an error message.</li>
+</ul>
+<p>When more than one test is used to choose between multiple possibilities,
+as above, the <code>if</code>, <code>elif</code>s and <code>else</code> are
+arranged in a cascade. Our next program will illustrate how to create
+compound tests, i.e. multiple comparisons combined with logical operators
+(<code>and</code>, <code>or</code>, and <code>not</code>), and how to
+structure multiple <code>if</code>s efficiently in a cascade.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>Assignment 3</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="22_M03_CheatSheet.html" />
+  <link rel="Next" href="../M04_Repetition/M04_Overview.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Assignment 3</h1>
+<h2>Problems</h2>
+<ol>
+  <li><h3>Is it a triangle?</h3>
+    <p>Write a program that accepts three numerical values and outputs a
+    message indicating whether they could represent the lengths of the sides of
+    a triangle or not. (Note: Not necessarily a right-angled triangle, just any triangle at all.)</p>
+    <p>A sample run might look like this,</p>
+    <pre>=================
+Is it a triangle?
+-----------------
+Enter your first value: 4
+Enter the second value: 9
+Enter the third value: 3
+I'm afraid those three numbers could NOT represent the lengths of the sides of a triangle.</pre>
+  </li>
+  <li><h3>Is it an Armstrong number?</h3>
+    <p>An Armstrong number is an <em>n</em>-digit number that is equal to the
+    sum of its digits each raised to the <em>n</em>th power. For example 153
+    equals 1<sup>3</sup>+5<sup>3</sup>+3<sup>3</sup>, so it is an Armstrong
+    number. Write a program that inputs a three-digit number, and outputs a
+    message saying whether it is an Armstrong number or not.</p>
+    <p>A sample run might look like this,</p>
+    <pre>==========================
+Is it an Armstrong number?
+--------------------------
+Enter your number: 284
+I'm afraid 284 is NOT an Armstrong number.</pre>
+    <p><em>Hint</em>: You can pull apart a number to get its individual digits
+    by dividing and modulo-ing by appropriate multiples of 10, e.g. num %10
+    will give you the 1s digit, i.e. the rightmost digit, and num/100 will give
+    you the 100s digit, i.e. the leftmost digit.</p>
+  </li>
+  <li><h3>Richter Scale</h3>
+    <p>Write a program that inputs the Richter magnitude of an earthquake and
+    outputs the corresponding description and typical effects according to the
+    table* below.</p>
+    <table class="dark">
+      <tbody>
+        <tr>
+          <th>Richter<br />
+            Magnitudes</th>
+          <th>Description</th>
+          <th style="text-align: left;">Earthquake Effects</th>
+        </tr>
+        <tr>
+          <td>Less than 2.0</td>
+          <td>Micro</td>
+          <td>Microearthquakes, not felt.</td>
+        </tr>
+        <tr>
+          <td>2.0-2.9</td>
+          <td rowspan="2">Minor</td>
+          <td>Generally not felt, but recorded.</td>
+        </tr>
+        <tr>
+          <td>3.0-3.9</td>
+          <td>Often felt, but rarely causes damage.</td>
+        </tr>
+        <tr>
+          <td>4.0-4.9</td>
+          <td>Light</td>
+          <td>Noticeable shaking of indoor items, rattling noises. Significant
+            damage unlikely.</td>
+        </tr>
+        <tr>
+          <td>5.0-5.9</td>
+          <td>Moderate</td>
+          <td>Can cause major damage to poorly constructed buildings over small
+            regions. At most slight damage to well-designed buildings. </td>
+        </tr>
+        <tr>
+          <td>6.0-6.9</td>
+          <td>Strong</td>
+          <td>Can be destructive in areas up to about 160 kilometres (100 mi)
+            across in populated areas.</td>
+        </tr>
+        <tr>
+          <td>7.0-7.9</td>
+          <td>Major</td>
+          <td>Can cause serious damage over larger areas.</td>
+        </tr>
+        <tr>
+          <td>8.0-8.9</td>
+          <td rowspan="2">Great</td>
+          <td>Can cause serious damage in areas several hundred miles
+          across.</td>
+        </tr>
+        <tr>
+          <td>9.0-9.9</td>
+          <td>Devastating in areas several thousand miles across.</td>
+        </tr>
+        <tr>
+          <td>10.0+</td>
+          <td>Epic</td>
+          <td>Never recorded; see below for equivalent seismic energy
+          yield.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>A sample run might look like this,</p>
+    <pre>======================
+Earthquake Interpreter
+----------------------
+Enter the Richter magnitude of the earthquake: 4.4
+Magnitude: 4.4
+Description: Light.
+Effects: Noticeable shaking of indoor items, rattling noises. 
+Significant damage unlikely.</pre>
+  </li>
+  <li><h3>Choosing a Valentine's gift</h3>
+    <p>The graphic below** provides a flowchart for choosing a valentine's day
+    gift. Write a program that implements it. (Click the image to see a full-size version).</p>
+    <p class="img"><a href="23_ValentinesGiftFlowchart.jpg"><img
+    src="23_ValentinesGiftFlowchart.jpg"
+    width="90%" /></a></p>
+    <p>A sample run might look like this,</p>
+    <pre>======================================
+Find Your Perfect Valentine's Day Gift
+--------------------------------------
+Is your valentine male (M) or female (F)? F
+What's your budget (in Dh)? 800
+Will you see her on the day:
+    1. No I'm/she's out of the country at the moment.
+    2. Yes, of course.
+1 or 2? 2
+I suggest a romantic dinner. Many restaurants have special dining deals
+on Valentine's day.
+    </pre>
+  </li>
+</ol>
+<p>You may take liberties as I have and simplify the lengthy text of the
+recommendations that are offered.</p>
+<p><em>Hint</em>: Remember to use <code>raw_input</code> instead of
+<code>input</code> to read string values.</p>
+<h2>Logistics</h2>
+<ul>
+  <li>
+    <p>Use the following naming scheme for your program files:
+    <code>a</code><em>assignment#</em><code>p</code><em>problem#</em><code>v</code><em>version#</em><code>.py</code>
+    . So your first attempt at problem 1 on this assignment will be named
+    <code>a3p1v1.py</code> and your second attempt (should there be one) will
+    be named <code>a3p1v2.py</code> .</p>
+  </li>
+  <li>
+    <p>Submit your assignment by emailing your python programs to me. I advise to submit early and submit often, since I will often review your programs as they are submitted and provide feedback that will let you improve them.</p>
+  </li>
+</ul>
+<hr />
+<p>* based on one on <a href="http://en.wikipedia.org/wiki/Richter_scale">the
+Wikipedia page on the Richter Scale</a>.</p>
+<p>** <a
+href="http://www.innovationsinnewspapers.com/index.php/2009/02/21/more-design-awards-for-innovations-projects/">original
+source</a>.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

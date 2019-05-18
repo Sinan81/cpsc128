@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+if statement syntax</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="03_ACorrection.html" />
+  <link rel="Next" href="05_RelationalExpressions.html" />
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1><code>if</code> Syntax, in Detail</h1>
+<p>The syntax of the <code>if</code> statement is,</p>
+<pre><code>
+<b>if</b> <i>test-expression</i><em>1</em>:
+    <i>true-statement</i><em>1</em>
+[<b>elif <em>test-expression2</em>:</b>
+    <i>true-statement2</i>]
+...
+[<b>else:</b>
+    <i>false-statement</i>]</code></pre>
+<p>Or in words, the <code>if</code> statement consists of the keyword
+<code><b>if</b></code> followed by a <i>test expression</i>, followed by a
+statement that will be executed if the test expression is <code>True</code>,
+optionally followed by the keyword <code>elif</code> followed by a second
+test expression and a second statement which will be executed if the second
+text expression is <code>True</code>, and so on until an optional
+<code>else</code> is reached the statements following which will be executed
+only if <em>all</em> the test-expressions above it were <code>False</code>.
+Note that the statements following <code>if</code>, <code>elif</code> and
+<code>else</code> statements <strong>must</strong> be indented.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

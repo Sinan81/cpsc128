@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>if: A correction</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="02_ASimpleExample.html" />
+  <link rel="Next" href="04_IfSyntax.html" />
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Correcting an Oversight</h1>
+<p>The mathematically inclined will examine the previous program  and note that it
+mishandles the value 0. Which output statement will be executed if zero is
+entered? Well, the test <code>value &lt; 0</code> will be <code>False</code> because 0 is
+not less than 0, so the first output statement will be skipped, and the second
+one will be executed displaying the message</p>
+<pre><code>0 is positive</code></pre>
+<p>on-screen. Unfortunately this is not true: 0 is neither positive nor
+negative. This means our program must actually deal with three
+possibilities:</p>
+<ol>
+  <li>The value entered is negative. </li>
+  <li>The value entered is 0. </li>
+  <li>The value entered is positive. </li>
+</ol>
+<p>We can accomodate this third possibility by modifying our flowchart as
+follows.</p>
+<p class="img"><img src="03_if_2.gif" alt="."></p>
+<p>As the flowchart shows we will require a second selection statement. As
+before the first statement will determine if the number is negative. If it is,
+the appropriate <code>print</code> statement will be executed. If the number is not negative
+however, execution will pass to a second <code>if</code> statement that will determine if the
+value is zero, and then select which of two further output statements to execute. The
+corresponding Python code looks like this:</p>
+<pre><code class="python">value = input( <span class="string">"Enter an integer (e.g. 23 or -118): "</span> )
+<span class="keyword">if</span> value &lt; <span class="number">0</span>:
+    <span class="keyword">print</span> value, <span class="string">"is negative"</span>
+<span class="keyword">else</span>:
+    <span class="keyword">if</span> value == <span class="number">0</span>:
+        <span class="keyword">print</span> value, <span class="string">"is neither positive nor negative"</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span> value, <span class="string">"is positive"</span></code></pre>
+        <p>(Note the double equal signs, ==. More on this below. )</p>
+<p>This is a correct Python program, but the situation of a multiway (as opposed
+to two-way) decision is so common that Python provides a special syntax to
+express it:</p>
+<pre><code class="python">value = input( <span class="string">"Enter an integer (e.g, 23 or -118): "</span> )
+<span class="keyword">if</span> value &lt; <span class="number">0</span>:
+  <span class="keyword">print</span> value, <span class="string">"is negative"</span>
+<span class="keyword">elif</span> value == <span class="number">0</span>:
+  <span class="keyword">print</span> value, <span class="string">"is neither positive nor negative"</span>
+<span class="keyword">else</span>:
+  <span class="keyword">print</span> value, <span class="string">"is positive"</span></code></pre>
+  <p>Note the use of <code>elif</code> which combines else and if into a single command.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

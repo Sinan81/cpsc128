@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>raw_input() vs input()</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="20_Output_Formatting/20_OutputFormatting.html" />
+  <link rel="Next" href="22_M03_CheatSheet.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1><code>raw_input()</code> vs <code>input()</code></h1>
+<p><code>raw_input</code> does no evaluation of what is typed, it just returns the string of
+characters that was entered, e.g.</p>
+<p><img alt="." src="21_RawInputVsInput_1.py.png" width="207"
+height="70" /></p>
+<p><code>input</code> on the other hand evaluates what is typed as though it were a Python
+expression and returns the value of the expression, e.g.</p>
+<p><img alt="." src="21_RawInputVsInput_2.py.png" width="206"
+height="71" /></p>
+<p>As we progress we will come to prefer <code>raw_input</code> over
+<code>input</code> because we will pass the string <code>raw_input</code>
+returns to an object constructor to produce the type of object we need. At
+first though it is simpler to get started by using straight <code>input</code>.</p>
+<p>In addition <code>input</code> poses a serious security risk because you are
+  offering to evaluate whatever expression the user enters, i.e. <em>you are
+    offering to run whatever code the user provides on your computer</em>. Let's
+  hope the user isn't malicious!</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

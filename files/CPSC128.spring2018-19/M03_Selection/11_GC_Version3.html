@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Version 3</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="10_GC_Version2.html" />
+  <link rel="Next" href="12_GC_Testing.html" />
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Version 3</h1>
+<p>What are the unnecessary tests in Version 2? This time it's not
+unnecessary tests being evaluated, it's unnecessary comparisons being
+performed inside the tests.</p>
+<p>Consider. The first <code>if</code> statement checks to see if
+<code>grade</code> is between 95 and 100, so if the first <code>elif</code>
+statement is reached we know the value is less than or equal to 94, or we
+wouldn't have arrived here (unless the value is over 100, a condition we'll
+deal with in a moment). Likewise, when we reach the second <code>elif</code>,
+we no longer have to test that the value is less than or equal to 85, because
+if it wasn't, it would have passed one of the previous tests. The
+qualification in each case is: <em>as long as the value isn't over 100</em>.
+This suggests that we can eliminate more than half the relational tests, as
+long as we first test to make sure the value is between 0 and 100. The result
+would be code like this:</p>
+<pre><code class="python"><span class="comment"># Version 3.</span>
+<span class="keyword">print</span> <span class="string">" ... "</span> <span class="comment"># Instructions to user</span>
+grade = input(<span class="string">"..."</span>)
+<span class="keyword">if</span> grade &gt; <span class="number">100</span> <span class="keyword">or</span> grade &lt; <span class="number">0</span>:
+    <span class="keyword">print</span> <span class="string">"Error: The grade must be between 0 and 100."</span>
+<span class="keyword">elif</span> grade &gt;= <span class="number">95</span>:
+    <span class="keyword">print</span> <span class="string">"A+"</span>
+<span class="keyword">elif</span> grade &gt;= <span class="number">86</span>:
+    <span class="keyword">print</span> <span class="string">"A"</span>
+<span class="keyword">elif</span> grade &gt;= <span class="number">80</span>:
+    <span class="keyword">print</span> <span class="string">"A-"</span>
+<span class="comment"># ...</span>
+<span class="comment"># and so on down to</span>
+<span class="comment"># ...</span>
+<span class="keyword">elif</span> grade &gt;= <span class="number">50</span>:
+    <span class="keyword">print</span> <span class="string">"D"</span>
+<span class="keyword">elif</span> grade &gt;= <span class="number">0</span>:
+    <span class="keyword">print</span> <span class="string">"F"</span></code></pre>
+<p>(Again verify that the code works by "running it' in your mind with a
+couple of typical values.)</p>
+<p>This code represents a significant improvement over the second version on
+two counts: it is more efficient, and it is easier to read. It is easier to
+read because the relational expressions are shorter. It is more efficient
+because where the previous version had 33 relational operators (3 for each of 11 letter
+grades) this one has 3 + 10 = 13 (2 for the initial range check followed by
+one for each possible letter grade except the last). This is less than half
+as many, a significant improvement in any field (imagine a runner completing
+a race in half the previous time, or a car whose mileage suddenly
+doubled!).</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

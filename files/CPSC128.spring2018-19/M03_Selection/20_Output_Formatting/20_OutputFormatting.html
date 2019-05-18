@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Output Formatting</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../../index.html" />
+  <link rel="Prev" href="../19_Beaufort_Scale_Example/19_pBeaufortScale_s.html" />
+  <link rel="Next" href="../21_RawInputVsInput.html" />
+  
+  <link href="../../lib/CPSC128F13.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Output Formatting</h1>
+<p>To get output like this,</p>
+<p><img src="OutputFormatting_0.gif" alt="." /></p>
+<p>instead of this,</p>
+<p><img src="OutputFormatting_1.gif" alt="." /></p>
+<ol>
+<li><p>Build a <code>print</code> statement with the string,</p>
+<p><img src="OutputFormatting_2.gif" alt="." /></p></li>
+<li><p>Replace the numerical value with a formatting placeholder,</p>
+<p><img src="OutputFormatting_3.gif" alt="." /></p>
+<p>The placeholder specifies the way the value should be formatted. For instance in %6.3f, the f says it should be formatted as a <strong>f</strong>loating point value (one with a decimal place) in a field 6 characters wide with 3 characters after the decimal place.</p></li>
+<li>
+<p>Then specify a variable whose value should be <em>interpolated</em> into the placeholder position using the interpolation operator %,</p>
+<p><img src="OutputFormatting_4.gif" alt="." /></p>
+<p>This final version produces the desired output,</p>
+<p><img src="OutputFormatting_0.gif" alt="." /></p></li>
+</ol>
+<p>The formatting codes are derived from those originally used by the language C and now also used by
+the languages C++, AWK, Perl, and PHP among others. Each format placeholder has the form,</p>
+<pre><code>%[optional arguments]letter</code></pre>
+<p>The % sign indicates the beginning of a placeholder.</p>
+<p>The letter indicates the desired format:</p>
+<table>
+<tr><th style="text-align: center; padding-right: 5px; ">Letter</th><th style="text-align: left;">Format</th></tr>
+<tr><td style="text-align: center; padding-right: 5px; ">d</td><td>decimal integer</td></tr>
+<tr><td style="text-align: center; padding-right: 5px; ">o</td><td>unsigned octal integer</td></tr>
+<tr><td style="text-align: center; padding-right: 5px; ">x</td><td>unsigned hexadecimal integer</td></tr>
+<tr><td style="text-align: center; padding-right: 5px; ">f</td><td>floating point</td></tr>
+<tr><td style="text-align: center; padding-right: 5px; ">s</td><td>string</td></tr>
+</table>
+<p>All these take an optional argument specifying the width of the field in which the value should be displayed, e.g.</p>
+<p><img src="OutputFormatting_5.gif" alt="." /></p>
+<p>The floating point code takes an additional argument specifying the number of digits to display to the
+right of the decimal point, e.g.</p>
+<p><img src="OutputFormatting_6.gif" alt="." /></p>
+<p>Note that if a field width is narrower than the value to be displayed the field is enlarged to fit the value, e.g.</p>
+<p><img src="OutputFormatting_7.gif" alt="." /></p>
+<p>this can be helpful when you want to insert numerical values into sentences (rather than some tabular format), e.g.</p>
+<p><img src="OutputFormatting_8.gif" alt="." /></p>
+<p>If you need to display multiple values enclose the interpolating variables in parentheses, e.g.</p>
+<p><img src="OutputFormatting_9.gif" alt="." /></p>
+<p>This example also illustrates that to output a literal % character you need to use a pair of them.</p>
+<p>There is much more to string formatting than is shown here. For the details start with the Python Library Reference <a href="http://www.python.org/doc/current/lib/typesseq-strings.html">Section 3.6.2</a>. More details can be found in the Gnu AWK manual <a href="http://www.gnu.org/manual/gawk/gawk.html#Basic-Printf">Section 4.5</a></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

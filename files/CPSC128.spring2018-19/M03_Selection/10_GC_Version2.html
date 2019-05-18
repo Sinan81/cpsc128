@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Grade Conversion: Version 2</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="09_GC_Version1.html" />
+  <link rel="Next" href="11_GC_Version3.html" />
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Version 2</h1>
+<p>If you emulated Version 1 precisely you will have noticed that you did a
+lot of unnecessary work when the mark was 96. Your simulation should have
+revealed that the grade passed the test in the first <code>if</code>
+statement and output "A+". So far so good. Next though it went on to evaluate
+the second <code>if</code> test, and the third, and the fourth and so on,
+all the way down the list. But, once we determined that the grade was an A+ we
+didn't have to do any of the other tests, because if the grade is between 95
+and 100, it can't be in any of the other ranges.</p>
+<p>The way to avoid the unnecessary tests is to perform the tests following
+the first one with <code>elif</code> statements. The structure of the code
+is:</p>
+<pre><code class="python"><span class="comment"># Version 2.</span>
+<span class="keyword">print</span> <span class="string">" ... "</span> <span class="comment"># Instructions to user</span>
+grade = input( <span class="string">" ... "</span> )
+<span class="keyword">if</span> grade &gt;= 95 <span class="keyword">and</span> grade &lt;= 100:
+    <span class="keyword">print</span><span class="string"> "A+"</span>
+<span class="keyword">elif</span> grade &gt;= 86 <span class="keyword">and</span> grade &lt;= 94:
+    <span class="keyword">print </span><span class="string">"A"</span>
+<span class="keyword">elif</span> grade &gt;= 80 <span class="keyword">and</span> grade &lt;= 85:
+    <span class="keyword">print</span><span class="string"> "A-"</span>
+<span class="comment"># ...</span>
+<span class="comment"># and so on down to</span>
+<span class="comment"># ...</span>
+<span class="keyword">elif</span> grade &gt;= 50 <span class="keyword">and</span> grade &lt;= 54:
+    <span class="keyword">print</span> <span class="string">"D"</span>
+<span class="keyword">elif</span> grade &gt;= 0 <span class="keyword">and</span> grade &lt;= 50:
+    <span class="keyword">print</span> <span class="string">"F"</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> <span class="string">"Error: The grade must be between 0 and 100."</span></code></pre>
+    <p>Before we analyze this code, again verify that it works by simulating its
+execution for a couple of sample numerical grades, e.g. 65 and 93.</p>
+<p>This is an improvement over the original code. For one thing we have
+eliminated the final error condition test completely: if the mark doesn't
+fall in any of the specified ranges then it must be out of range. But it
+also, on average does fewer tests. Consider, if the grade is an A+, e.g. 96,
+it does only the first <code>if</code> and skips the rest. Of course if the grade is an F
+it still does all the tests as it bumps its way down the list. So it never
+does more  tests and often does fewer. On average (if the average grade is
+in the middle of the list) it will do half as many if tests as the first
+version, making it twice as fast.</p>
+<p>However, careful examination reveals that we still have more tests than
+are required, and those unnecessary tests waste processor time and slow down
+the program. What are the unnecessary tests? This time it's not unnecessary
+tests being evaluated, it's unnecessary comparisons being performed inside
+the tests.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Selection using if</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="04_IfSyntax.html" />
+  <link rel="Next" href="06_CompoundStatementsAndIndentation.html" />
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Relational Expressions</h1>
+<p>The test expressions used in Python are relational expressions, and more
+specifically Boolean expressions. Relational expressions test the relation
+between quantities and produce a Boolean value, either <code>True</code> or
+<code>False</code>*. Python provides the relational operators</p>
+<pre><code>&lt;        &lt;=        ==        !=        &gt;=        &gt;</code></pre>
+<p>The two on either end should be easy to interpret. They are, respectively,
+less than (<code>&lt;</code>), less than or equal to (<code>&lt;=</code>),
+greater than or equal to (<code>&gt;=</code>) and greater than
+(<code>&gt;</code>). The two in the center are not as easily recognized. The
+first, <code>==</code>, tests for equality. Why not just use a single equals
+sign? Because the equals sign, <code>=</code>, is already taken: remember
+that <code>=</code> is the assignment operator. The second expression,
+<code>!=</code>, is used to test for inequality (or &quot;not equals&quot;). Here are
+some examples of simple relational expressions.</p>
+<pre><code>x &lt; 27.8
+age &gt;= 65
+temp != max</code></pre>
+<p>Try them out in the Python shell.</p>
+<p>Python also provides logical operators that can be used to build compound
+relational expressions, usually referred to as Boolean expressions. The
+logical operators are,</p>
+<pre><code class="python"><span class="keyword">and</span>
+<span class="keyword">or</span>
+<span class="keyword">not</span></code></pre>
+<p>An <code>and</code> relation is only <code>True</code> if <em>both</em>
+its arguments are <code>True</code>. An <code>or</code> relation is
+<code>True</code> as long as <em>at least one</em> of its arguments is
+<code>True</code>. The <code>not</code> operator negates its argument.
+Consider the following example:</p>
+<pre><code class="python">age &gt;= <span class="number">20</span> <span class="keyword">and</span> age &lt; <span class="number">30</span>
+</code></pre>
+<p>This expression will only be <code>True</code> if the value of the
+  variable <code>age</code> is greater than or equal to 20 <strong>and</strong>
+  it is also less than 30. Thus the entire expression is <code>True</code> when, for
+  example, age is 24, but <code>False</code> when it is 12 (because this makes
+  the first relation <code>False</code>), and also when it is 62 (because this makes
+  the second relation <code>False</code>).</p>
+<pre><code class="python">age &gt;= <span class="number">20</span> <span class="keyword">or</span> income &lt; <span class="number">18.45</span></code></pre>
+<p>This expression is <code>True</code> when either the value of
+<code>age</code> is greater than or equal to 20, or the value of
+<code>income</code> is less than 18.45, or both.</p>
+<pre><code>not tested</code></pre>
+<p>This expression is <code>True</code> when the value stored in <code>tested</code> is
+<code>False</code>, and <code>False</code> when the value stored in tested is
+<code>True</code>.</p>
+<hr>
+<p>* The values <code>True</code> and <code>False</code> are Boolean
+constants in Python in the same way that 1 and -5 are numerical constants.
+Note however that while there are an infinite number of numerical constants
+there are <em>exactly</em> two Boolean constants: <code>True</code> and
+<code>False</code>.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>
