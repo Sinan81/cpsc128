@@ -235,8 +235,9 @@ Plotting a function
 import numpy as np
 import matplotlib.pyplot as plt
 
-# search space (size of computational problem)
-N=np.arange(1,20,0.5) #generates list: [1., 1.5, 2, 2.5 ...]
+#generate a list of x values to be fed to a function
+#[1., 1.5, 2, 2.5 ...]
+N=np.arange(1,20,0.5) 
 
 plt.plot(N, N, label='linear search: $f(N)=N$')
 plt.plot(N, np.log2(N), label='bisection method: $f(N)=log_2N$')
