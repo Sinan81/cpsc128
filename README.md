@@ -89,13 +89,111 @@ git pull
 
 - get help via `help()`
 
+- get input from user
+```
+# get integer, float, .. input
+inval = eval(input("Enter an integer") 
+# string input
+inval = input("Enter a string input")
+```
+- print statement
+```
+# syntax print a list of stuff separated by ', '
+print(list)
+
+# example
+s='world'
+print("hello ", s, '!', 5+7)
+
+#hold the current output line open (as opposed to going to the next line)
+print("Hello", end='')
+```
 - import a module/library and use a method from this module:
 
 ```
 import math
 
 math.sqrt(9)
+
+import math as m
+
+m.sqrt(9)
+
+from math import sqrt
+
+sqrt(9)
 ```
+- selection using if
+```
+# example 1
+if x < 0:
+    print("x is negative")
+
+# example 2
+if flip == 1:
+    print("Head")
+else:
+    print("Tail")
+
+# example 3
+if num < 0:
+    print("num is negative")
+elif num == 0:
+    print("num is zero")
+else:
+    print("num is positive")
+```
+- relational & logical operators
+
+| operator | explanation |
+| --- | --- |
+| < | less than |
+| <= | less than or equal to |
+| == | equal to |
+| != | not equal to |  
+| >= | greater than or equal to |
+| >  | greater than |
+| a and b | `True` if both a & b are true |
+| a or b  | `True` if either a or b are True |
+| not a   | negation operator: e.q. **not** True -> False |
+
+- use `random` module to generate random numbers
+```
+from random import randomint random
+randomint(1,100) # generates a random integer between 1 and 100
+random() # generates a random float betwee 0. and 1.0 inclusive
+```
+- repetition with `while`
+```
+# syntax is
+while test:
+    statement
+```
+Basic usage
+```
+x=1 #initialize
+while x < 1:
+    print(x)
+    x = x+1
+```
+Input validation
+```
+num = input( "Enter a number between 1 and 100: " )
+while num < 1 or num > 100:
+    print("Oops, your input value (", num, ") is out of range.")
+    num = input( "Be sure to enter a value between 1 and 100: " )
+```
+Repeating a program
+```
+again = "y"
+while again == "y" or again == "Y" or again == "yes" or again == "Yes":
+    #
+    # Put the body of your program here
+    #
+    again = raw_input( "Play again (y/n)? " )
+print "Thanks for playing"
+```
+
 
 ## github Markdown (optional)
 
