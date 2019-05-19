@@ -24,8 +24,8 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
-* May 18, Sunday, python cheatsheets is improved (see below)
-* May 17, Friday, Assignment #2 is posted.
+* May 18, Sat, python cheatsheets is improved (see below)
+* May 17, Fri, Assignment #2 is posted.
 
 ## Lecture Notes (by Tim Topper)
 In this course, to a significant extent I will be following previous instructor's (Tim Topper) contents. Accordingly, you might find his lecture notes useful:
