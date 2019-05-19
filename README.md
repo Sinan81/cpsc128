@@ -5,16 +5,27 @@ See the syllabus: [CPSC 128 Spring 2018-19 Syllabus](files/CPSC_128_outline_2019
 
 ## Table of Contents
 
-* [Lecture Notes](#lecture-notes)
+* [Announcements](#announcements)
 * [Assignments](#assignments)
 * [Slides](#slides)
-* [Outline](#outline)
+* [Lecture Notes](#lecture-notes)
 * [Python Resources](#online-python-resources)
+* [Outline](#outline)
 * [git cheats](#git-cheatsheet)
 * [python cheats](#python-cheatsheet)
 * [computing setup](#computing-setup)
 * [github markdown](#github-markdown)
 * [vim cheats](#vim-cheats)
+
+
+## Announcements
+
+Please make sure to subscribe to 'Announcements' issue so that you get notified. 
+
+[https://github.com/Sinan81/cpsc128/issues/4]
+
+* May 18, Sunday, python cheatsheets is improved (see below)
+* May 17, Friday, Assignment #2 is posted.
 
 ## Lecture Notes (by Tim Topper)
 In this course, to a significant extent I will be following previous instructor's (Tim Topper) contents. Accordingly, you might find his lecture notes useful:
