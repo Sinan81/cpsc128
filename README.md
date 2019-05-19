@@ -216,7 +216,7 @@ plt.xlabel('x')
 plt.legend()
 plt.show()
 ```
-![plot example1](files/simple_plot_example1.png)
+![plot example1](files/simple_plot_example_1.png)
 
 Plotting a function
 ```python
@@ -233,7 +233,7 @@ plt.show()
 ```
 yielding
 
-![plot example2](files/simple_plot_example2.png)
+![plot example2](files/simple_plot_example_2.png)
 
 ## github Markdown
 
