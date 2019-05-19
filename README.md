@@ -183,7 +183,7 @@ while test:
     statement
 ```
 Basic usage
-```
+```python
 x=1 #initialize
 while x < 1:
     print(x)
