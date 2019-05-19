@@ -4,23 +4,17 @@ This is a repository for the CPSCS 128 "Introductory Programming using Python" c
 See the syllabus: [CPSC 128 Spring 2018-19 Syllabus](files/CPSC_128_outline_2019.pdf)
 
 ## Table of Contents
-[Lecture Notes](#lecture-notes)
 
-[Assignments](#assignments)
-
-[Outline](#outline)
-
-[Python Resources](#online-python-resources)
-
-[Slides](#slides)
-
-[git cheats](#git-cheatsheet)
-
-[python cheats](#python-cheatsheet)
-
-[computing setup](#computing-setup)
-
-[github markdown](#github-markdown)
+* [Lecture Notes](#lecture-notes)
+* [Assignments](#assignments)
+* [Slides](#slides)
+* [Outline](#outline)
+* [Python Resources](#online-python-resources)
+* [git cheats](#git-cheatsheet)
+* [python cheats](#python-cheatsheet)
+* [computing setup](#computing-setup)
+* [github markdown](#github-markdown)
+* [vim cheats](#vim-cheats)
 
 ## Lecture Notes (by Tim Topper)
 In this course, to a significant extent I will be following previous instructor's (Tim Topper) contents. Accordingly, you might find his lecture notes useful:
@@ -214,7 +208,7 @@ print("Thanks for playing")
 ```
 
 
-## github Markdown (optional)
+## github Markdown
 
 If you want to create nice looking pages on github (such as README.md), you might want to checkout the following links for examples of Markdown (.md) language:
 
