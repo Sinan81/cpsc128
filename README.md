@@ -206,7 +206,8 @@ while again == "y" or again == "Y" or again == "yes" or again == "Yes":
     again = raw_input( "Play again (y/n)? " )
 print("Thanks for playing")
 ```
--basic plotting
+- basic plotting
+
 A simple example where data is entered by hand: x=[1,2,3,4], y=[1,4,9,16].
 ```python
 import matplotlib.pyplot as plt
