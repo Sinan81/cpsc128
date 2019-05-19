@@ -1,5 +1,5 @@
 # CPSC128
-This is a repository for the CPSCS 128 "Introductory Programming using Python" course.
+This is a repository for the CPSCS 128 "Introduction to Programming using Python" course.
 
 See the syllabus: [CPSC 128 Spring 2018-19 Syllabus](files/CPSC_128_outline_2019.pdf)
 
