@@ -206,7 +206,34 @@ while again == "y" or again == "Y" or again == "yes" or again == "Yes":
     again = raw_input( "Play again (y/n)? " )
 print("Thanks for playing")
 ```
+-basic plotting
+A simple example where data is entered by hand: x=[1,2,3,4], y=[1,4,9,16].
+```python
+import matplotlib.pyplot as plt
+plt.plot([1,2,3,4], [1,4,9,16],label='data by hand')
+plt.ylabel('axis label with equation $y=x^2$')
+plt.xlabel('x')
+plt.legend()
+plt.show()
+```
+![plot example1](files/simple_plot_example1.png)
 
+Plotting a function
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+# search space (size of computational problem)
+N=np.arange(1,20,0.5) #generates list: 1. 1.5 2 2.5 ...
+plt.plot(N, N,label='linear search: $f(N)=N$')
+plt.plot(N, np.log2(N), label='bisection method: $f(N)=log_2N$')
+plt.ylabel('computation time')
+plt.xlabel('problem size: N')
+plt.legend()
+plt.show()
+```
+yielding
+
+![plot example2](files/simple_plot_example2.png)
 
 ## github Markdown
 
