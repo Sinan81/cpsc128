@@ -90,14 +90,14 @@ git pull
 - get help via `help()`
 
 - get input from user
-```
+```python
 # get integer, float, .. input
-inval = eval(input("Enter an integer") 
+inval = eval(input("Enter an integer")) 
 # string input
 inval = input("Enter a string input")
 ```
 - print statement
-```
+```python
 # syntax print a list of stuff separated by ', '
 print(list)
 
@@ -110,7 +110,7 @@ print("Hello", end='')
 ```
 - import a module/library and use a method from this module:
 
-```
+```python
 import math
 
 math.sqrt(9)
@@ -124,7 +124,7 @@ from math import sqrt
 sqrt(9)
 ```
 - selection using if
-```
+```python
 # example 1
 if x < 0:
     print("x is negative")
@@ -158,13 +158,13 @@ else:
 | not a   | negation operator: e.q. **not** True -> False |
 
 - use `random` module to generate random numbers
-```
+```python
 from random import randomint random
 randomint(1,100) # generates a random integer between 1 and 100
 random() # generates a random float betwee 0. and 1.0 inclusive
 ```
 - repetition with `while`
-```
+```python
 # syntax is
 while test:
     statement
@@ -177,21 +177,21 @@ while x < 1:
     x = x+1
 ```
 Input validation
-```
+```python
 num = input( "Enter a number between 1 and 100: " )
 while num < 1 or num > 100:
     print("Oops, your input value (", num, ") is out of range.")
     num = input( "Be sure to enter a value between 1 and 100: " )
 ```
 Repeating a program
-```
+```python
 again = "y"
 while again == "y" or again == "Y" or again == "yes" or again == "Yes":
     #
     # Put the body of your program here
     #
     again = raw_input( "Play again (y/n)? " )
-print "Thanks for playing"
+print("Thanks for playing")
 ```
 
 
