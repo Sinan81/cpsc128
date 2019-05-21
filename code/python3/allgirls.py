@@ -1,4 +1,4 @@
-# allgirsl.py
+# allgirsl_while.py
 
 # simulate 1000 4-child families
 # count how many of them have all-daughters
