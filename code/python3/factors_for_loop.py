@@ -11,6 +11,6 @@ print()
 print("%d's factors are:" % num)
 # alternative print statement with sep='' trick
 # print(num,"'s factors are:", sep='')
-for divisor in range(1,13):
+for divisor in range(1,num+1):
     if num%divisor == 0:
         print(divisor, num/divisor)
