@@ -251,6 +251,20 @@ yielding
 
 ![plot example2](files/simple_plot_example_2.png)
 
+- timing code
+
+```python
+import time as tm
+begin=tm.time()
+
+#
+# block of code to be timed
+#
+
+end=tm.time()
+print('That took', end-begin, 'seconds')
+```
+
 ## github Markdown
 
 If you want to create nice looking pages on github (such as README.md), you might want to checkout the following links for examples of Markdown (.md) language:
