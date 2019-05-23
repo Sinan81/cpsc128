@@ -273,6 +273,16 @@ begin=tm.time()
 end=tm.time()
 print('That took', end-begin, 'seconds')
 ```
+- Python-3 vs Python-2
+
+| code		| Python3			| Python2			|
+----------- | ----------------- | ----------------- |
+| `9/5`		| float division	| integer division	|
+| `9//5`	| integer division	| float division	|
+| `range(10)` | yields a range object	|	yields a list	|
+| `input()`	| raw_input()		| smart input, like `eval(input())` |
+| `print("Hello")` | print				| -	|
+| `print "Hello"`	| -			| print	|
 
 ## github Markdown
 
