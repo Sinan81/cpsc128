@@ -120,6 +120,15 @@ inval = eval(input("Enter an integer"))
 # string input
 inval = input("Enter a string input")
 ```
+- divison (Python3)
+```python
+#integer division: yields integer, discards decimal places
+9//5
+
+#float division
+9/5
+```
+
 - print statement
 ```python
 # syntax print a list of stuff separated by ', '
