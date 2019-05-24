@@ -81,6 +81,10 @@ You might want to check out the following online resources:
 
 [May 16](files/cpsc128_slides_may16.pdf)
 
+[May 21](files/cpsc128_slides_may21.pdf)
+
+[May 23](files/cpsc128_slides_may23.pdf)
+
 ## git cheatsheet
 
 If created new file, first tell `git` to track it
