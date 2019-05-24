@@ -229,7 +229,7 @@ while again == "y" or again == "Y" or again == "yes" or again == "Yes":
     #
     # Put the body of your program here
     #
-    again = raw_input( "Play again (y/n)? " )
+    again = input( "Play again (y/n)? " )
 print("Thanks for playing")
 ```
 - working with lists
