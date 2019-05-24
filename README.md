@@ -24,6 +24,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* May 24, Fri, Slides for May 21 and 23 classes are posted.
 * May 23, Thu, Assignment1's are marked.
 * May 18, Sat, python cheatsheet is improved (see below)
 * May 17, Fri, Assignment #2 is posted.
@@ -251,7 +252,7 @@ import matplotlib.pyplot as plt
 
 #generate a list of x values to be fed to a function
 #[1., 1.5, 2, 2.5 ...]
-N=np.arange(1,20,0.5) 
+N = np.arange(1,20,0.5) 
 
 plt.plot(N, N, label='linear search: $f(N)=N$')
 plt.plot(N, np.log2(N), label='bisection method: $f(N)=log_2N$')
@@ -269,13 +270,13 @@ yielding
 
 ```python
 import time as tm
-begin=tm.time()
+begin = tm.time()
 
 #
 # block of code to be timed
 #
 
-end=tm.time()
+end = tm.time()
 print('That took', end-begin, 'seconds')
 ```
 - Python-3 vs Python-2
