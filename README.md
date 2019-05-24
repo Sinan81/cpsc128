@@ -299,6 +299,8 @@ If you want to create nice looking pages on github (such as README.md), you migh
 * do `:q` to quit
 * do `:wq` to save and quit
 * hit '/' to do a search, and 'Esc' to get back to normal mode
+* do 'p' to paste before, 'P' to paste after
+* hit 'v' to switch to visual mode to select stuff for cutting, copying etc.
 
 ## Computing Setup
 
