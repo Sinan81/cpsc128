@@ -24,6 +24,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* May 23, Thu, Assignment1's are marked.
 * May 18, Sat, python cheatsheet is improved (see below)
 * May 17, Fri, Assignment #2 is posted.
 
