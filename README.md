@@ -232,6 +232,30 @@ while again == "y" or again == "Y" or again == "yes" or again == "Yes":
     again = raw_input( "Play again (y/n)? " )
 print("Thanks for playing")
 ```
+- working with lists
+
+| code								| explanation	|
+| --------------------------------- | ------------- |
+| `mylist = list(range(10))`		| create list	|
+| `mylist = [19, 'a', 3.14, 'Tea']`	| create list	|
+| `mylist[0]`						| get 0th element |
+| `mylist[1]`						| get 1st element |
+| `mylist[-1]`						| get the last element |
+| `mylist[1:4]`						| get a slice of list (items 1,2, and 3)|
+| `mylist.append(2)`				| append item to the list |
+| `mylist.insert(1,'hi')			| insert 'hi' before index 1 |
+| `mylist = mylist + ['bye']`		| concatenate two lists |
+| `del(mylist[2])`					| delete item by index |
+| `mylist.remove('a')`				| delete item by value |
+| `mylist.pop()`					| delete the last item in the list |
+| `len(mylist)`						| number of items in list |
+| `mylist.index('Tea')`				| returns position of item 'Tea' |
+| `mylist.count('bye')`				| counts number of 'bye's in the list |
+| `mylist.sort()`					| sort the list |
+| `mylist.reverse()`				| reverse the order of the list |
+| `mylist.extend()`					| extend list by appending items from an **iterable** |
+| `2*mylist`						| concatenate mylist twice. |  
+
 - basic plotting
 
 A simple example where data is entered by hand: x=[1,2,3,4], y=[1,4,9,16].
