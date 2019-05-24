@@ -243,7 +243,7 @@ print("Thanks for playing")
 | `mylist[-1]`						| get the last element |
 | `mylist[1:4]`						| get a slice of list (items 1,2, and 3)|
 | `mylist.append(2)`				| append item to the list |
-| `mylist.insert(1,'hi')			| insert 'hi' before index 1 |
+| `mylist.insert(1,'hi')`			| insert 'hi' before index 1 |
 | `mylist = mylist + ['bye']`		| concatenate two lists |
 | `del(mylist[2])`					| delete item by index |
 | `mylist.remove('a')`				| delete item by value |
