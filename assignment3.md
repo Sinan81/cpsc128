@@ -1,6 +1,6 @@
 # Assignment 3
 
-This assignment is due May 31, Friday although I strongly encourage early submission. Remember to implement the best programming practices: meta info, comments, readability (naming of variables and constants), and user interaction. Also, use single spaces around the relational and logical operators, and the assignment operator '=' to improve readability.
+This assignment is due Monday June 3rd, although I strongly encourage early submission. Remember to implement the best programming practices: meta info, comments, readability (naming of variables and constants), and user interaction. Also, use single spaces around the relational and logical operators, and the assignment operator '=' to improve readability.
 
 Before working on questions 2 & 3, you might want to check out "working with lists" section of the python cheat sheet or relevant slides from the class.
 
