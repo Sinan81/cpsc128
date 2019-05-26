@@ -1,6 +1,9 @@
 # Assignment 3
 
-This assignment is due May 31, Friday although I strongly encourage early submission. Remember to implement the best programming practices: meta info, comments, readability (naming of variables and constants), and user interaction. Also, use single spaces around relational operators, assignment operator '=', as well as a single space after ',' in print statements improve readability. Please avoid using excessive parentheses.
+This assignment is due May 31, Friday although I strongly encourage early submission. Remember to implement the best programming practices: meta info, comments, readability (naming of variables and constants), and user interaction. Also, use single spaces around the relational and logical operators, and the assignment operator '=' to improve readability.
+
+Before working on questions 2 & 3, you might want to check out "working with lists" section of the python cheat sheet or relevant slides from the class.
+
 
 ## 1. Drawing Diamonds
 
@@ -17,7 +20,8 @@ Write a program that displays a diamond on the screen, e.g.
         *
 Your program should ask the user how large a diamond to draw and what character to use to draw it. (The size of a diamond is specified by the lengths of its sides, i.e. 5 in the case above).
 
-You can use any `print()` tricks in this question if you like, although they are not necessary. For example, `print(n*mystr)` where a character or a string `mystr` is printed multiple times in the same line. As before you might also want to use `print(mystr, end='')` to continue printing in the same line.
+You can use any `print()` tricks in this question if you like, although they are not necessary. For example, `print(n*mystr)` where a character or a string `mystr` is printed multiple times in the same line. As before you might also want to use `print(mystr, end='')` trick to continue printing in the same line.
+
 
 ## 2. Dedup
 
@@ -32,6 +36,7 @@ In both versions, the original list, the deduplicated list, as well as  a sorted
 (A real-life application would be to remove duplicates from a list of IP addresses so you have a list of unique visitors to your site. In this case the list might look like `[ '10.9.0.31', '199.247.52.3', '10.9.0.31', '43.98.12.4', '72.1.3.55', '199.247.52.3', ...]).
 
 Hint: No user interaction is expected in this exercise, hence you might want to use `random.randint()` to generate a random list to work with. You can put both versions in the same *.py file if you like.
+
 
 ## 3. Handy List Program
 
