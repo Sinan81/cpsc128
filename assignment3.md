@@ -49,6 +49,8 @@ Afterwards, it continues to take string input and checks if that string is in a 
 * if the list becomes empty the program ends
 * if the user enters "quit" then the program ends
 
+**Hint-1** You can use `break` statement to get out of a loop.
+
 Sample run 1:
 ```
 -----------------------
@@ -102,7 +104,7 @@ Quit
 Goodbye!
 ```
 
-Hint: You might want to use `input()` to read in everything as a string as opposed to what we usually do `eval(input(...))`. Also, you might want to use `eval()` in the very beginning of the program to convert the inputted string to a list:
+**Hint-2**: You might want to use `input()` to read in everything as a string as opposed to what we usually do `eval(input(...))`. Also, you might want to use `eval()` in the very beginning of the program to convert the inputted string to a list:
 ```python
 In [21]: x = input()
 
