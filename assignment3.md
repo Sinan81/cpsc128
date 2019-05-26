@@ -103,17 +103,17 @@ Goodbye!
 ```
 
 Hint: You might want to use `input()` to read in everything as a string as opposed to what we usually do `eval(input(...))`. Also, you might want to use `eval()` in the very beginning of the program to convert the inputted string to a list:
-```
-x = input()
+```python
+In [21]: x = input()
 
 ['cat', 'dog']
 
-print(type(x), x)
+In [22]: print(type(x), x)
 <class 'str'> ['cat', 'dog']
 
-y = eval(x)
+In [23]: y = eval(x)
 
-print(type(y), y)
+In [24]: print(type(y), y)
 <class 'list'> ['cat', 'dog']
 ```
 
