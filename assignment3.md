@@ -66,15 +66,15 @@ Enter the name of animal: cat
 1 instance of cat removed from list
 
 the list is:  ['dog', 'cat', 'horse']
-Enter the name of animal: 
+Enter the name of animal:     <-- pressed Enter here (i.e. empty string)
 horse popped from the list
 
 the list is:  ['dog', 'cat']
-Enter the name of animal: 
+Enter the name of animal:     <-- pressed Enter here (i.e. empty string)
 cat popped from the list
 
 the list is:  ['dog']
-Enter the name of animal: 
+Enter the name of animal:     <-- pressed Enter here (i.e. empty string)
 dog popped from the list
 Goodbye!
 ```
