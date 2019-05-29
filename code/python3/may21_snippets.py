@@ -9,7 +9,8 @@ class MyClass:
 
     def f(self):
         return 'hello world'
-    
+ 
+ #string
  name = "Joe"
  "m" in name
  "o" not in name
@@ -24,14 +25,21 @@ class MyClass:
  name[2:7]
  len(name)
  name*3
- 
+
+# list
  nums = [1, 2, 3, 4, 5] 
  3 in nums
  9 in nums
  min(nums)
  max(nums)
- nums = nums + [9, 10]
+ # the following is equivalent to .extend()
+ nums = nums + [9, 10] 
  print(nums)
+ # also check this out
+ nums2 = [1, 2, 3, 4, 5]
+ nums2.append([9, 10])
+ print(nums2)
+ # append and extend are very different
  nums[0]
  nums[2]
  nums[-1]
@@ -41,6 +49,8 @@ class MyClass:
  nums[2] = 11 
  print(nums)
  nums[2:6] = [20,30]
+ 
+ 'hello'.
  
  
 
