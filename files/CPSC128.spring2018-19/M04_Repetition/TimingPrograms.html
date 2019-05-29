@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Timing programs</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="range.html" />
+  <link rel="Next" href="M04_CheatSheet.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Timing programs</h1>
+<p>Once your code is working, and you have tested it to ensure it works
+correctly, you may need to try and make it faster. Making it faster implies
+being able to measure its speed. Just as you measure the speed of an athlete
+by timing them when they run a race we measure the speed of a program by
+timing how long it takes to execute. The simplest way to do this in Python is
+using a program structured like this,</p>
+<p><img alt="." src="TimingPrograms_1.py.png" width="286" height="128" /></p>
+<p>The function <code>time.time()</code> returns the current time in seconds since the
+epoch*. By grabbing the time before the computations begin in <code>start</code> and the
+time when they are completed in <code>end</code>. and then finding their difference we can
+calculate how long the computations took. Here is an example in which we see
+how long it takes to find the sum of the square roots of the numbers from 1
+to 1,000,000.</p>
+<p><img alt="." src="TimingPrograms_2.py.png" width="286" height="157" /></p>
+<p>Truly accurate timing of program execution is much trickier than this
+technique suggests. Unless you get the help of the operating system the
+timing shown above will depend on what else happens to be running on your
+computer at the same time. More sophisticated timing is possible using
+programs called profilers that measure the time more accurately than our
+approach above.</p>
+<p></p>
+<hr />
+<p>* For more see the Python documentation on <a
+href="http://docs.python.org/library/time.html">time</a>.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

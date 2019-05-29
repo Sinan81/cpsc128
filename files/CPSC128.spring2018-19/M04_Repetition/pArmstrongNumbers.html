@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Problem) Armstrong numbers</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="pFactors.html" />
+  <link rel="Next" href="Cryptarithms.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>More Armstrong Numbers</h1>
+<p>Recall from the previous assignment that "An Armstrong number is an
+  <em>n</em>-digit number that is equal to the sum of its digits each raised to the <em>n</em>th
+power. For example 153 equals 1<sup>3</sup>+5<sup>3</sup>+3<sup>3</sup>, so
+it is an Armstrong number." On that assignment you wrote a program to
+determine if a given number was an Armstrong number. Now we'd like to write a
+program that displays all the 3-digit Armstrong numbers.</p>
+<h2>Solutions</h2>
+<p>Our general approach will be to test each 3-digit number, that is every
+number from 100 to 999, to see if it is an Armstrong number. If it is we'll
+display it, and if it isn't we'll just move on to the next number.</p>
+<p>This can be expressed in pseudocode as,</p>
+<pre>for each number from 100 to 999
+    if it is an Armstrong number
+        display it</pre>
+<p>You should have some Armstrong number detecting code from Assignment 3
+that looks something like this,</p>
+<p class="img"><img alt="." src="isArmstrong.py.png" width="467" height="156"
+/> </p>
+<p>All we need to do is to remove the I/O (input and output) from this code
+and place the remainder inside a loop. Doing so gives us this using a while
+loop,</p>
+<p class="img"><img alt="." src="ArmstrongNumbers_while.py.png" width="336" height="145"
+/></p>
+<p>or this using a for loop,</p>
+<p class="img"><img alt="." src="ArmstrongNumbers_for.py.png" width="338" height="127"
+/></p>
+<p>This program can be structured differently to avoid having to take apart
+the number in each loop iteration. The key to the restructuring is to use
+three nested loops. Each loop generates one of the three digits. Since the
+innermost loop iterates fastest, and the outer loop slowest the result is to
+check every combination of the three digits. (Try inserting a print inside
+the innermost loop to verify this). The resulting program might look like
+this,</p>
+<p class="img"><img alt="." src="ArmstrongNumbers_nested.py.png" width="336" height="101"
+/></p>
+<p>Note that instead of breaking apart the number, this time we have to build
+it up for testing and displaying, so while this is a different approach it is
+not a markedly better one. It is a good reminder though that even very short
+and simple programs can often be written in many ways and that unless you
+have considered several ways you may be missing a better way.</p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

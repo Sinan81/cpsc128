@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Note) The idea: Go back up and repeat some code</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="M04_Overview.html" />
+  <link rel="Next" href="Flowchart.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>The idea: Go back up and repeat some code</h1>
+<p>Until now our programs have been strictly sequential executing from top to
+bottom. With the <code>if</code> statement we were able to select some statements to
+execute and others to skip, but execution still flowed from top to bottom.
+However some processing  requires us to go back up in a program
+to repeat sections of code a second time (or a third and and a fourth and so
+on). </p>
+<p>Think back to this bit of code from the previous module:</p>
+<p class="img"><img alt="." src="TheIdea1.png" width="493" height="148" />
+</p>
+<p>It instructs the user to enter a grade to convert and then had a long
+section testing the entered value to calculate the corresponding letter
+grade. We discovered that between the input and selection we needed to test
+the grade to ensure it was valid. If it was invalid we were able to avoid
+processing it and producing mistaken output, and even to explain their error
+to the user, but we were not able to give them the chance to reenter the
+value. What we need is some way to go back up and give them a second chance
+as shown by the red arrow below.</p>
+<p class="img"><img alt="." src="TheIdea2.png" width="566" height="156" /></p>
+<p>So far though we don't have a statement or construct that lets us "go back
+up" if the grade is invalid and repeat the execution of some code. This is
+what repetition constructs enable us to do: to repeat code as many times as
+necessary. </p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

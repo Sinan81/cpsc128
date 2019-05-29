@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Problem) Cryptarithms</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="pArmstrongNumbers.html" />
+  <link rel="Next" href="PythonStyleGuidelines.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Cryptarithms</h1>
+<p>Long before sudoku newspapers featured various mental puzzles, one type of
+which were known as cryptarithms. Cryptarithms are arithmetic puzzles in
+which some 'words' are added together to get a sum,</p>
+<pre>   send
+ + more
+--------
+  money</pre>
+<p>Each letter stands for a distinct digit, i.e. no two letters stand for the
+same digit, and the numbers are well-formed, e.g. they do not begin with
+zero.</p>
+<p>How can we use the computer to help us in solving cryptarithms? So far our
+approach to programming has been to do the problem by hand, and to watch
+ourselves carefully as we do so. Our goal in doing the problem by hand has
+been to identify the algorithm we are using, so we can translate it into
+Python and have the computer do it for us. The assumption has been that the
+computer will do it in the same way we have.</p>
+<p>Cryptarithms are an exception to that approach, because solving a
+cryptarithm by hand relies on the unique features of the particular
+cryptarithm we are given. For example in the cryptarithm above we know that m
+must represent the digit 1. (Why? Because s and m no matter how large cannot
+add to more than 17, 18 with a carry from the previous addition, and since m
+cannot be 0, it must be 1.)</p>
+<p>But there is no easy way to translate the procedures we carry out in doing
+cryptarithms by hand into general computational procedures. Instead, we will
+rely on the particular strengths of computers to have the computer
+solve the problem in a way we would not do it ourselves.</p>
+<p>Unlike humans, computers have the ability to do monotonous calculations
+rapidly and accurately. This suggests using the computer to solve the
+cryptarithm by trial and error. We will have the computer find the solution
+by checking all possible solutions until it finds one that works. The only
+trick is to come up with a procedure that guarantees we will not miss any
+possible solutions.</p>
+<p>The key is to use nested loops to iterate through all possible values of
+the letters, i.e. s, e, n, d, m, o , r, and y. The loops to do so look like
+this:</p>
+<p><img alt="." src="SendMoreMoney_1.py.png" width="349" height="115" /></p>
+<p>Note that the loops for s and m begin at 1 because these letters cannot
+take the value 0 (due to the well-formedness criterion above).</p>
+<p>Inside all these loops we place statements to 'build' the values of send,
+more and money, and test to see if send+more=money,</p>
+<p><img alt="." src="SendMoreMoney_2.py.png" width="310" height="56" /></p>
+<p>(Note the use of == here where in paragraph form we have written
+send+more=money, and always remember, "Assignment is not equality".)</p>
+<p>If the test-expression is true we are still not quite done. We must check
+that no two letters represent the same digit. That requires a second, even
+longer, <code>if</code>,</p>
+<p><img alt="." src="SendMoreMoney_3.py.png" width="474" height="100" /></p>
+<p>(Note the triangular shape of the comparisons. It results because having
+compared s to e in the first line of comparisons, we do not have to compare e
+to s in the second line, and so on.</p>
+<p>If this <code>if</code> also succeeds, then we know we have a solution and should
+display it,</p>
+<p><img alt="." src="SendMoreMoney_4.py.png" width="297" height="57" /></p>
+<p>Putting it all together we get:</p>
+<p><img alt="." src="SendMoreMoney.py.png" width="100%" /></p>
+<p>Assuming I have not made any typos this code works, but it is slooooow!
+How slow? Try it and see. How many solutions to this cryptarithm are there?
+Some cryptarithms have no solutions, some have 1, but many have several.</p>
+<p>Now about that slowness issue. The core problem is that the statements
+inside the innermost loop are each executed ~200,000,000 times each (that's
+two hundred million!). We calculate that amount by multiplying the numbers of
+times the loops outside it go around: 10 times for s by 11 times for e by 11
+times for n and so on, or 10x11x11x11x10x11x11x11 = 177,156,100. To speed up
+the program we need to move statements outward from the center of the program
+where possible so they will be executed fewer times.</p>
+<p>For example we don't need to wait until we are in the centre of the loops
+to check that s and e have different values. We could place an <code>if</code> test to do
+that right after the <code>for</code> loop generating values of e. Each time we detect a
+duplicate and skip the interior loops we save 1.6 million iterations. In fact
+most of the <code>if</code> tests can be distributed outwards.</p>
+<p>Similarly we don't have to wait until we are in the center to check the
+sum of send and more. We could check partial sums before we get to the
+middle, e.g. we could check that y = d + e early on if we rearranged the order
+of the loops and avoid many more iterations.</p>
+<p>For the ultimate speedup we could be less brutish and instead of trying
+ALL possible combinations we could generate some values and then calculate
+others. For example if you know that d = 5 and e = 2 then you know that y has
+to be 7. Note that this gets a little tricky when d+e is greater than 10
+because you have a carry digit to worry about.</p>
+<p>Combining all these tricks can make a large cryptarithm program run
+millions of times faster.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

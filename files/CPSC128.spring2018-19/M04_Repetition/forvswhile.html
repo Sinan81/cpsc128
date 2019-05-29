@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Problem) for vs while</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="hihihi_for.html" />
+  <link rel="Next" href="f2c_for.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1><code>for</code> vs <code>while</code></h1>
+<p>Just for reference here are the two implementations of our artificial Hi!
+Hi! Hi! example.</p>
+<p>Using a <code>for</code> statement,</p>
+<p><img alt="." src="forvswhile_for.png" width="172" height="31" /></p>
+<p>And  using a <code>while</code> statement,</p>
+<p><img alt="." src="forvswhile_while.png" width="158" height="56" /></p>
+<p>Since the <code>for</code> statement version is more compact and reads
+more naturally you might wonder why <code>while</code> loops are ever used.
+The answer is that not all repetitions can be naturally represented using a
+<code>for</code> loop. Remember that the essential nature of a
+<code>for</code> loop is "for every item in this sequence do this". If that
+is the pattern of your computation then it is the logical and elegant choice,
+but many other repetitive forms of processing do not fit this pattern and
+<em>for those</em> we turn to the more general and flexible
+<code>while</code> statement.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

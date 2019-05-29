@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+(Problem) Nesting loops</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="Puzzle.html" />
+  <link rel="Next" href="forLoops.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Nesting loops</h1>
+<p>The code on the previous pages is an example of nested loops:</p>
+<p><img alt="." src="puzzle.py.png" width="137" height="112" />.</p>
+<p>The general pattern here is,</p>
+<pre>while <em>test1</em>:
+    while <em>test2</em>:
+        <em>statement</em></pre>
+<p>The key thing to be aware of is that the inner while loop (the one with
+<em>test2</em>) does <strong>all</strong> of its iterations for
+<strong>each</strong> of the iterations of the outer while loop (the one with
+<em>test1</em>).</p>
+<p>Note that there is no limitation that stops us at two while loops. For
+example it is quite common in image processing operations to have four nested
+loops. An outer pair that is responsible for considering each pixel in the
+image, and an inner pair that processes that pixel in the context of its
+neighbouring pixels.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>
