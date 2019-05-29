@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>Dice Odds</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="05_CDShuffle.html" />
+  <link rel="Next" href="07_BarGraph.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Dice Odds</h1>
+<p>Imagine that before we go on vacation to Vegas we want to bone up on some of the
+relevant odds. Let's start with the frequency of various outcomes when rolling
+a pair of dice. We could do this by rolling a pair of fair dice many times and
+recording (counting!) how many times each outcome occurs. There are 11 possible
+outcomes because we can observe anywhere from 2 to 12 spots on the pair of
+dice. This means we need to record how many twos occur, how many threes occur,
+how many fours occur, and so on up to how many twelves occur.</p>
+<h2>Solution 1: Without lists</h2>
+<p>Without using lists we could do it like this:</p>
+<pre><code class="python"><span class="keyword">import</span> random
+ROLLS = <span class="number">1000</span>
+<span class="comment"># Initialize counters to 0.</span>
+twos = <span class="number">0</span>
+threes = <span class="number">0</span>
+fours = <span class="number">0</span>
+fives = <span class="number">0</span>
+sixes = <span class="number">0</span>
+sevens = <span class="number">0</span>
+eights = <span class="number">0</span>
+nines = <span class="number">0</span>
+tens = <span class="number">0</span>
+elevens = <span class="number">0</span>
+twelves = <span class="number">0</span>
+<span class="comment"># Roll dice many times and record frequency of outcomes.</span>
+<span class="keyword">for</span> roll <span class="keyword">in</span> range(ROLLS):
+    outcome = random.randint(<span class="number">1</span>, <span class="number">6</span>) + random.randint(<span class="number">1</span>, <span class="number">6</span>)
+    <span class="keyword">if</span> outcome == <span class="number">2</span>:
+        twos = twos + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">3</span>:
+        threes = threes + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">4</span>:
+        fours = fours + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">5</span>:
+        fives = fives + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">6</span>:
+        sixes = sixes + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">7</span>:
+        sevens = sevens + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">8</span>:
+        eights = eights + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">9</span>:
+        nines = nines + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">10</span>:
+        tens = tens + <span class="number">1</span>
+    <span class="keyword">elif</span> outcome == <span class="number">11</span>:
+        elevens = elevens + <span class="number">1</span>
+    <span class="keyword">else</span>:
+        twelves = twelves + <span class="number">1</span>
+        
+<span class="comment"># Display results.</span>
+<span class="keyword">print</span>  <span class="string">"  ====================="</span>  
+<span class="keyword">print</span>  <span class="string">"  Outcome | Occurrences"</span>  
+<span class="keyword">print</span>  <span class="string">"  --------+------------"</span>  
+<span class="keyword">print</span>  <span class="string">"      2   |%8d"</span> % (twos)  
+<span class="keyword">print</span>  <span class="string">"      3   |%8d"</span> % (threes)
+<span class="keyword">print</span>  <span class="string">"      4   |%8d"</span> % (fours)  
+<span class="keyword">print</span>  <span class="string">"      5   |%8d"</span> % (fives)   
+<span class="keyword">print</span>  <span class="string">"      6   |%8d"</span> % (sixes)   
+<span class="keyword">print</span>  <span class="string">"      7   |%8d"</span> % (sevens)   
+<span class="keyword">print</span>  <span class="string">"      8   |%8d"</span> % (eights)  
+<span class="keyword">print</span>  <span class="string">"      9   |%8d"</span> % (nines)  
+<span class="keyword">print</span>  <span class="string">"     10   |%8d"</span> % (tens)   
+<span class="keyword">print</span>  <span class="string">"     11   |%8d"</span> % (elevens)
+<span class="keyword">print</span>  <span class="string">"     12   |%8d"</span> % (twelves) 
+<span class="keyword">print</span>  <span class="string">"  ---------------------"</span>  </code></pre>
+<p>which produces output like this,</p>
+<pre><code>&gt;&gt;&gt; 
+  =====================
+  Outcome | Occurrences
+  --------+------------
+      2   |      29
+      3   |      66
+      4   |      71
+      5   |     100
+      6   |     137
+      7   |     173
+      8   |     132
+      9   |     122
+     10   |      78
+     11   |      59
+     12   |      33
+  ---------------------
+&gt;&gt;&gt;</code> </pre>
+<p>The code is straightforward but lengthy, and relatively slow, because of the
+cascade of <code>if</code>s. On average it will take 5 and a half comparisons
+before finding the correct counter to increment. (We could do somewhat better
+if we reordered the tests in decreasing order of frequency, but if we knew
+their frequencies, we probably wouldn't be writing the code in the first
+place!).</p>
+<h2>Solution 2: Using lists</h2>
+<p>These operations can be done more compactly and quickly using <em>a list of
+counters</em>. We'll let each item in the list count one of the outcomes so
+we'll need eleven entries in the list all initialized to 0. Then instead of
+using logic tests to identify the counter to increment we can use the <code>outcome</code>
+value as an index to directly access the appropriate counter.</p>
+<pre><code class="python"><span class="keyword">import</span> random
+
+ROLLS = <span class="number">1000</span>
+
+<span class="comment"># Initialize counters to 0.</span>
+counters = [<span class="number">0</span>] * <span class="number">11</span>
+
+<span class="comment"># Roll dice many times and record frequency of outcomes.</span>
+<span class="keyword">for</span> roll <span class="keyword">in</span> range(ROLLS):
+    outcome = random.randint(<span class="number">1</span>, <span class="number">6</span>) + random.randint(<span class="number">1</span>, <span class="number">6</span>)
+    <span class="comment"># Now increment the appropriate counter.</span>
+    <span class="comment"># Notice that no testing is needed because we can calculate the index of the matching entry.</span>
+    counters[outcome-<span class="number">2</span>] = counters[outcome-<span class="number">2</span>] + <span class="number">1</span>
+        
+<span class="comment"># Display results.</span>
+<span class="keyword">print</span>  <span class="string">"  ====================="</span>  
+<span class="keyword">print</span>  <span class="string">"  Outcome | Occurrences"</span>  
+<span class="keyword">print</span>  <span class="string">"  --------+------------"</span>  
+<span class="keyword">for</span> posn <span class="keyword">in</span> range(<span class="number">11</span>):
+    <span class="keyword">print</span> <span class="string">"%7d   |%8d"</span> % (posn+<span class="number">2</span>, counters[posn])
+<span class="keyword">print</span>  <span class="string">"  ---------------------"</span></code></pre>
+<p>Notes:</p>
+<ul>
+  <li>Notice the syntax used to initialize the list to contain 11 values of
+  0.</li>
+  <li>The index of counters inside the loop is <code>outcome-2</code> because
+    lists are indexed from 0, but our first outcome value is 2 (not 0), so we
+    need to subtract 2 from the outcome to get the matching entry in the list.
+    This way we'll map outcome 2 to counter 0, outcome 3 to counter 1, and so
+    on up to outcome 12 mapping onto counter 10.</li>
+  <li>Notice how the body of the output table can also be generated compactly
+    thanks to the list..</li>
+</ul>
+<h2>The verdict</h2>
+<table border="1" style="margin: auto;">
+  <tbody>
+    <tr>
+      <th>Without list</th>
+      <th>Using list</th>
+    </tr>
+    <tr>
+      <td style="text-align: center;">52 lines of code</td>
+      <td style="text-align: center;">12 lines of code</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Average 5.5 tests to select counter to
+        increment.</td>
+      <td style="text-align: center;">Exactly one calculation to select counter
+        to increment.</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

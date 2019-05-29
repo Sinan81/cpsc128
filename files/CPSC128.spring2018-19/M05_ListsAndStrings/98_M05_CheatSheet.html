@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Python Cheat Sheet (Module 5 version)</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="15_Tuples.html" />
+  <link rel="Next" href="99_M05_Assignment.html" />
+  
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Python Cheat Sheet (Module 5 version)</h1>
+<h2>Contents:</h2>
+<ul>
+  <li><a href="98_M05_CheatSheet.html#Input">Input</a></li>
+  <li><a href="98_M05_CheatSheet.html#Processing">Processing using =</a> 
+    <ul>
+      <li><a href="98_M05_CheatSheet.html#Arithmetic_Expressions">Arithmetic Expressions</a></li>
+    </ul>
+  </li>
+  <li><a href="98_M05_CheatSheet.html#Output">Output using print</a></li>
+  <li><a href="98_M05_CheatSheet.html#Selection">Selection using if</a> 
+    <ul>
+      <li><a href="98_M05_CheatSheet.html#Relational_Expressions">Relational expressions</a></li>
+      <li><a href="98_M05_CheatSheet.html#Logical_or_Boolean_Expressions">Logical or Boolean
+        Expressions</a></li>
+    </ul>
+  </li>
+  <li><a href="98_M05_CheatSheet.html#Repetition_while">Repetition using <code>while</code></a></li>
+  <li><a href="98_M05_CheatSheet.html#Repetition_for">Repetition using <code>for</code></a> 
+    <ul>
+      <li><a href="98_M05_CheatSheet.html#Range">The <code>range</code> function</a></li>
+    </ul>
+  </li>
+  <li><a href="98_M05_CheatSheet.html#OBP">Object-based programming</a></li>
+  <li><a href="98_M05_CheatSheet.html#Strings">Strings</a></li>
+  <li><a href="98_M05_CheatSheet.html#Lists">Lists</a></li>
+</ul>
+<h2 id="Input">Input</h2>
+<p>Use <code>input</code> to get numerical data from the user,</p>
+<pre><code><i>name</i> = input( <i>"Prompt"</i> )</code></pre>
+<p>This displays <code><i>Prompt</i></code> and then reads a line of input.
+By default the line is read from the keyboard, and reading is triggered when
+the Enter key is pressed. <code>input</code> evaluates the line it reads as a
+Python expression and stores the result as <code><i>name</i></code>.</p>
+<p>Example:</p>
+<pre><code>distance = input( "Enter the distance in miles: " )</code></pre>
+<p>Notes:</p>
+<ul>
+  <li>Note the space before the second <code>"</code>. This results in better
+    spacing when the user enters their value.</li>
+</ul>
+<h2 id="Processing">Processing using =</h2>
+<p>Processing is specified in Python using assignment statements with the
+form,</p>
+<pre><code><i>name</i> = <i>expression</i></code></pre>
+<p>The value of <code><i>expression</i></code> is evaluated and stored in
+memory as <code><i>name</i></code>.</p>
+<p>Notes:</p>
+<ul>
+  <li><code><i>name</i></code> must appear on the left and
+    <code><i>expression</i></code> on the right, i.e. you
+    <strong>cannot</strong> write, 
+    <pre><i>expression</i> = <code><i>name</i></code></pre>
+  </li>
+</ul>
+<h3 id="Arithmetic_Expressions">Arithmetic Expressions</h3>
+<p>Arithmetic processing is expressed using standard mathematical notation
+within the limitations imposed by a keyboard, e.g.</p>
+<pre><code>3*(x + y)**4</code></pre>
+<p>Arithmetic Operators:</p>
+<table>
+  <tbody>
+    <tr>
+      <th>+</th>
+      <td style="padding: 5px; background-color: lightgrey;">addition</td>
+    </tr>
+    <tr>
+      <th>-</th>
+      <td style="padding: 5px; background-color: lightgrey;">subtraction</td>
+    </tr>
+    <tr>
+      <th>/</th>
+      <td style="padding: 5px; background-color: lightgrey;">division</td>
+    </tr>
+    <tr>
+      <th>%</th>
+      <td style="padding: 5px; background-color: lightgrey;">modulo
+        (remainder), e.g. 19 % 4 &rarr; 3</td>
+    </tr>
+    <tr>
+      <th>*</th>
+      <td
+      style="padding: 5px; background-color: lightgrey;">multiplication</td>
+    </tr>
+    <tr>
+      <th>**</th>
+      <td style="padding: 5px; background-color: lightgrey;">exponentiation,
+        e.g. 2 ** 4 &rarr; 16</td>
+    </tr>
+  </tbody>
+</table>
+<p>In addition the <code>abs()</code> function for absolute value is
+built-in, and less common mathematical functions can be accessed by importing
+the math library, e.g.</p>
+<pre><code>import math
+print "The value of pi is", math.pi
+print "The square root of pi is", math.sqrt(math.pi)</code></pre>
+<h2 id="Output">Output using print</h2>
+<p>Use <code>print</code> to display stored values:</p>
+<pre><code>print <i>list</i></code></pre>
+<p>displays the value of each item in the list. Puts a space between each
+pair of values. Example:</p>
+<pre><code>print "The answer is", 5 + 2, "."</code></pre>
+<p>displays:</p>
+<pre><code>The answer is 7 .</code></pre>
+<p>Appending a comma to the end of a print statement holds the current output
+line open, e.g. the code,</p>
+<pre><code>print "The answer is",
+print 5 + 2, "."</code></pre>
+<p>displays</p>
+<pre><code>The answer is 7 .</code></pre>
+<p>on a single line.</p>
+<p>For more control over output appearance embed formatting codes into output
+strings. See section <a
+href="http://www.python.org/doc/current/lib/typesseq-strings.html">2.2.6.2
+String Formatting Operations</a> of the Python Library Reference for the gory
+details.</p>
+<h2 id="Selection">Selection using <code>if</code></h2>
+<p>Use <code>if</code> to execute one block of code or another, but not
+both.</p>
+<pre><code>if <i>test</i>:
+    <i>statement</i>
+elif <i>test</i>:
+    <i>statement</i>
+else:
+    <i>statement</i></code></pre>
+<p>N.B. the <code>elif </code>and <code>else</code> statements are optional
+as shown in the first two examples below.</p>
+<p>Examples:</p>
+<pre><code>if x &lt; 0:
+    print x, "is negative"</code></pre>
+<pre><code>if flip == 1:
+    print "You got heads"
+else:
+    print "You got tails"</code></pre>
+<pre><code>if num &lt; 0:
+    print "The number", num, "is negative."
+elif num == 0:
+    print "The number", num, "is neither positive nor negative."
+else:
+    print "The number", num, "is positive."</code></pre>
+<h3 id="Relational_Expressions">Relational Expressions</h3>
+<p>Look like standard arithmetic comparisons (but again within the
+limitations imposed by using a standard keyboard), e.g.</p>
+<pre><code>x &lt;= 4</code></pre>
+<p>Relational Operators:</p>
+<table>
+  <tbody>
+    <tr>
+      <th>&lt;</th>
+      <td style="padding: 5px; background-color: lightgrey;">less than, e.g 5
+        &lt; 3 &rarr; False</td>
+    </tr>
+    <tr>
+      <th>&lt;=</th>
+      <td style="padding: 5px; background-color: lightgrey;">less than or
+        equal to, e.g. 3 &lt;= 5 &rarr; True</td>
+    </tr>
+    <tr>
+      <th>==</th>
+      <td style="padding: 5px; background-color: lightgrey;">equal, e.g. 5 ==
+        5 &rarr; True</td>
+    </tr>
+    <tr>
+      <th>!=</th>
+      <td style="padding: 5px; background-color: lightgrey;">not equal, e.g.
+        5 != 5 &rarr; False</td>
+    </tr>
+    <tr>
+      <th>&gt;=</th>
+      <td style="padding: 5px; background-color: lightgrey;">greater than or
+        equal to, e.g. 5 &gt;= 3 &rarr; True</td>
+    </tr>
+    <tr>
+      <th>&gt;</th>
+      <td style="padding: 5px; background-color: lightgrey;">greater than,
+        e.g. 4 &gt; 5 &rarr; False</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Logical_or_Boolean_Expressions">Logical or Boolean Expressions</h3>
+<table>
+  <tbody>
+    <tr>
+      <th>and</th>
+      <td style="padding: 5px; background-color: lightgrey;"><code>a and
+        b</code> is only True when <code>a</code> is True and <code>b</code>
+        is True</td>
+    </tr>
+    <tr>
+      <th>or</th>
+      <td style="padding: 5px; background-color: lightgrey;"><code>a or
+        b</code> is True when <code>a</code> is True, or when <code>b</code>
+        is True, or when both <code>a</code> and <code>b</code> are True</td>
+    </tr>
+    <tr>
+      <th>not</th>
+      <td style="padding: 5px; background-color: lightgrey;"><code>not
+        a</code> is True when <code>a</code> is False</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Repetition_while">Repetition using <code>while</code></h2>
+<p>Use <code>while</code> to execute a block of code multiple times.</p>
+<pre><code>while <i>test</i>:
+    statement</code></pre>
+<h3>Examples.</h3>
+<p>Common components:</p>
+<pre><code>x = 1 # initialization expression
+while x &lt; 10: # test expression
+    print x
+    x = x + 1 # increment expression</code></pre>
+<p>Input validation:</p>
+<pre><code>num = input( "Enter a number between 1 and 100: " )
+while num &lt; 1 or num &gt; 100:
+    print "Oops, your input value (", num, ") is out of range."
+    num = input( "Be sure to enter a value between 1 and 100: " )</code></pre>
+<p>Repeating a program:</p>
+<pre><code>again = "y"
+while again == "y" or again == "Y" or again == "yes" or again == "Yes":
+    #
+    # Put the body of your program here
+    #
+    again = raw_input( "Play again (y/n)? " )
+print "Thanks for playing"</code></pre>
+<h2 id="Repetition_for">Repetition using <code>for</code></h2>
+<p>Use <code>for</code> to repeat a block of code for every member of a
+list.</p>
+<pre><code>print "Table of squares for 1-10"
+print "    x    x**2"
+for x in (1,2,3,4,5,6,7,8,9,10):
+    print "%5d%8d", % (x, x**2)</code></pre>
+<h3 id="Range">The <code>range</code> function</h3>
+<p>The built-in function <code>range</code> creates arithmetic lists, and is
+often used to produce the lists to drive for loops.</p>
+<pre><code>range(<i>start_value</i>, <i>stop_value</i>, <i>stepsize</i>)</code></pre>
+<p>Example:</p>
+<pre><code>&gt;&gt;&gt; range(1, 20, 5)
+[1, 6, 11, 16]</code></pre>
+<p>Notes:</p>
+<ul>
+  <li>the <i>start_value</i> defaults to 0.</li>
+  <li>the <i>stepsize</i> defaults to 1.</li>
+  <li>the <i>stop_value</i> is not included in the list.</li>
+</ul>
+<p>Using <code>range</code> the example above can be rewritten,</p>
+<pre><code>print "Table of squares for 1-10"
+print "    x    x**2"
+for x in range(1,11):
+    print "%5d%8d", % (x, x**2)</code></pre>
+<h2 id="OBP">Object-based programming</h2>
+<p>An object contains both data and instructions on how to process the data.
+The data are referred to as the attribues of the object. The instructions are
+referred to as the methods. The attributes and methods available depend on
+the type of the object. The syntax to invoke an object's method is,</p>
+<pre><code><em>object_name</em>.<em>method_name</em>(<em>method_params</em>)</code></pre>
+<p>Examples:</p>
+<pre><code>math.sqrt(100)
+str.center(30)
+names.sort()</code></pre>
+<p>Related built-in functions:</p>
+<pre><code>dir( <em>object_name</em> ) # lists both attributes and methods of object_name
+type( <em>object_name</em>) # displays the type of object_name</code></pre>
+<h2 id="Strings">Strings</h2>
+<h2 id="Lists">Lists</h2>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Sequence Types</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="01_OBP.html" />
+  <link rel="Next" href="03_Lists.html" />
+  
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Sequence Types</h1>
+<p>The built-in types we have worked with so far have each stored a single
+value (formally they are <em>scalar</em> types). But there are many real-world objects whose representation requires more than one value, e.g. a street
+address, someone's full name, a map coordinate. Python provides several
+compound data types, but we will begin by looking at strings and lists. These
+are both sequence types because they store an ordered list of values, that is a sequence of values (as
+opposed to unordered collections of values, which are formally called a <em>set</em> of
+values). In strings all the values are characters, but a list may contain
+values of any type (including other lists!).</p>
+<p>The official list of sequence operations can be found in <a
+href="http://www.python.org/doc/2.2.1/lib/typesseq.html">Section 2.2.6 of the
+Python Library Reference</a>.</p>
+<h2>Exercises</h2>
+<p>To find out how they work, try typing the following commands into the
+Python shell and carefully observing the output that each one produces. First
+strings:</p>
+<pre><code>&gt;&gt;&gt; name = "Tim"
+&gt;&gt;&gt; "m" in name
+&gt;&gt;&gt; "o" not in name
+&gt;&gt;&gt; min(name)
+&gt;&gt;&gt; max(name)
+&gt;&gt;&gt; name = name + " " + "Topper"
+&gt;&gt;&gt; print name
+&gt;&gt;&gt; name[0]
+&gt;&gt;&gt; name[2]
+&gt;&gt;&gt; name[-1]
+&gt;&gt;&gt; name[-2]
+&gt;&gt;&gt; name[2:7]
+&gt;&gt;&gt; len(name)
+&gt;&gt;&gt; name*3</code></pre>
+<p>Now a list:</p>
+<pre><code>&gt;&gt;&gt; nums = [1, 2, 3, 4, 5]
+&gt;&gt;&gt; 3 in nums
+&gt;&gt;&gt; 9 in nums
+&gt;&gt;&gt; min(nums)
+&gt;&gt;&gt; max(nums)
+&gt;&gt;&gt; nums = nums + [9, 10]
+&gt;&gt;&gt; print nums
+&gt;&gt;&gt; nums[0]
+&gt;&gt;&gt; nums[2]
+&gt;&gt;&gt; nums[-1]
+&gt;&gt;&gt; nums[-2]
+&gt;&gt;&gt; nums[2:5]
+&gt;&gt;&gt; len(nums)
+&gt;&gt;&gt; nums[2] = 11
+&gt;&gt;&gt; print nums
+&gt;&gt;&gt; nums[2:6] = [20,30]</code></pre>
+<p>Note that the third to last statement can ONLY be used with a list and NOT
+with a string (try it and see). That is because in Python lists are <em>mutable</em> (i.e. changeable),
+but strings are <em>immutable</em> (i.e. cannot be changed) so you cannot assign to
+individual elements of a string.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

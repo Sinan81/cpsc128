@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Example: CD Shuffle</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="04_Strings.html" />
+  <link rel="Next" href="06_DiceOdds.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Example: CD Shuffle</h1>
+<h2>The problem</h2>
+<p>Most CD players have shuffle or random functionality in which they play
+the tracks on the CD in random order, but play each track exactly once. One
+way for them to do this is to scan the CD to see how many tracks there are on
+it, and then to generate a playlist of the order in which to play the tracks.
+For example if there are 6 tracks on the disc the playlist might be [3, 5, 2,
+1, 6, 4]. We'd like to write a program to generate random playlists.</p>
+<h2>Solution 1</h2>
+<p>A good starting point: Imagine we have to do this by hand. Our goal is to write down a playlist
+on a sheet of paper. But how to make the list random? If we use the CD above
+with 6 tracks on it we can roll a die to choose the tracks. For example let's
+say we roll it and get 4, we write 4 down as the first track on our playlist.
+We roll it again and get 1, so we write 1 down, then on the next roll we get
+5 and write that down. On the next roll we roll 1 again, but since we already
+have 1 on our playlist we don't record it again, we just continue rolling.
+How long do we continue rolling? Until all 6 numbers have appeared on our
+playlist. Let's try writing this down in pseudocode form,</p>
+<pre><code>Initialize playlist (like getting a blank sheet of paper)
+Until you have six numbers in the playlist
+    Roll the die
+    If the value of the die is not in the playlist
+        Add it to the playlist</code></pre>
+<p>This translates into the following Python,</p>
+<pre><code class="python">playlist = []
+<span class="keyword">while</span> len(playlist) &amp;lt; <span class="number">6</span>:
+    tracknum = random.randint(<span class="number">1</span>,<span class="number">6</span>)
+    <span class="keyword">if</span> tracknum <span class="keyword">not</span> <span class="keyword">in</span> playlist:
+        playlist.append(tracknum)
+<span class="keyword">print</span> playlist</code></pre><p>To more easily see how the English translates into Python here they are
+side-by-side,</p>
+<table border="0" style="width: 100%">
+  <tbody>
+    <tr>
+      <th>Pseudocode</th>
+      <th>Python</th>
+    </tr>
+    <tr>
+      <td><pre><code>Initialize playlist
+Until you have six numbers in the playlist
+    Roll the die
+    If the value of the die is not in the playlist
+        Add it to the playlist
+ display the playlist</code></pre>
+      </td>
+      <td><pre><code class="python">playlist = []
+<span class="keyword">while</span> len(playlist) &amp;lt; <span class="number">6</span>:
+    tracknum = random.randint(<span class="number">1</span>,<span class="number">6</span>)
+    <span class="keyword">if</span> tracknum <span class="keyword">not</span> <span class="keyword">in</span> playlist:
+        playlist.append(tracknum)
+<span class="keyword">print</span> playlist</code></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>Wait! What about that 6? Not all CDs have exactly 6 tracks. We'll need to
+replace that by an appropriate variable name and get its value from the user.
+The result is,</p>
+<p><img alt="." src="05_CDShuffle_a.py.png" width="348" height="155" /></p>
+<p><em>Exercise</em>. Try the program out. Does it work for all values of
+  <code>tracks</code>? What would be good test values?*</p>
+<h2>Solution 2</h2>
+<p>An alternative approach takes its inspiration from the button name, i.e.
+"shuffle". If it says to <em>shuffle</em> why not do just that? We can imagine having
+cards with the track numbers on them and shuffling those cards until they're
+mixed up. How would we do this in Python? We'll start with an ordered list of
+the track numbers, then we'll shuffle the list. We can shuffle it by choosing
+one item in the list at random and moving it to the end of the list. If we do
+that a bunch of times we'll end up with a shuffled list. The pseudocode
+is,</p>
+<pre><code>Generate an ordered list of the track numbers
+Shuffle it to generate the playlist by
+    selecting a random track from the list,
+    and moving it to the end of the list.</code></pre>
+<p>Translating into Python gives us,</p>
+<p><img alt="." src="05_CDShuffle_b.py.png" width="350" height="169" /></p>
+<p>Be sure you understand each of the Python statements and how they are
+accurate translations of the pseudocode.</p>
+<h2>Solution 3</h2>
+<p>Another approach combines features of both solutions. Like the first one
+it builds the playlist up from nothing and like the second one it selects
+tracks at random from an initially full playlist. The pseudocode is,</p>
+<pre><code>Generate an ordered list of the track numbers.
+Initialize the playlist.
+Until the ordered list is empty,
+    Select a random track from the ordered list,
+    and move it to the playlist.</code></pre>
+<p>This avoids the inefficiency of the first solution when it generates
+numbers that are already in the playlist**. This one will never do that
+because it only chooses from the remaining track numbers.</p>
+<p>It also avoids the inefficiency of the second one which has to shuffle
+many times to be sure it has sufficiently scrambled the original list.</p>
+<p>The Python translation is,</p>
+<p><img alt="." src="05_CDShuffle_c.py.png" width="363" height="170" /></p>
+<p></p>
+<hr />
+<p>* Remember "Test at the edges" so after trying a couple of typical values
+like 6 and 10, it would be good to try 2, 1, and even 0.</p>
+<p>** The number of duplicate generations goes up with the length of the
+list. Here's an instrumented version of the program that displays the number
+of duplicates generated as a function of list length. We call it
+"instrumented" because of the addition of the variable <code>loops</code>
+that is measuring its performance by counting iterations, and the addition of
+the initial <code>for</code> loop that is forcing <code>tracks</code> to take
+on the values we are interested in measuring. Run it and see how quickly the
+number of duplicates grows; even at 10 tracks we can get 26 duplicates.</p>
+<pre><code># CDShuffle_dupes.py
+import random
+print 'tracks | dupes'
+print '-------+------'
+for tracks in [1,2,5,10,20,50,100]:
+    loops = 0
+    playlist = []
+    while len(playlist) &lt; tracks:
+        tracknum = random.randint(1,tracks)
+        loops = loops + 1
+        if tracknum not in playlist:
+            playlist.append(tracknum)
+    dupes = loops - tracks
+    print "%4d   |%5d" % (tracks, dupes)</code>
+</pre>
+<p>(For reliable output it should really run the program multiple times for
+each value of tracks, but this program is meant to be illustrative rather
+than a definitive measuring device.)</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

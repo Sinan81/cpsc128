@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>Tic-Tac-Toe</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="10_AltPlayingCards.html" />
+  <link rel="Next" href="12_Palindrome.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>What is this [ [ 'X', 'O', '' ], [ 'O', 'X', 'O' ], [ '', '', 'X'] ] ?</h1>
+<p>Thinking like the computer,</p>
+<ul>
+  <li>we know <code>52</code> is an integer value,</li>
+  <li>we know <code>52.801</code> is a floating point value because of the
+    decimal point, and</li>
+  <li>we know <code>'Tim'</code> is a string because of the quotes around
+  it</li>
+</ul>
+<p>Similarly we know <code>[['X', 'O', ''], ['O', 'X', 'O'], ['', '',
+'X']]</code> is a list because of the square brackets around it. Yes, it also
+has square brackets inside it, but ignore those for a moment. What matters is
+that it has the pattern <code>[ ...<em>stuff</em>...]</code> which makes it a
+list.</p>
+<p>Now what is it a list of? Well the commas separate the items of the list and
+the things between the commas, i.e. <code>['X', 'O', '' ]</code>, <code>[ 'O',
+'X', 'O' ]</code> and, <code>[ '', '', 'X']</code>, are all surrounded by
+square brackets so they are <em>also</em> lists. That means that the entire
+construct is <em>a list of lists</em>.</p>
+<p>When the sizes of all the lists are the same as they are here (because the
+outer list has three elements, and each inner element also has three elements)
+the whole is often called a multi-dimensional list, in this particular case a
+two-dimensional (2-D) list*. These are also sometimes called arrays, especially
+in mathematical applications.</p>
+<p>This 2-D list represents the state of a game of Tic-Tac-Toe. This is easier
+to see if we write it differently (in a way that is still valid Python by the
+way) and show it beside the game it is representing.</p>
+<table border="0" style="margin: auto;">
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <td><pre><code>[['X', 'O',  ''],
+ ['O', 'X', 'O'],
+ [ '',  '', 'X']]</code></pre>
+        <p></p>
+      </td>
+      <td><pre><code> X | O |
+---+---+---
+ O | X | O
+---+---+---
+   |   | X</code></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>We access the items in a 2-D list by first choosing the sublist we want and
+then specifying the item in the sublist we want. For example if we name our 2-D
+list <code>g</code>,</p>
+<pre><code class="python">g = [['X', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]</code></pre>
+<p>then <code>g[0]</code> refers to the entire first row, i.e. <code>['X', 'O',
+'' ]</code> and <code>g[0][2]</code> refers to the second element in that row
+or <code>'O'</code>. Here is a table listing the names of each cell in <code>g</code>:</p>
+<table border="1" style="margin: auto;">
+  <tbody>
+    <tr>
+      <td><code>g[0][0]</code></td>
+      <td><code>g[0][1]</code></td>
+      <td><code>g[0][2]</code></td>
+    </tr>
+    <tr>
+      <td><code>g[1][0]</code> </td>
+      <td><code>g[1][1]</code> </td>
+      <td><code>g[1][2]</code></td>
+    </tr>
+    <tr>
+      <td><code>g[2][0]</code></td>
+      <td><code>g[2][1]</code></td>
+      <td><code>g[2][2]</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>The general pattern here is <code>g[<em>row</em>][<em>col</em>]</code>, i.e.
+the first index specifies the row and the second index the column.</p>
+<p>So we can test to see if someone has won by filling in the top row using
+code like this,</p>
+<pre><code class="python"><span class="keyword">if</span> g[<span class="number">0</span>][<span class="number">0</span>]==g[<span class="number">0</span>][<span class="number">1</span>] <span class="keyword">and</span> g[<span class="number">0</span>][<span class="number">1</span>]==g[<span class="number">0</span>][<span class="number">2</span>]:
+    <span class="keyword">print</span> g[<span class="number">0</span>][<span class="number">0</span>], <span class="string">'has won!'</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> <span class="string">'No one has won in the top row.'</span></code></pre>
+<p>which will display the message,</p>
+<pre><code>No one has won in the top row.</code></pre>
+<p>Similarly we can check to see if someone has won along the main (upper-left
+to lower-right) diagonal with code like this,</p>
+<pre><code class="python"><span class="keyword">if</span> g[<span class="number">0</span>][<span class="number">0</span>]==g[<span class="number">1</span>][<span class="number">1</span>] <span class="keyword">and</span> g[<span class="number">1</span>][<span class="number">1</span>]==g[<span class="number">2</span>][<span class="number">2</span>]:
+    <span class="keyword">print</span> g[<span class="number">0</span>][<span class="number">0</span>], <span class="string">'has won!'</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> <span class="string">'No one has won on the main diagonal.'</span></code></pre>
+<p>which will display the message,</p>
+<pre><code>X has won!</code></pre>
+<hr />
+<p>* Lists can certainly have more than two dimensions, but it gets hard to
+draw them!</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

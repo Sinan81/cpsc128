@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Built-in Type Conversions</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="12_Palindrome.html" />
+  <link rel="Next" href="14_TheMapFunction.html" />
+  
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Built-in Type Conversions</h1>
+<p>The built-in type names can be used as functions to convert a value from
+one type to another. What happens is that the type name triggers the
+specified type's constructor to build a new object from the given existing
+one.</p>
+<pre><code>&gt;&gt;&gt; int(4.5) # Build an int from the floating point value 4.5
+4
+&gt;&gt;&gt; float(4) # Build a floating point value from the integer value 4
+4.0
+&gt;&gt;&gt; str(4) # Build a string from the integer 4
+'4'
+&gt;&gt;&gt; int('4') # Build an integer from the string '4'
+4
+&gt;&gt;&gt; float("4") # Build a floating point value from the string "4"
+4.0
+&gt;&gt;&gt; list("Tim") # Build a list from the string "Tim"
+['T', 'i', 'm']
+&gt;&gt;&gt; str(['no','more']) # Build a string from a list of strings.
+"['no', 'more']"
+&gt;&gt;&gt; # ^But you just get the printable representation of the list.
+&gt;&gt;&gt; list(4) # Build a list from the integer 4.
+Traceback (most recent call last):
+  File "&lt;pyshell#68&gt;", line 1, in -toplevel-
+    list(4)
+TypeError: iteration over non-sequence
+&gt;&gt;&gt; # ^But it can't be done.</code></pre>
+<p>Note that some conversions are not helpful (in the second last case the
+programmer probably wanted to concatenate the two strings and so should have
+used the string method <code>join</code>), and others are not possible (as in the last
+example of trying to build a <code>list</code> from an <code>int</code>).</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

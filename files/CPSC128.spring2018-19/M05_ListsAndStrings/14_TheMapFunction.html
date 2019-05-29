@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+The map() function</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="13_TypeConversions.html" />
+  <link rel="Next" href="15_Tuples.html" />
+  
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>The map() function</h1>
+<p>The <code>map</code> function (seen in <a
+href="http://courses.yukoncollege.yk.ca/~ttopper/CPSC128.W14/M05_ListsAndStrings/BarGraph.html">Bar
+Graph</a>) can simplify some list processing. The command,</p>
+<pre><code>map(fn, seq)</code></pre>
+<p>builds a new list from an existing one by applying the function
+<code>fn</code> to every member of the sequence <code>seq</code>. For example
+if you have the list of strings, <code>names = ['Tim', 'Mary', 'Stephanie',
+'Bob']</code>, and want a list of the lengths of those strings
+<code>map</code> is just the ticket:</p>
+<pre><code>&gt;&gt;&gt; names = ['Tim', 'Mary', 'Stephanie', 'Bob']
+&gt;&gt;&gt; len_list = map(len, names)
+&gt;&gt;&gt; len_list
+[3, 4, 9, 3]
+&gt;&gt;&gt; </code></pre>
+<p><code>map</code> doesn't do anything magical it just replaces the loop
+construction,</p>
+<pre><code class="python">len_list = []
+<span class="keyword">for</span> item <span class="keyword">in</span> names:
+    len_list.append(len(item))</code></pre>
+<p>with a more compact, and less error prone notation.</p>
+<p>Some languages don't provide a <code>map</code> function in which case you may want to
+write your own* since it's so handy.</p>
+<hr />
+<p>* No you don't know how quite yet, but you'll see how in the very next
+module!</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

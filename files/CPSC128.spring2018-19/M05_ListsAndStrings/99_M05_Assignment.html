@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Assignment) Module 5 Assignment</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="98_M05_CheatSheet.html" />
+  <link rel="Next" href="../M06_Functions/01_Modularization.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Assignment 5</h1>
+<h2>Problems</h2>
+<ol>
+  <li><h3>Tic-Tac-Toe</h3>
+    <p>Write a program that looks at a list of lists representing a
+    Tic-Tac-Toe game, determines if someone has won, and if so says who. (You
+    can assume the game state has arisen in the course of a legal game).</p>
+    <p>Embed your code in the file <a href="99_a5p1v1.py">a5p1v1.py</a></p>
+  </li>
+  <li><h3>Dedup</h3>
+    <p>Write a program that removes duplicate values from a list, i.e. if the
+    list starts out as <code>[4, 2, 5, 2, 4]</code>, then after your code
+    fragment runs it should be <code>[4, 2, 5]</code>.</p>
+    <p>Embed your code in the file <a href="99_a5p2v1.py">a5p2v1.py</a></p>
+    <p>(A real-life application would be to remove duplicates from a list of
+    IP addresses so you have a list of unique visitors to your site. In this
+    case the list might look like [ '10.9.0.31', '199.247.52.3', '10.9.0.31',
+    '43.98.12.4', '72.1.3.55', '199.247.52.3', ...]).</p>
+  </li>
+  <li><h3>Poker Full House</h3>
+    <p>Write a program that decides if a list of card numbers is a full
+    house. A full house is a hand in which 3 cards share one face value and
+    the other two share a different face value, e.g. three sevens and two
+    aces. For example the list [6, 32, 39, 0, 45] is a full house because cards
+    6, 32 and 45 are sevens and cards 39 and 0 are aces. (See <a
+    href="http://en.wikipedia.org/wiki/List_of_poker_hands">Wikipedia</a> for
+    more examples).</p>
+    <p>Use the first representation shown in the module notes, i.e. the one
+    in <a
+    href="http://courses.yukoncollege.yk.ca/~ttopper/CPSC128.W14/M05_ListsAndStrings/PlayingCards.html">Representing
+    Playing Cards</a>.</p>
+    <!--<p>Write a program that decides if a list of card numbers is a straight.
+                A straight is a hand in which the face values of the cards can be
+                arranged in a sequence with no missing values. For example the list [6,
+                35, 10, 20, 8] is a straight because the face values of those cards are
+                Seven, Ten, Jack, Eight, and Nine which forms the sequence Seven, Eight,
+                Nine, Ten, Jack. On the other hand neither the list [6, 35, 10, 20, 9]
+                nor the list [5, 35, 10, 20, 8] form straights. The former because it
+                contains two Tens, the latter because there is a hole in it because it
+                doesn't have a Seven. (See <a
+                href="http://en.wikipedia.org/wiki/List_of_poker_hands">Wikipedia</a> for
+                more examples).</p>-->
+    <p>Do not remove your test values from the program so I can see how
+    thoroughly you tested your code. Feel free to adapt one of the test
+    frameworks from the problems above to help you in testing your code.</p>
+  </li>
+  <li><h3>Password checker</h3>
+    <p>Most computer systems require the user to select a password.
+    Unfortunately many users, perhaps most,  choose poor passwords, i.e.
+    passwords that are easily guessed, or that can be looked up in a
+    dictionary. Weak passwords present security problems because they
+    compromise the integrity of the system. To avoid weak passwords many
+    systems now test the password the user types, and decide whether to
+    accept it or not. Here is an (abbreviated) excerpt from a manual
+    describing the process on one actual system (where the name of the
+    password program is <code>passwd</code>). Think of this as the
+    specification for your program and try to implement it as precisely as
+    possible (if you detect ambiguities in it be sure to ask for
+    clarification).</p>
+    <pre><code>When used to change a password, <b>passwd</b> prompts everyone  for
+their  old  password,  if  any.  It then prompts for the new
+password twice.  If the two copies are not identical the
+cycle of prompting for the new password is repeated for at
+most two more times.
+When the two copies are identical a check is made to ensure
+that the new  password meets construction requirements.
+Passwords must be constructed to meet the following require-
+ments:
+*  Each password must have  at  least  six  characters.
+*  Each password must contain at least  one  lower-case
+alphabetic character, one upper-case alphabetic character,
+and at least one numeric or special character.  In this
+case,  "alphabetic"  refers  to  all upper or lower case
+letters. (These requirements ensure they do not use a 
+"word", i.e. a string that could be looked up in a
+dictionary, or their phone/SIN/etc. number -- two common
+choices).
+*  Each password must differ from the user's login name
+and the reverse of that login name.  For this comparison,
+an upper case letter and its corresponding lower case letter
+are equivalent.
+*  New passwords must differ from the old in  at  least
+three  positions.  For this comparison, an upper case
+letter and its corresponding lower  case  letter are
+equivalent.</code>			</pre>
+    <p>Write a program that behaves as specified by this excerpt.</p>
+    <p>Notes:</p>
+    <ul>
+      <li>The real <code>passwd</code> program, after validating the proposed
+        new password, encrypts it and writes it to a file, but we're omitting
+        that final step ... for now!</li>
+      <li>In actual use the program would make a "system call" to get the
+        current user's login name. Since we have not seen how to do this yet,
+        your program will have to read in the login name.</li>
+    </ul>
+    <p>Here are a couple of sample outputs generated by running a solution
+    program:</p>
+    <pre><code>=============================================
+Password Checker
+---------------------------------------------
+Enter the login name: ttopper
+Enter your current password: sp33dKills
+Enter new password: duckie
+Confirm new password: duvkie
+New passwords do not match!
+Try again.
+Enter new password: duckie
+Confirm new password: duckie
+Password must contain at least one upper case letter.
+Password not acceptable.
+Password not changed.
+Done.</code></pre>
+    <pre><code>=============================================
+Password Checker
+---------------------------------------------
+Enter the login name: ttopper
+Enter your current password: sp33dKills
+Enter new password: d1cT10nary 
+Confirm new password: d1cT10nary
+Password changed.
+Done.</code></pre>
+    <p>Not the friendliest exchanges in the world, but hopefully clear
+    enough.</p>
+  </li>
+</ol>
+<h2>Logistics</h2>
+<ul>
+  <li>
+    <p>Use the following naming scheme for your program files: <code>a</code><em>assignment#</em><code>p</code><em>problem#</em><code>v</code><em>version#</em><code>.py</code> . So your first attempt at problem 1 on this assignment will be named <code>a5p1v1.py</code> and your second attempt (should there be one) will
+      be named <code>a5p1v2.py</code> .</p>
+  </li>
+  <li>
+    <p>Submit your assignment by emailing your python programs to me. I advise to submit early and submit often, since I will often review your programs as they are submitted and provide feedback that will let you improve them.</p>
+    <p>&nbsp;</p>
+  </li>
+</ul>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+What can you do with a list?</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="02_SequenceTypes.html" />
+  <link rel="Next" href="04_Strings.html" />
+  
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>What can you do with a list?</h1>
+<p>The full list of list methods is in <a
+href="http://www.python.org/doc/2.2.1/lib/typesseq-mutable.html">Section
+2.2.6.4 of the Python Library Reference</a>. Here's an idea of how you might
+use and combine these methods to carry out common operations.</p>
+<p>Create a list:</p>
+<ul>
+  <li>Using <code>range</code>, e.g. <code>nums = range(10)</code>.</li>
+  <li>By listing the items in the list: <code>mishmash = [14, 'a', 4.19,
+    'Tim', True]</code><br />
+    Note that values of several types can be stored in the same list.</li>
+</ul>
+<p>Access an item from a list:</p>
+<ul>
+  <li><code>mishmash[0]</code> is the first item in the list, i.e.
+    <code>14</code></li>
+  <li><code>mishmash[1]</code> is the second item in the list, i.e.
+    <code>'a'</code></li>
+  <li><code>mishmash[2]</code> is the third item in the list, i.e.
+    <code>4.19</code></li>
+</ul>
+<p>Access a sublist of a list (called a slice in Python):</p>
+<ul>
+  <li><code>mishmash[1:4]</code> is the sublist of items in <code>mishmash</code> from position 1 up
+    to but not including position 4, i.e. <code>['a', 4.19, 'Tim']</code> 
+    <p>Note: that the range is [<em>inclusive</em>:<em>exclusive</em>] thus <code>mishmash[1:1]</code> is []</p>
+    <p>Note: a slice always returns a list, so <code>mishmash[1,2]</code> is
+    <code>['a']</code> not just <code>'a'</code>.</p>
+  </li>
+</ul>
+<p>Adding items to a list:</p>
+<ul>
+  <li><code>mishmash.append(2)</code> appends <code>2</code> to the list,
+    i.e. it adds it to the end of the list so <code>mishmash</code> becomes
+    <code>[1, 'a', 4.19, 'Tim', True, 2]</code></li>
+  <li><code>mishmash.insert(1, 'hi')</code> inserts the string
+    <code>'hi'</code> into the list in position <code>1</code>, i.e. after 14
+    but before <code>'a'</code>.</li>
+  <li><code>mishmash = mishmash + ['bye']</code> appends <code>'bye'</code>
+    to the list. (Note the []s around 'bye').</li>
+</ul>
+<p>Removing items:</p>
+<ul>
+  <li>by position: <code>del( mishmash[2] )</code> deletes the item at
+    position <code>2</code> from the list.</li>
+  <li>by value: <code>mishmash.remove( 'a' )</code> removes the first (and
+    only the first) occurrence of <code>'a'</code> from the list.</li>
+  <li>from the end of the list: <code>mishmash.pop()</code> removes the last
+    item in the list.</li>
+</ul>
+<p>Getting information about a list and its contents:</p>
+<ul>
+  <li><code>in</code> can be used to test and see if an item is in a list,
+    e.g. <code>if 'a' in mishmash:</code>. Note that <code>in</code> has to loop through the list checking to see if each item is <code>'a'</code> to do that so it is a relatively slow operation.</li>
+  <li><code>len( mishmash )</code> returns the length of the list, i.e. the
+    number of items in the list.</li>
+  <li><code>mishmash.index( 'Tim' )</code> returns the position in which the
+    first occurrence of <code>'Tim'</code> can be found.</li>
+  <li><code>mishmash.count( 'Tim' )</code> counts the number of
+    <code>'Tim'</code>s in the list.</li>
+</ul>
+<p>Miscellaneous commands you should try out (because they will probably be
+useful on assignments!):</p>
+<ul>
+  <li><code>mishmash.sort()</code></li>
+  <li><code>mishmash.reverse()</code></li>
+  <li><code>mishmash.extend()</code></li>
+  <li><code>2*mishmash</code></li>
+</ul>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

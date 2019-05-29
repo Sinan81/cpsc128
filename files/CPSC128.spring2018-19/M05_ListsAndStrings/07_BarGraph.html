@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>Bar Graphs</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="06_DiceOdds.html" />
+  <link rel="Next" href="08_PlayingCards.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Bar Graphs</h1>
+<p>The tabular output from our dice rolling code is nice as far as it goes, </p>
+<pre><code>&gt;&gt;&gt; 
+  =====================
+  Outcome | Occurrences
+  --------+------------
+      2   |       3
+      3   |       7
+      4   |       8
+      5   |      10
+      6   |      14
+      7   |      14
+      8   |      11
+      9   |      11
+     10   |       9
+     11   |       6
+     12   |       2
+  ---------------------
+&gt;&gt;&gt;</code> </pre>
+<p>but it would be easier to visualize the relative frequency of the outcomes
+if they were displayed graphically. Producing attractive graphs would require
+us to use a graphics library, but we can produce a useful visualization just
+using text graphics (think of it as back-to-the-70s graphics), and the key
+issues are the same ones that arise when using bitmapped graphics.</p>
+<h2>The Problem</h2>
+<p>What we have is a list of numbers, say [3, 7, 8, 10, 14, 14, 11, 11, 9, 6,
+2] and we would like to draw a bar graph like this,</p>
+<pre>***
+*******
+********
+**********
+**************
+**************
+***********
+***********
+*********
+******
+**</pre>
+<h2>Version 1</h2>
+<p>The pseudocode to do so might look like this,</p>
+<pre><code>for each value in the list
+    draw a bar of value asterisks</code></pre>
+<p>which could be translated into the following Python,</p>
+<pre><code class="python">data = [<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>]
+<span class="keyword">for</span> datum <span class="keyword">in</span> data:
+    <span class="keyword">print</span> datum * <span class="string">'*'</span></code></pre>
+<p>Note:</p>
+<ul>
+  <li>The use of * as a string repetition operator.</li>
+  <li>The difference between the two asterisks in the second line: the first is
+    an operator; the second is a string literal.</li>
+</ul>
+<h2>Version 2</h2>
+<p>The graph doesn't look like much, even for a text graphics chart. Let's
+ dress it up one step at a time. First we'll display the data value in
+front of the bar:</p>
+<pre><code class="python">data = [<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>]
+<span class="keyword">for</span> datum <span class="keyword">in</span> data:
+    <span class="keyword">print</span> datum, datum * <span class="string">'*'</span></code></pre>
+<p>To produce,</p>
+<pre><code>3 ***
+7 *******
+8 ********
+10 **********
+14 **************
+14 **************
+11 ***********
+11 ***********
+9 *********
+6 ******
+2 **</code></pre>
+<h2>Version 3</h2>
+<p>This is a little better, but the bars don't all start in the same place. We
+need to place our data values in fixed length fields. For this data we could do
+this,</p>
+<pre><code class="python">data = [<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>]
+<span class="keyword">for</span> datum <span class="keyword">in</span> data:
+    <span class="keyword">print</span>  "%2d" % datum, datum * <span class="string">'*'</span></code></pre>
+<p>and get this,</p>
+<pre> <code>3 ***
+ 7 *******
+ 8 ********
+10 **********
+14 **************
+14 **************
+11 ***********
+11 ***********
+ 9 *********
+ 6 ******
+ 2 **</code></pre>
+<p>but a width of 2 wouldn't work well for larger values. It would be better to
+find the largest value in the list and then use the length of that value as the
+field width. We can do that using the built-in function <code>max</code> to
+find the field width and then converting that value to a string* and using the
+<code>len</code> function to get the length of the string. We can then use that
+output field width to build an appropriate format string. The resuting code,</p>
+<pre><code class="python">data = [<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>]
+OFW = len(str(max(data))) <span class="comment"># Output Field Width.</span>
+FORMAT = <span class="string">"%"</span> + str(OFW) + <span class="string">"d"</span> <span class="comment"># Format string.</span>
+<span class="keyword">for</span> datum <span class="keyword">in</span> data:
+    <span class="keyword">print</span> FORMAT % datum, datum * <span class="string">'*'</span></code></pre>
+<p>produces this graph,</p>
+<pre><code> 3 ***
+ 7 *******
+ 8 ********
+10 **********
+14 **************
+14 **************
+11 ***********
+11 ***********
+ 9 *********
+ 6 ******
+ 2 **</code></pre>
+<h2>Version 4</h2>
+<p>But now we have added a potential confusion: are those the values of the bars
+or the labels of the data? Let's add data labels, and put the values into
+parentheses so our output will look like this,</p>
+<pre><code> 2s ( 3) ***
+ 3s ( 7) *******
+ 4s ( 8) ********
+ 5s (10) **********
+ 6s (14) **************
+ 7s (14) **************
+ 8s (11) ***********
+ 9s (11) ***********
+10s ( 9) *********
+11s ( 6) ******
+12s ( 2) **</code></pre>
+<p>Here's the Python code to do it,.</p>
+<pre><code class="python">data = [<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>]
+labels = [<span class="string">'2s'</span>, <span class="string">'3s'</span>, <span class="string">'4s'</span>, <span class="string">'5s'</span>, <span class="string">'6s'</span>, <span class="string">'7s'</span>, <span class="string">'8s'</span>,
+          <span class="string">'9s'</span>, <span class="string">'10s'</span>, <span class="string">'11s'</span>, <span class="string">'12s'</span>]
+OFW = len(str(max(data))) <span class="comment"># Output Field Width.</span>
+DFORMAT = <span class="string">"(%"</span> + str(OFW) + <span class="string">"d)"</span> <span class="comment"># Data format string.</span>
+label_lens = map(len, labels) <span class="comment"># List of label lengths.</span>
+LFW = max(label_lens) <span class="comment"># Label Field Width.</span>
+LFORMAT = <span class="string">"%"</span> + str(LFW) + <span class="string">"s"</span> <span class="comment"># Label format string.</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):
+    <span class="keyword">print</span> LFORMAT % labels[i], DFORMAT % data[i], data[i] * <span class="string">'*'</span></code></pre>
+<p>Notes:</p>
+<ul>
+  <li>For more on the <code>map</code> function in line 8 see Pythonic
+  Details.</li>
+  <li>The loop discipline is now index-based because we need to loop through
+    the two lists (data and labels) at the same time picking one item from each
+    list.</li>
+</ul>
+<h2>Reading Code</h2>
+<p>It may surprise you to learn that working programmers spend more time
+reading code than writing it. There's reading their own code of course, but
+they almost always work on large systems made up of code from many programmers,
+and since their code needs to work with the existing code, they need to be able
+to read that existing code. When you work in a production environment you have
+the use of intelligent editors and debuggers that help you trace through code
+to see what it is doing, and we will indeed use IDLE's debugger later. For now
+though we can use the original poor man's debugger: <code>print</code>
+statements. To understand the code above, paste it into a file and then place
+an appropriate <code>print</code> statement after each line so you can see the
+values that are being calculated, e.g.</p>
+<pre><code class="python">data = [<span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>]
+labels = [<span class="string">'2s'</span>, <span class="string">'3s'</span>, <span class="string">'4s'</span>, <span class="string">'5s'</span>, <span class="string">'6s'</span>, <span class="string">'7s'</span>, <span class="string">'8s'</span>,
+          <span class="string">'9s'</span>, <span class="string">'10s'</span>, <span class="string">'11s'</span>, <span class="string">'12s'</span>]
+
+OFW = len(str(max(data))) <span class="comment"># Output Field Width.</span>
+<span class="keyword">print</span> <span class="string">'OFW = '</span>, OFW
+
+DFORMAT = <span class="string">"(%"</span> + str(OFW) + <span class="string">"d)"</span> <span class="comment"># Data format string.</span>
+<span class="keyword">print</span> <span class="string">'DFORMAT = '</span>, DFORMAT
+
+label_lens = map(len, labels) <span class="comment"># List of label lengths.</span>
+<span class="keyword">print</span> <span class="string">'label_lens = '</span>, label_lens
+
+LFW = max(label_lens) <span class="comment"># Label Field Width.</span>
+<span class="keyword">print</span> <span class="string">'LFW = '</span>, LFW
+
+LFORMAT = <span class="string">"%"</span> + str(LFW) + <span class="string">"s"</span> <span class="comment"># Label format string.</span>
+<span class="keyword">print</span> <span class="string">'LFORMAT = '</span>, LFORMAT
+
+<span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):
+    <span class="keyword">print</span> LFORMAT % labels[i], DFORMAT % data[i], data[i] * <span class="string">'*'</span></code></pre>
+<p>This will produce the output,</p>
+<pre><code>OFW =  2
+DFORMAT =  (%2d)
+label_lens =  [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3]
+LFW =  3
+LFORMAT =  %3s
+ 2s ( 3) ***
+ 3s ( 7) *******
+ 4s ( 8) ********
+ 5s (10) **********
+ 6s (14) **************
+ 7s (14) **************
+ 8s (11) ***********
+ 9s (11) ***********
+10s ( 9) *********
+11s ( 6) ******
+12s ( 2) **</code></pre>
+<p>enabling you to see what the calculated values are.</p>
+<h2>Version 5</h2>
+<p>There is one last refinement worth working on. We were fortunate that all
+the values in our data set were relatively small, because if any of them had
+been very large the bars would have wrapped across multiple lines on our
+screens. The final refinement is to scale the data values if they are larger
+than the screen is wide so that there will be no wrapped lines. Here's the code
+to do that. Take the time to understand what it is doing (add in
+<code>print</code> statements if necessary!).</p>
+<pre><code class="python">SCREEN_WIDTH = <span class="number">60</span>
+data = [<span class="number">300</span>, <span class="number">700</span>, <span class="number">800</span>, <span class="number">1000</span>, <span class="number">1400</span>, <span class="number">1400</span>, <span class="number">1100</span>, <span class="number">1100</span>, <span class="number">900</span>, <span class="number">600</span>, <span class="number">200</span>]
+labels = [<span class="string">'2s'</span>, <span class="string">'3s'</span>, <span class="string">'4s'</span>, <span class="string">'5s'</span>, <span class="string">'6s'</span>, <span class="string">'7s'</span>, <span class="string">'8s'</span>,
+          <span class="string">'9s'</span>, <span class="string">'10s'</span>, <span class="string">'11s'</span>, <span class="string">'12s'</span>]
+
+OFW = len(str(max(data))) <span class="comment"># Output Field Width.</span>
+DFORMAT = <span class="string">"(%"</span> + str(OFW) + <span class="string">"d)"</span> <span class="comment"># Data format string.</span>
+
+label_lens = map(len, labels) <span class="comment"># List of label lengths.</span>
+LFW = max(label_lens) <span class="comment"># Label Field Width.</span>
+LFORMAT = <span class="string">"%"</span> + str(LFW) + <span class="string">"s"</span> <span class="comment"># Label format string.</span>
+
+MAX_BAR = SCREEN_WIDTH - (OFW+2) - LFW - <span class="number">2</span>
+
+max_datum = max(data)
+<span class="keyword">if</span> max_datum &gt; MAX_BAR:
+    scaled_data = []
+    <span class="keyword">for</span> datum <span class="keyword">in</span> data:
+        scaled_data.append(datum * MAX_BAR / max_datum)
+
+<span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):
+    <span class="keyword">print</span> LFORMAT % labels[i], DFORMAT % data[i], scaled_data[i] * <span class="string">'*'</span></code></pre>
+<p>Notes:</p>
+<ul>
+  <li>Note the new <code>SCREEN_WIDTH</code> constant at the top. This is the
+    total width available for the graphic display.</li>
+  <li><code>MAX_BAR</code> is the width of the screen leftover after accounting
+    for the space used by the labels and data values.</li>
+  <li>2 is added to <code>OFW</code> in the calculation of <code>MAX_BAR</code>
+    to account for the ()s around the data value.</li>
+  <li>The final 2 is subtracted to account for the spaces Python automatically
+    inserts into the output after each argument.</li>
+  <li><code>max_datum</code> is used to avoid multiple calls to the
+    <code>max</code> function each of which would have to traverse the list
+    looking for the maximum value.</li>
+  <li><code>scaled_data</code> contains the data scaled into the range
+    <code>0</code><code>...</code><code>MAX_BAR</code></li>
+</ul>
+<p>The corresponding output is,</p>
+<pre><code> 2s ( 300) **********
+ 3s ( 700) *************************
+ 4s ( 800) *****************************
+ 5s (1000) ************************************
+ 6s (1400) ***************************************************
+ 7s (1400) ***************************************************
+ 8s (1100) ****************************************
+ 9s (1100) ****************************************
+10s ( 900) ********************************
+11s ( 600) *********************
+12s ( 200) *******</code></pre>
+<h2>Summary</h2>
+<p>While our final output isn't fancy it is a helpful visualization of the
+original tabular data and it allowed us to experience several common
+programming issues.</p>
+<p>More important is the approach demonstrated through the 5 versions of this
+program: The method of <em>successive refinement</em>. It is much easier to start with a
+simple program that works and gradually refine it, than to try and design the
+ideal system at the outset. Later in this course, and even more so in its
+successor we will discuss when it is appropriate to use big up front design,
+and when it is appropriate to use agile design**.</p>
+<hr />
+<p>* See Type Conversions in Pythonic Details for more on this.</p>
+<p>** To read more about this Google "agile software development". </p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

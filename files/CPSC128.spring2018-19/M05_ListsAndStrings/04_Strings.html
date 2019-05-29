@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+What can you do with a string?</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="03_Lists.html" />
+  <link rel="Next" href="05_CDShuffle.html" />
+  
+  <link href="../lib/CPSC128F13.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>What can you do with a string?</h1>
+<p>The full list of string methods is in <a
+href="http://www.python.org/doc/2.2.1/lib/string-methods.html">Section
+2.2.6.4 of the Python Library Reference</a>. Here's an idea of how you might
+use and combine these methods to carry out common operations.</p>
+<p>Create a string:</p>
+<ul>
+  <li>Read it in using <code>raw_input</code>, e.g. <code>name =
+    raw_input('Enter your name: ')</code>.</li>
+  <li>Assign it a literal string value, e.g. <code>name = "Tim
+    Topper"</code></li>
+</ul>
+<p>Access a character from a string:</p>
+<ul>
+  <li><code>name[0]</code> is the first character in the string, i.e.
+    <code>'T'</code></li>
+  <li><code>name[1]</code> is the second character in the string, i.e.
+    <code>'i'</code></li>
+  <li><code>name[2]</code> is the third character in the list, i.e.
+    <code>'m'</code></li>
+</ul>
+<p>(Note that each individual character in a string is itself a string &mdash;
+albeit of length 1.)</p>
+<p>Access a substring of a string (called a <em>slice</em> in Python):</p>
+<ul>
+  <li><code>name[1:5]</code> is the substring of the string from position 1 up
+    to, but not including, character 5, i.e. <code>'im T'</code> 
+    <p>Note: that the range is [<em>inclusive</em>:<em>exclusive</em>] thus <code>name[1:1]</code> is '', the empty string.</p>
+  </li>
+</ul>
+<p>Adding to a string. Because strings are immutable you cannot change the
+contents of one, but you can create a new one and assign it to the same name
+(which has the effect of replacing the old string object with a new one).</p>
+<ul>
+  <li><code>name = name + ' Smith'</code> adds <code>' Smith'</code> to the
+    end of the string so <code>'Tim Topper'</code> becomes <code>'Tim Topper
+    Smith'</code></li>
+  <li>You can insert into a string by careful use of slices, e.g. <code>name
+    = name[0:5] + 'Nicholas' + name[5:]</code> changes <code>'Tim
+    Topper'</code> to <code>'Tim Nicholas Topper'</code>.</li>
+</ul>
+<p>Getting information about a string and its contents:</p>
+<ul>
+  <li><code>in</code> can be used to test and see if a substring is contained
+    in a longer string, e.g. <code>if 'a' in name:</code></li>
+  <li><code>len( name )</code> returns the length of the string
+    <code>name</code>, i.e. the number of characters in it.</li>
+  <li><code>name.find( 'ola' )</code> returns the position in which the first
+    occurrence of <code>'ola'</code> begins, and -1 if it is not found (see
+    also <code>rfind</code> which searches from the back of the string
+    towards the front).</li>
+</ul>
+<p>Miscellaneous commands you should try out (because they will probably be
+useful on assignments!):</p>
+<ul>
+  <li><code>name.count('p')</code></li>
+  <li><code>name[2].isalpha()</code></li>
+  <li><code>':'.join(['abc','def','ghi'])</code></li>
+  <li><code>"867-395-0892".split('-')</code></li>
+  <li><code>" Tim Topper ".strip()</code></li>
+  <li><code>40*"+"</code></li>
+</ul>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>
