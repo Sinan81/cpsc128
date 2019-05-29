@@ -273,9 +273,9 @@ print("Thanks for playing")
 | `s.find('Tea')`					| returns position where first occurance of 'Tea' begins |
 | `s.count('o')`					| counts number of 'o's in the string |
 | `2*s`								| concatenate `s` twice. |  
-| `if 'l' in s:`						| test if a substring is contained in a longer string |
-| `s[2].isalpha()`					| check if `s[0]` is alphabetical, i.e A-Z	|
-| `'867-395-0892'.split('-')`			| split the string into words assuming '-' is the seperator (delimeter) |  
+| `if 'l' in s:`					| test if a substring is contained in a longer string |
+| `s[2].isalpha()`					| check if `s[2]` is alphabetical, i.e A-Z	|
+| `'867-395-0892'.split('-')`		| split the string into words assuming '-' is the seperator (delimeter) |  
 
 - basic plotting
 
