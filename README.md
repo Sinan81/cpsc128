@@ -25,6 +25,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 [https://github.com/Sinan81/cpsc128/issues/4]
 
 * May 29, Wed, More lecture notes are posted
+* May 25, Sat, Assignment #3 is posted.
 * May 24, Fri, Slides for May 21 and 23 classes are posted.
 * May 23, Thu, Assignment1's are marked.
 * May 18, Sat, python cheatsheet is improved (see below)
@@ -241,6 +242,7 @@ print("Thanks for playing")
 | --------------------------------- | ------------- |
 | `mylist = list(range(10))`		| create list	|
 | `mylist = [19, 'a', 3.14, 'Tea']`	| create list	|
+| `19 in mylist`					| check if an item exists in mylist using **in** construct |
 | `mylist[0]`						| get 0th element |
 | `mylist[1]`						| get 1st element |
 | `mylist[-1]`						| get the last element |
