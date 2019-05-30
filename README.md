@@ -34,9 +34,9 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 ## Lecture Notes (by Tim Topper)
 In this course, to a significant extent I will be following previous instructor's (Tim Topper) contents. Accordingly, you might find his lecture notes useful:
 
-[Lecture Notes](files/CPSC128.spring2018-19/)
+[Lecture Notes](files/lecture_notes_cpsc128/)
 
-After clonin this repository to your computer open the following file on an internet browser: `files/CPSC128.spring2018-19/index.html`
+After cloning this repository to your computer open the following file on an internet browser: `files/CPSC128.spring2018-19/index.html`
 
 ## Assignments
 
