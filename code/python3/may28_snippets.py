@@ -156,13 +156,8 @@ print(s_new)
 
 ###### modularization
 
-#is_even
 
-if n%2 == 0:
-    # It's even
-else:
-    # It's odd
-
+# is_even complete example
 import random
 
 def is_even(n):
@@ -178,9 +173,6 @@ if is_even(num):
 else:
     print("Bad news, your magic number is odd.")
     
-
-def dice_roll():
-    return random.randint(1,6)
 
 # Example dice_roll v1
 import random
@@ -210,7 +202,7 @@ print('Your results are:')
 print('6-sided die:', dice_roll())
 print('24-sided die:', dice_roll(24))
 
-# functions for playing cards
+### functions for playing cards
 SUITS = ('Clubs', 'Diamonds', 'Hearts', 'Spades')
 FACE_VALUES = ('Ace', 'Two', 'Three', 'Four', 'Five', 'Six',
                'Seven', 'Eight', 'Nine', 'Ten', 'Jack',
@@ -225,7 +217,7 @@ def face_value(cardnum):
 card = 15
 print("Card", card, "is the", face_value(card), "of", suit(card))
 
-# playing cards with label function
+### playing cards with label function
 SUITS = ('Clubs', 'Diamonds', 'Hearts', 'Spades')
 FACE_VALUES = ('Ace', 'Two', 'Three', 'Four', 'Five', 'Six',
                'Seven', 'Eight', 'Nine', 'Ten', 'Jack',
@@ -309,27 +301,37 @@ def increment(n):
     n = n + 1
 
 num = 48
-increment( num )
+increment(num)
 print(num)
 
-    def increment(seq):
-        seq.append(42)
-    
-    lst = [48]
-    increment( lst )
-    print(lst)
+def increment(seq):
+    seq.append(42)
 
-    l = [ 'Tim' ]
-    n = l
-    l.append( 'Joyce' )
-    print(l)
-    print(n)
-    
-    a = 'Tim'
-    b = 'Tom'
-    lst = [b, a]
-    a = 'Matt'
-    lst[1] = lst[0]
-    print(lst)
+lst = [48]
+increment(lst)
+print(lst)
 
+l = [ 'Tim' ]
+n = l
+l.append( 'Joyce' )
+print(l)
+print(n)
 
+a = 'Tim'
+b = 'Tom'
+lst = [b, a]
+a = 'Matt'
+lst[1] = lst[0]
+print(lst)
+
+# deep copy
+import copy
+
+g = [ [1,2], 3]
+
+dc = copy.deepcopy(g)
+
+dc[0][0] = 'x'
+
+print(g)
+print(dc)
