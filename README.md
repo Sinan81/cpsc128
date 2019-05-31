@@ -36,7 +36,7 @@ In this course, to a significant extent I will be following previous instructor'
 
 [Lecture Notes](files/lecture_notes_cpsc128/)
 
-After cloning this repository to your computer open the following file on an internet browser: `files/CPSC128.spring2018-19/index.html`
+After cloning this repository to your computer open the following file on an internet browser: `files/lecture_notes_cpsc128/index.html`
 
 ## Assignments
 
