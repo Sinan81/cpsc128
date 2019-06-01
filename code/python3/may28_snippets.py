@@ -142,20 +142,20 @@ if s == s_reversed:
 else:
     print("It is NOT a palindrome.")
 
-## pallindrome: preprocessing for phrases
-s = "A man, a plan, a canal, Panama."
-print(s, "becomes...",end='')
-s_new = ''
-for c in s:
-    if c.isalpha():
-        if c.isupper():
-            s_new = s_new + c.lower()
-        else:
-            s_new = s_new + c
-print(s_new)
+    ## pallindrome: preprocessing for phrases
+    s = "A man, a plan, a canal, Panama."
+    print(s)
+    s_new = ''
+    for c in s:
+        if c.isalpha():
+            if c.isupper():
+                s_new = s_new + c.lower()
+            else:
+                s_new = s_new + c
+    print("becomes")
+    print(s_new)
 
 ###### modularization
-
 
 # is_even complete example
 import random
