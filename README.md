@@ -241,7 +241,7 @@ print("Thanks for playing")
 ```
 - working with lists
 
-See `help(list)` of `dir(list)` for all list atrributes and methods.
+See `help(list)` or `dir(list)` for all list atrributes and methods.
 
 ```python
 #create list
@@ -275,7 +275,7 @@ mylist.extend()                 #extend list by appending items from an **iterab
 
 - working with strings
 
-See `help(str)` of `dir(str)` for all str atrributes and methods.
+See `help(str)` or `dir(str)` for all str atrributes and methods.
 
 ```python
 
