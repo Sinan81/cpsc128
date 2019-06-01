@@ -275,22 +275,22 @@ mylist.extend()                 #extend list by appending items from an **iterab
 - working with strings
 
 ```python
-s = 'Hello World'				#create string	|
-s = ''.join(alist)				#create string from a list	|
-s[0]							#get 0th element |
-s[1]							#get 1st element |
-s[-1]							#get the last element |
-s[1:4]							#get a slice of string (characters 1,2, and 3)|
-s = s + 'a word'				#concatenate |
-len(s)							#returns the length of string|
-s.find('Tea')					#returns position where first occurance of 'Tea' begins |
-s.count('o')					#counts number of 'o's in the string |
-2*s								#concatenate `s` twice. |  
-if 'l' in s:					#test if a substring is contained in a longer string |
-s[2].isalpha()					#check if `s[2]` is alphabetical, i.e A-Z	|
-'867-395-0892'.split('-')		#split the string into words assuming '-' is the seperator (delimeter) |  
-s.lower()						#convert to lowercase |
-s[1].isupper()					#check if `s[1]` is uppercase | 
+s = 'Hello World'				#create string
+s = ''.join(alist)				#create string from a list
+s[0]							#get 0th element
+s[1]							#get 1st element
+s[-1]							#get the last element
+s[1:4]							#get a slice of string (characters 1,2, and 3)
+s = s + 'a word'				#concatenate
+len(s)							#returns the length of string
+s.find('Tea')					#returns position where first occurance of 'Tea' begins
+s.count('o')					#counts number of 'o's in the string
+2*s								#concatenate s twice. 
+if 'l' in s:					#test if a substring is contained in a longer string
+s[2].isalpha()					#check if s[2] is alphabetical, i.e A-Z
+'867-395-0892'.split('-')		#split the string into words assuming '-' is the seperator (delimeter)  
+s.lower()						#convert to lowercase
+s[1].isupper()					#check if s[1] is uppercase
 ```
 
 - basic plotting
