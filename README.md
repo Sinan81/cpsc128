@@ -251,6 +251,10 @@ mylist = [19, 'a', 3.14, 'Tea']
 #check if an item exists in mylist using **in** construct 
 19 in mylist                   
 
+#iterate over list items
+for item in mylist:
+	print(item)
+
 #access individual items in a list 
 mylist[0]                       #0th item
 mylist[1]                       #1st item                        
@@ -281,6 +285,10 @@ See `help(str)` or `dir(str)` for all str atrributes and methods.
 
 s = 'Hello World'               #create string
 s = ''.join(alist)              #create string from a list
+
+#iterate over characters in a string
+for c in s:
+	print(c)
 
 # access
 s[0]                            #get 0th element
