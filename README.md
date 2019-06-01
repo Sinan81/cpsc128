@@ -247,7 +247,7 @@ mylist = list(range(10))
 mylist = [19, 'a', 3.14, 'Tea']
 
 #check if an item exists in mylist using **in** construct 
-if 19 in mylist                   
+19 in mylist                   
 
 #access individual items in a list 
 mylist[0]                       #0th item
@@ -292,7 +292,7 @@ s = s + 'a word'                #concatenate
 len(s)                          #returns the length of string
 s.find('Tea')                   #returns position where first occurance of 'Tea' begins
 s.count('o')                    #counts number of 'o's in the string
-if 'l' in s:                    #test if a substring is contained in a longer string
+'l' in s                    #test if a substring is contained in a longer string
 
 # misc. str methods
 s[2].isalpha()                  #check if s[2] is alphabetical, i.e A-Z
