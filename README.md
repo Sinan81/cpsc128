@@ -252,7 +252,7 @@ mylist = [19, 'a', 3.14, 'Tea']
 #access individual items in a list 
 mylist[0]                       #0th item
 mylist[1]                       #1st item                        
-mylist[-1]						#the last item
+mylist[-1]                      #the last item
 mylist[1:4]                     #get a slice of list (items 1,2, and 3) 
 
 len(mylist)                     #number of items in list 
@@ -292,7 +292,7 @@ s = s + 'a word'                #concatenate
 len(s)                          #returns the length of string
 s.find('Tea')                   #returns position where first occurance of 'Tea' begins
 s.count('o')                    #counts number of 'o's in the string
-'l' in s                    #test if a substring is contained in a longer string
+'l' in s                        #test if a substring is contained in a longer string
 
 # misc. str methods
 s[2].isalpha()                  #check if s[2] is alphabetical, i.e A-Z
