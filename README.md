@@ -253,7 +253,7 @@ mylist = [19, 'a', 3.14, 'Tea']
 
 #iterate over list items
 for item in mylist:
-	print(item)
+    print(item)
 
 #access individual items in a list 
 mylist[0]                       #0th item
@@ -288,7 +288,7 @@ s = ''.join(alist)              #create string from a list
 
 #iterate over characters in a string
 for c in s:
-	print(c)
+    print(c)
 
 # access
 s[0]                            #get 0th element
