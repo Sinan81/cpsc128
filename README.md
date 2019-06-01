@@ -247,46 +247,54 @@ mylist = list(range(10))
 mylist = [19, 'a', 3.14, 'Tea']
 
 #check if an item exists in mylist using **in** construct 
-19 in mylist                   
+if 19 in mylist                   
 
 #access individual items in a list 
-mylist[0]                       
-mylist[1]                        
-mylist[-1]	#the last element
+mylist[0]                       #0th item
+mylist[1]                       #1st item                        
+mylist[-1]						#the last item
+mylist[1:4]                     #get a slice of list (items 1,2, and 3) 
 
-#get a slice of list (items 1,2, and 3) 
-mylist[1:4]
+len(mylist)                     #number of items in list 
+del(mylist[2])                  #delete item by index 
+mylist = mylist + ['bye']       #concatenate two lists 
+2*mylist                        #concatenate mylist twice.   
 
 mylist.append(2)                #append item to the list 
 mylist.insert(1,'hi')           #insert 'hi' before index 1  
-mylist = mylist + ['bye']       #concatenate two lists 
-del(mylist[2])                  #delete item by index 
 mylist.remove('a')              #delete item by value 
 mylist.pop()                    #delete the last item in the list 
-len(mylist)                     #number of items in list 
 mylist.index('Tea')             #returns position of item 'Tea' 
 mylist.count('bye')             #counts number of 'bye's in the list 
 mylist.sort()                   #sort the list 
 mylist.reverse()                #reverse the order of the list 
 mylist.extend()                 #extend list by appending items from an **iterable** 
-2*mylist                        #concatenate mylist twice.   
 ```
 
 - working with strings
 
 ```python
+
 s = 'Hello World'               #create string
 s = ''.join(alist)              #create string from a list
+
+# access
 s[0]                            #get 0th element
 s[1]                            #get 1st element
 s[-1]                           #get the last element
 s[1:4]                          #get a slice of string (characters 1,2, and 3)
+
+# add
 s = s + 'a word'                #concatenate
+2*s                             #concatenate s twice. 
+
+# info about a string
 len(s)                          #returns the length of string
 s.find('Tea')                   #returns position where first occurance of 'Tea' begins
 s.count('o')                    #counts number of 'o's in the string
-2*s                             #concatenate s twice. 
 if 'l' in s:                    #test if a substring is contained in a longer string
+
+# misc. str methods
 s[2].isalpha()                  #check if s[2] is alphabetical, i.e A-Z
 '867-395-0892'.split('-')       #split the string into words assuming '-' is the seperator (delimeter)  
 s.lower()                       #convert to lowercase
