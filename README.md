@@ -241,6 +241,8 @@ print("Thanks for playing")
 ```
 - working with lists
 
+See `help(list)` of `dir(list)` for all list atrributes and methods.
+
 ```python
 #create list
 mylist = list(range(10))               
@@ -268,10 +270,12 @@ mylist.index('Tea')             #returns position of item 'Tea'
 mylist.count('bye')             #counts number of 'bye's in the list 
 mylist.sort()                   #sort the list 
 mylist.reverse()                #reverse the order of the list 
-mylist.extend()                 #extend list by appending items from an **iterable** 
+mylist.extend()                 #extend list by appending items from an **iterable**
 ```
 
 - working with strings
+
+See `help(str)` of `dir(str)` for all str atrributes and methods.
 
 ```python
 
