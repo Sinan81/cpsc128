@@ -79,7 +79,7 @@ You might want to check out the following online resources:
 ## Slides
 |	Tues	 | Thurs |
 |--------------------------------------- | --------------------------------------- |
-| | [May  2](files/cpsc128_slides_may2.pdf)  | 
+|                                        | [May  2](files/cpsc128_slides_may2.pdf)  | 
 | [May  7](files/cpsc128_slides_may7.pdf) | [May  9](files/cpsc128_slides_may9.pdf) |
 | [May 14](files/cpsc128_slides_may14.pdf) | [May 16](files/cpsc128_slides_may16.pdf) |
 | [May 21](files/cpsc128_slides_may21.pdf) | [May 23](files/cpsc128_slides_may23.pdf) |
@@ -303,6 +303,20 @@ s[2].isalpha()                  #check if s[2] is alphabetical, i.e A-Z
 '867-395-0892'.split('-')       #split the string into words assuming '-' is the seperator (delimeter)  
 s.lower()                       #convert to lowercase
 s[1].isupper()                  #check if s[1] is uppercase
+```
+- working with dictionaries
+
+```python
+# working with dictionary type
+len(d)      # returns number of items in d
+d.keys()    # returns a view of keys in d
+d.values()  # returns a view of values in d
+k in d      # returns True if k in d 
+d[k]        # returns value associated with key k   
+d[k] = v    # associates value v with key k
+del d[k]    # removes entry with key k from d
+d.pop(k)    # remove entry with key k but get value
+for k in d: # iterate over keys in d
 ```
 
 - basic plotting
