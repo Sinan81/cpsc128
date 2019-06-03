@@ -231,6 +231,57 @@ while again == "y" or again == "Y" or again == "yes" or again == "Yes":
     again = input( "Play again (y/n)? " )
 print("Thanks for playing")
 ```
+- modularity: functions & modules
+
+```python
+#define a function
+
+def is_even(x):
+	if x%2 == 0:
+		return True
+	else:
+		return False
+
+# a function can be in a return statement
+def is_odd(x):
+	return not is_even(x)
+```
+
+A module is a python program. Make sure to put extra stuff such as print statements 
+after `if __name__ ...` section so that print statments aren't spamming 
+the `stdout` or we're not wasting computational time on running extra stuff when the 
+module is imported by a python program.  
+
+A module is documented using docstrings which are accessed via `help()`. 
+
+```python
+# numbers.py
+'''This module includes numbers related methods, attributes, etc.
+Just a simple example of a module
+'''
+
+def is_even(x):
+	'''Check if a given number is even.
+	Returns a Boolean value.'''
+	return x%2 == 0
+
+def is_odd(x):
+	'''Check if a given number is odd.
+	Returns a Boolean value.'''
+	return not is_even(x)
+
+# extra stuff, won't run if imported by another program
+if __name__ == '__main__':
+	x = 13
+	print( is_even(x), is_odd(x))
+```
+Accessing help for module and functions:
+```python
+help(numbers)
+
+help(numbers.is_even)
+```
+
 - working with lists
 
 See `help(list)` or `dir(list)` for all list atrributes and methods.
