@@ -237,14 +237,14 @@ print("Thanks for playing")
 #define a function
 
 def is_even(x):
-	if x%2 == 0:
-		return True
-	else:
-		return False
+    if x%2 == 0:
+        return True
+    else:
+        return False
 
 # a function can be in a return statement
 def is_odd(x):
-	return not is_even(x)
+    return not is_even(x)
 ```
 
 A module is a python program. Make sure to put extra stuff such as print statements 
@@ -261,19 +261,19 @@ Just a simple example of a module
 '''
 
 def is_even(x):
-	'''Check if a given number is even.
-	Returns a Boolean value.'''
-	return x%2 == 0
+    '''Check if a given number is even.
+    Returns a Boolean value.'''
+    return x%2 == 0
 
 def is_odd(x):
-	'''Check if a given number is odd.
-	Returns a Boolean value.'''
-	return not is_even(x)
+    '''Check if a given number is odd.
+    Returns a Boolean value.'''
+    return not is_even(x)
 
 # extra stuff, won't run if imported by another program
 if __name__ == '__main__':
-	x = 13
-	print( is_even(x), is_odd(x))
+    x = 13
+    print( is_even(x), is_odd(x))
 ```
 Accessing help for module and functions:
 ```python
