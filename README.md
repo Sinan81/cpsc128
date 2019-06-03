@@ -255,7 +255,7 @@ module is imported by a python program.
 A module is documented using docstrings which are accessed via `help()`. 
 
 ```python
-# numbers.py
+# mynumbers.py
 '''This module includes numbers related methods, attributes, etc.
 Just a simple example of a module
 '''
@@ -277,9 +277,8 @@ if __name__ == '__main__':
 ```
 Accessing help for module and functions:
 ```python
-help(numbers)
-
-help(numbers.is_even)
+help(mynumbers)
+help(mynumbers.is_even)
 ```
 
 - working with lists
