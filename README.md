@@ -237,36 +237,36 @@ See `help(list)` or `dir(list)` for all list atrributes and methods.
 
 ```python
 #create list
-mylist = list(range(10))               
-mylist = [19, 'a', 3.14, 'Tea']
+l = list(range(10))               
+l = [19, 'a', 3.14, 'Tea']
 
-#check if an item exists in mylist using **in** construct 
-19 in mylist                   
+#check if an item exists in l using **in** construct 
+19 in l                   
 
 #iterate over list items
-for item in mylist:
+for item in l:
     print(item)
 
 #access individual items in a list 
-mylist[0]                       #0th item
-mylist[1]                       #1st item                        
-mylist[-1]                      #the last item
-mylist[1:4]                     #get a slice of list (items 1,2, and 3) 
+l[0]                       #0th item
+l[1]                       #1st item                        
+l[-1]                      #the last item
+l[1:4]                     #get a slice of list (items 1,2, and 3) 
 
-len(mylist)                     #number of items in list 
-del(mylist[2])                  #delete item by index 
-mylist = mylist + ['bye']       #concatenate two lists 
-2*mylist                        #concatenate mylist twice.   
+len(l)                     #number of items in list 
+del(l[2])                  #delete item by index 
+l = l + ['bye']       #concatenate two lists 
+2*l                        #concatenate l twice.   
 
-mylist.append(2)                #append item to the list 
-mylist.insert(1,'hi')           #insert 'hi' before index 1  
-mylist.remove('a')              #delete item by value 
-mylist.pop()                    #delete the last item in the list 
-mylist.index('Tea')             #returns position of item 'Tea' 
-mylist.count('bye')             #counts number of 'bye's in the list 
-mylist.sort()                   #sort the list 
-mylist.reverse()                #reverse the order of the list 
-mylist.extend()                 #extend list by appending items from an **iterable**
+l.append(2)                #append item to the list 
+l.insert(1,'hi')           #insert 'hi' before index 1  
+l.remove('a')              #delete item by value 
+l.pop()                    #delete the last item in the list 
+l.index('Tea')             #returns position of item 'Tea' 
+l.count('bye')             #counts number of 'bye's in the list 
+l.sort()                   #sort the list 
+l.reverse()                #reverse the order of the list 
+l.extend()                 #extend list by appending items from an **iterable**
 ```
 
 - working with strings
