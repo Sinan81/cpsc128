@@ -77,24 +77,13 @@ You might want to check out the following online resources:
 * [Hand-On Python: A Tutorial Introduction for Beginners](http://anh.cs.luc.edu//python/hands-on/handsonHtml/handson.html)
 
 ## Slides
-
-[May  2](files/cpsc128_slides_may2.pdf)
-
-[May  7](files/cpsc128_slides_may7.pdf)
-
-[May  9](files/cpsc128_slides_may9.pdf)
-
-[May 14](files/cpsc128_slides_may14.pdf)
-
-[May 16](files/cpsc128_slides_may16.pdf)
-
-[May 21](files/cpsc128_slides_may21.pdf)
-
-[May 23](files/cpsc128_slides_may23.pdf)
-
-[May 28](files/cpsc128_slides_may28.pdf)
-
-[May 30](files/cpsc128_slides_may30.pdf)
+|	Tues	 | Thurs |
+|--------------------------------------- | --------------------------------------- |
+| | [May  2](files/cpsc128_slides_may2.pdf)  | 
+| [May  7](files/cpsc128_slides_may7.pdf) | [May  9](files/cpsc128_slides_may9.pdf) |
+| [May 14](files/cpsc128_slides_may14.pdf) | [May 16](files/cpsc128_slides_may16.pdf) |
+| [May 21](files/cpsc128_slides_may21.pdf) | [May 23](files/cpsc128_slides_may23.pdf) |
+| [May 28](files/cpsc128_slides_may28.pdf) | [May 30](files/cpsc128_slides_may30.pdf) |
 
 ## git cheatsheet
 
