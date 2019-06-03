@@ -24,6 +24,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* Jun 02, Sat, May 30 class slides posted
 * Jun 01, Sat, May 28 class slides posted
 * May 29, Wed, More lecture notes are posted
 * May 25, Sat, Assignment #3 is posted.
@@ -92,6 +93,8 @@ You might want to check out the following online resources:
 [May 23](files/cpsc128_slides_may23.pdf)
 
 [May 28](files/cpsc128_slides_may28.pdf)
+
+[May 30](files/cpsc128_slides_may30.pdf)
 
 ## git cheatsheet
 
