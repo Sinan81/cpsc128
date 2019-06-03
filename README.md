@@ -24,6 +24,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* Jun 03, Mon, Assignment #4 is posted.
 * Jun 02, Sat, May 30 class slides posted
 * Jun 01, Sat, May 28 class slides posted
 * May 29, Wed, More lecture notes are posted
@@ -47,6 +48,8 @@ After cloning this repository to your computer open the following file on an int
 [Assignment 2](assignment2.ipynb) Due May 24, Friday
 
 [Assignment 3](assignment3.md) Due Jun 3rd, Monday
+
+[Assignment 4](assignment4.md) Due Jun 10, Monday
 
 ## Outline
 
