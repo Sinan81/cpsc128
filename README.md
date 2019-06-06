@@ -13,6 +13,7 @@ See the syllabus: [CPSC 128 Spring 2018-19 Syllabus](files/CPSC_128_outline_2019
 * [Outline](#outline)
 * [git cheats](#git-cheatsheet)
 * [python cheats](#python-cheatsheet)
+* [CPSC 128 Python Style Guidelines](#cpsc-128-python-style-guidelines)
 * [computing setup](#computing-setup)
 * [github markdown](#github-markdown)
 * [vim cheats](#vim-cheats)
@@ -456,7 +457,7 @@ Out[37]: [0, 1, 4, 9, 16]
 
 ```
 
-##CPSC 128 Python Style Guidelines
+## CPSC 128 Python Style Guidelines
 
 These are extracted from the [official Python guidelines](https://www.python.org/dev/peps/pep-0008/) , so you will not have to wade through too many language features you won't recognize.
 
