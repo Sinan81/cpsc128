@@ -1,6 +1,6 @@
 # Assignment-4
 
-Please see the section on [Python style guidelines](README#cpsc-128-python-style-guidelines) on README page before submitting this assignment.
+Please see [Python style guidelines](README.md#cpsc-128-python-style-guidelines) on README page before submitting this assignment.
 Also remember to use `return` statements to get an output from a function properly. 
 Optional `print` statements and optional interactive parts should be put 
 under `if __name__ == '__main__':` section in a given script/module.
