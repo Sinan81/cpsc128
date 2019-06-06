@@ -84,10 +84,10 @@ You might want to check out the following online resources:
 ## Slides
 |	Tues	 | Thurs |
 |--------------------------------------- | --------------------------------------- |
-|                                        | [May  2](files/cpsc128_slides_may2.pdf)  | 
-| [May  7](files/cpsc128_slides_may7.pdf) | [May  9](files/cpsc128_slides_may9.pdf) |
-| [May 14](files/cpsc128_slides_may14.pdf) | [May 16](files/cpsc128_slides_may16.pdf) |
-| [May 21](files/cpsc128_slides_may21.pdf) | [May 23](files/cpsc128_slides_may23.pdf) |
+|                                        | [May  2 Computing Setup & Intro](files/cpsc128_slides_may2.pdf)  | 
+| [May  7 Intro & SIPO ](files/cpsc128_slides_may7.pdf) | [May  9 SIPO](files/cpsc128_slides_may9.pdf) |
+| [May 14 Selection with If](files/cpsc128_slides_may14.pdf) | [May 16 Repetition](files/cpsc128_slides_may16.pdf) |
+| [May 21 for loop & Lists](files/cpsc128_slides_may21.pdf) | [May 23 Lists](files/cpsc128_slides_may23.pdf) |
 | [May 28 Lists & Strings](files/cpsc128_slides_may28.pdf) | [May 30 Functions, Modules](files/cpsc128_slides_may30.pdf) |
 | [Jun 04 Dictionaries](files/cpsc128_slides_may28.pdf) |  |
 
@@ -432,6 +432,55 @@ print('That took', end-begin, 'seconds')
 | `input()`	| raw_input()		| smart input, like `eval(input())` |
 | `print("Hello")` | print				| -	|
 | `print "Hello"`	| -			| print	|
+
+## Pythonic Details
+Here I will be providing some interesting Python tricks. 
+You are not expect to know these however you should be aware.
+Since they don't belong a general introductory programming course, we're leaving them out.
+
+```python
+#List comprehenseion example: square of even numbers
+[x**2 for x in range(10) if x%2 == 0]
+
+#getting key,value pairs simultaneously from a dictionary
+for k,v in d.items():
+	print(k,v)
+
+#map function: apply a given function to a list
+In [35]: def f(x):
+    ...:     return x**2
+    ...: 
+
+In [37]: list(map(f,range(5)))
+Out[37]: [0, 1, 4, 9, 16]
+
+```
+
+##CPSC 128 Python Style Guidelines
+
+These are extracted from the [official Python guidelines](https://www.python.org/dev/peps/pep-0008/) , so you will not have to wade through too many language features you won't recognize.
+
+- Use four spaces for indentation. (IDLE does this for you. If you're using another editor, set it to use four space characters, not a tab character).
+- Limit lines to 80 characters.
+- Separate logical sections of a program with single blank lines.
+- Begin every program with an opening comment block containing at least:
+
+    \# filename
+    
+    \# Author
+    
+    \# Date
+    
+- Place `import` statements right after the opening comment block.
+- Initialize variables as near their first use as possible.
+- Do not leave a space between input and its opening (.
+- Do not leave a space after ( or before ).
+- Place a single space on each side of the binary operators: `=, ==, <, <=, !=, <>, >=, >, and, or, not, in` . Use spaces around arithmetic operators too, though in long expressions using grouping for readability takes precedence.
+- Comments should be complete sentences.
+- Comments should add to the code not repeat it, and should never state the obvious.
+- Variable names should be lower_case.
+- Constant names should be UPPER_CASE.
+
 
 ## github Markdown
 
