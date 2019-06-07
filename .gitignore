@@ -1,3 +1,4 @@
 *~
 *.swp
 __py_cache__
+.ipynb_checkpoints/
