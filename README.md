@@ -26,6 +26,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* Jun 06, Wed, Slides for Jun-6th class is posted.
 * Jun 05, Wed, Slides for Jun-4th class is posted.
 * Jun 05, Wed, Assignment #2 is marked.
 * Jun 03, Mon, Assignment #4 is posted.
@@ -91,7 +92,7 @@ You might want to check out the following online resources:
 | [May 14 Selection with If](files/cpsc128_slides_may14.pdf) | [May 16 Repetition](files/cpsc128_slides_may16.pdf) |
 | [May 21 for loop & Lists](files/cpsc128_slides_may21.pdf) | [May 23 Lists](files/cpsc128_slides_may23.pdf) |
 | [May 28 Lists & Strings](files/cpsc128_slides_may28.pdf) | [May 30 Functions, Modules](files/cpsc128_slides_may30.pdf) |
-| [Jun 04 Dictionaries](files/cpsc128_slides_may28.pdf) |  |
+| [Jun 04 Dictionaries](files/cpsc128_slides_jun04.pdf) |  [Jun 06 Persistence: writing to files](files/cpsc128_slides_jun06.pdf)|
 
 ## git cheatsheet
 
