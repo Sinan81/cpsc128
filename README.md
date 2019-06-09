@@ -457,6 +457,12 @@ In [35]: def f(x):
 In [37]: list(map(f,range(5)))
 Out[37]: [0, 1, 4, 9, 16]
 
+#underscore as dummy loop variable
+#generate n random integers between 0 and 99
+#note in this case we don't need a loop variable
+for _ in range(n):
+	random.randint(100)
+
 ```
 
 ## CPSC 128 Python Style Guidelines
