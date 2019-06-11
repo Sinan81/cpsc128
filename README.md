@@ -26,6 +26,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* Jun 10, Mon, Assignment 5 is posted.
 * Jun 06, Wed, Slides for Jun-6th class is posted.
 * Jun 05, Wed, Slides for Jun-4th class is posted.
 * Jun 05, Wed, Assignment #2 is marked.
@@ -55,6 +56,8 @@ After cloning this repository to your computer open the following file on an int
 [Assignment 3](assignment3.md) Due Jun 3rd, Monday
 
 [Assignment 4](assignment4.md) Due Jun 10, Monday
+
+[Assignment 5](assignment5.md) Due Jun 17, Monday
 
 ## Outline
 
