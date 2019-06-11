@@ -123,8 +123,6 @@ Quote is:  "God does not play dice."
     Actions
     -------
     ...
-    q - exit
-
     Your choice?
 q
 ```
