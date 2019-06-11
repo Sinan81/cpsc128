@@ -1,4 +1,6 @@
-Assignment #5
+# Assignment #5
+
+This assignment is due June 17th Monday. Please make sure to follow [Python style guidelines](README.md#cpsc-128-python-style-guidelines). 
 
 ## Problem 1: Text file practice
 
