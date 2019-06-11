@@ -111,9 +111,7 @@ Entry for this author already exists
 
     Actions
     -------
-    ...
-    q - exit
-
+	...
     Your choice?
 
 r
@@ -128,6 +126,7 @@ Quote is:  "God does not play dice."
     q - exit
 
     Your choice?
+q
 ```
 ## Problem 4: Plotting & timing
 
