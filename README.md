@@ -439,7 +439,7 @@ print('That took', end-begin, 'seconds')
 | `9/5`		| float division	| integer division	|
 | `9//5`	| integer division	| float division	|
 | `range(10)` | yields a range object do `list(range(10))` to obtain a list	|	yields a list	|
-| `input()`	| raw_input()		| smart input, like `eval(input())` |
+| `input()`	| raw input: input is captured as string | smart input, like `eval(input())` in Python3 |
 | `print("Hello")` | print				| -	|
 | `print "Hello"`	| -			| print	|
 
