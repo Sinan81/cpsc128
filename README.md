@@ -63,7 +63,7 @@ After cloning this repository to your computer open the following file on an int
 
 [Assignment 5](assignment5.md) Due Jun 17, Monday
 
-[Assignment 6](assignment5.md) Due Jun 24, Monday
+[Assignment 6](assignment6.md) Due Jun 24, Monday
 
 ## Outline
 
