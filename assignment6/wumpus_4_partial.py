@@ -221,7 +221,7 @@ for bat in range(NUMBATS):
         room = random.choice(cave_system.rooms)
     room.bat = Bat(room.number)
 
-# Initialize Pits.
+# TODO: Initialize Pits.
 
 # Initialize Wumpus.
 room = random.choice(cave_system.rooms)
