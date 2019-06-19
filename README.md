@@ -26,6 +26,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* Jun 18, Tue, Slides for June 18th class posted
 * Jun 17, Mon, Assignment #6 is posted.
 * Jun 17, Mon, Slides for Jun-13th class is posted.
 * Jun 12, Wed, Assignment #3 is marked.
@@ -103,6 +104,7 @@ You might want to check out the following online resources:
 | [May 28 Lists & Strings](files/cpsc128_slides_may28.pdf) | [May 30 Functions, Modules](files/cpsc128_slides_may30.pdf) |
 | [Jun 04 Dictionaries](files/cpsc128_slides_jun04.pdf) |  [Jun 06 Persistence: writing to files](files/cpsc128_slides_jun06.pdf)|
 | [Jun 11 Object Oriented Programming](files/cpsc128_slides_jun11.pdf) |  [Jun 13 Object Oriented Design](files/cpsc128_slides_jun13.pdf) |
+| [Jun 18 Inheritence & Polymorphism](files/cpsc128_slides_jun18.pdf) | | 
 
 ## git cheatsheet
 
