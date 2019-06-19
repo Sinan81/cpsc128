@@ -53,7 +53,7 @@ Complete `wumpus_4_partial.py` to create a working Hunt the Wumpus program, i.e.
 
 ### 2B Add a feature to Hunt the Wumpus, e.g.
 
-Add one of the following features, and add to or modify Hunt the Wumpus program accordingly.
+Add one of the following features via adding to or modifying Hunt the Wumpus program.
 
 * Add a new hazard type, e.g. riddlesand, like quicksand you sink into it, but you can save yourself if you can guess the secret number (from 1 to 10) in three tries.
 
