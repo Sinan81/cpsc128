@@ -82,7 +82,7 @@ Not the friendliest exchanges in the world, but hopefully clear enough.
 
 ## Part-2
 
-### Problem-1
+### Problem-1 (corrected)
 
 Insert the necessary function definitions into the code below so that it will work properly (i.e. as shown in the sample runs below it).
 
@@ -96,11 +96,11 @@ Notes:
 # Insert the necessary functions here.
 
 line(60, '=')
-print 'Function practice'
+print('Function practice')
 line(60, '-')
-num = int(raw_input('Give me an integer value: '))
-print 'Your number contains', ndigits(num),
-print 'digits, is', even_or_odd(num),
+num = int(input('Give me an integer value: '))
+print('Your number contains', ndigits(num), end='')
+print('digits, is', even_or_odd(num), end='')
 if ispos(num):
     print 'and is positive.'
 else:
