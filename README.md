@@ -26,6 +26,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* Jun 19, Wed, Assignment #4 is marked.
 * Jun 18, Tue, Slides for June 18th class posted
 * Jun 17, Mon, Assignment #6 is posted.
 * Jun 17, Mon, Slides for Jun-13th class is posted.
