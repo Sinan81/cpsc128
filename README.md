@@ -77,13 +77,13 @@ We will attempt to cover all the following topics on the final exam, though not 
 * Technique: Knowing when to use input and when to use eval(input()).
 * Technique: Input validation using while.
 * Technique: Using counters in programs.
-* Technique: Using flag variables, i.e. Boolean variables that record state, e.g. while not game_over, while not done:, if game_lost:.
+* Technique: Using flag variables, i.e. Boolean variables that record state, e.g. `while not game_over:`, `while not done:`, `if game_lost:`.
 * Core skill: Defining functions. Knowing how to do it, and knowing when to do it.
 * Approach: Using randomness to simulate events, e.g. four daughters
 * Data representation: Representing things using lists, e.g. playing cards.
 * Data representation: Creating and interpreting heterogeneous data structures (lists of lists, lists of dictionaries, dictionaries of lists, etc.), e.g. the cave system for Hunt the Wumpus.
 * Technique: Processing strings using string operations, as in the password checking program.
-* Technique: Processing lists, e.g. CD shuffle, is_straight().
+* Technique: Processing lists, e.g. CD shuffle, `is_straight()`.
 * Technique: Using vs changing lists, i.e. how to change a list in place, and how to avoid changing a list.
 * Technique: Converting lists to strings and vice versa.
 * Data representation: Using and processing dictionaries, e.g. for counting.
