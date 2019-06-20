@@ -579,7 +579,7 @@ class Deck(CardCollection):
     # Add a new method, shuffle, that does not exist in ancestor class.
     def shuffle(self):
         ncards = len(self.cards)
-        for swaps in range(ncards-1,-1,-1):
+        for swaps in reversed(range(ncards)):
             posn1 = random.randint(0, swaps)
             self.cards[posn1], self.cards[swaps] = self.cards[swaps], self.cards[posn1]
 
