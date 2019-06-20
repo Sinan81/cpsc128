@@ -390,6 +390,95 @@ d.pop(k)    # remove entry with key k but get value
 for k in d: # iterate over keys in d
 ```
 
+persistence
+
+```python
+#openfile in read mode (hence 'r')
+f = open('filename.txt', 'r') #get file object
+for line in f: #default iteration method is line by line
+    print(line)
+f.close() #make sure the close the file once done with it
+
+#a newer method of dealing with files
+#which doesn't require a f.close() step
+with open('filename.txt', 'r' as f:
+    for line in f:
+        print(line)
+
+#read entire file to as string
+f = open('filename.txt', 'r') #get file object
+s = f.read()
+print(s)
+f.close() #make sure the close the file once done with it
+
+#read the entire file into a list of strings
+#where each item is a line in the file
+f = open('filename.txt', 'r') #get file object
+lines = f.readlines()
+print(lines)
+f.close() #make sure the close the file once done with it
+
+#search for a string in a file using 'find()' method for strings
+#openfile in read mode (hence 'r')
+f = open('filename.txt', 'r') #get file object
+pattern='Hello'
+for line in f: #default iteration method is line by line
+    if line.find(pattern):
+        print("pattern found in line: ", line)
+f.close() #make sure the close the file once done with it
+
+#writing to files (hence the 'w' mode)
+f = open('filename.txt', 'w') #get file object
+f.write("Hello\n")
+f.close() #make sure the close the file once done with it
+
+#appending to files (hence the 'a' mode)
+f = open('filename.txt', 'a') #get file object
+f.write("World\n")
+f.close() #make sure the close the file once done with it
+```
+
+Saving/writing Python objects (lists etc) to disk
+
+```python
+# except for dictionaries, we should use pickling to save Python objects
+import pickle
+l = [0, 1, 2, 87, 202]
+f.open('pickled_list.pickle', 'wb')
+pickle.dump(l, f)
+f.close()
+
+#retreive a python object from disk
+f.open('pickled_list.pickle', 'rb')
+l = pickle.load(f)
+f.close()
+```
+
+Shelves: the proper way to save dictionaries to disk
+
+```python
+#save dictionary to disk as shelve
+import shelve
+s = shelve.open('test_shelve')
+s['bob'] = 42
+s['liz'] = [31]
+s.close()
+
+#retrieve the dictionary from disk
+s = shelve.open('test_shelve')
+for key in s.keys():
+    print(key, ':', s[key])
+
+#mutable objects save in a dictionary can lead to subtle problems
+#so update mutable values in shelves using a temporary variable
+#make sure to open shelve with 'writeback=True' option
+s = shelve.open('test_shelve', writeback=True)
+tmp = s['liz'] #retreive a list
+tmp[0] = 2  #update an item in list
+s['liz'] = tmp
+s.close()
+```
+
 - basic plotting
 
 A simple example where data is entered by hand: x=[1,2,3,4], y=[1,4,9,16].
