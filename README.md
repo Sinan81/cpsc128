@@ -479,6 +479,131 @@ s['liz'] = tmp
 s.close()
 ```
 
+Object oriented programming: Encapsulation (defining classes)
+
+```python
+# the syntax
+class ClassName:
+    def __init__(self, ...):
+        ...
+        
+    def method1(self, ...):
+        ...
+    def method2(self, ...):
+        ...
+
+# example: die class
+# die_class_0.py
+import random
+
+class Die:
+    def __init__(self, n):
+        self.nsides = n
+        
+    def roll(self):
+        spots = random.randint(1,self.nsides)
+        return spots
+
+if __name__ == '__main__':
+    d1 = Die(6)
+    red = Die(20)
+    
+    print 'Rolling d1 ...',
+    result = d1.roll()
+    print 'result =', result
+    
+    print 'Rolling red and d1 together gets you:', d1.roll() + red.roll()
+    print 'The die d1 has %d sides' % (d1.nsides)
+
+```
+OOP: Inheritence
+
+```python
+# Deck is a subclass or descendant of CardCollection
+# In this simple example, Deck ony inherits the methods from CardCollection
+#	as opposed to attributes as well.
+class Deck(CardCollection):
+    # Override ancestor's constructor, i.e. replace the default.
+    def __init__(self):
+        self.cards = []
+        for cardnum in range(52):
+            self.add( Card(cardnum) )
+ 
+    # Alias the inherited method "size" as "cards_left",
+    # because we usually ask how many cards are left in a
+    # deck rather than asking about its size.
+    def cards_left(self):
+        return self.size()
+ 
+    # Another alias. When using a deck of cards we talk about "dealing"
+    # cards not "removing" them from the deck.
+    def deal(self):
+        return self.remove()
+
+    # Add a new method, shuffle, that does not exist in ancestor class.
+    def shuffle(self):
+        ncards = len(self.cards)
+        for swaps in range(ncards-1,-1,-1):
+            posn1 = random.randint(0, swaps)
+            self.cards[posn1], self.cards[swaps] = self.cards[swaps], self.cards[posn1]
+
+```
+
+OOP: Polymorphism
+
+```python
+class Fraction:
+    def __init__(self, n, d = 1):
+        self.num = n # numerator
+        self.den = d # denominator
+        
+    def __str__(self):
+        return str(self.num) + '/' + str(self.den)
+    
+    def __add__(self, other):
+        if isinstance(other, Fraction):
+            bottom = self.den * other.den
+            top = (self.num * other.den) + (other.num * self.den)
+            return Fraction(top, bottom)
+        elif isinstance(other, int):
+            other = Fraction(other)
+            bottom = self.den * other.den
+            top = (self.num * other.den) + (other.num * self.den)
+            return Fraction(top, bottom)
+        
+    def __le__(self, other):
+        return self.num*other.den <= other.den*self.num
+    
+    def __getitem__(self, key):
+        if key == 0:
+            return self.num
+        elif key == 1:
+            return self.den
+        
+    def __sub__(self, other):
+        if isinstance(other, int):
+            other = Fraction(other)
+        if isinstance(other, Fraction):
+            bottom = self.den * other.den
+            top = (self.num * other.den) - (other.num * self.den)
+            return Fraction(top, bottom)
+        
+if __name__ == '__main__':
+    d1 = Fraction(2, 5)
+    print(d1, '(s/b 2/5)')
+    d2 = Fraction(4)
+    print(d2, '(s/b 4/1)')
+    d3 = d1 + d2
+    print(d3, '(s/b 22/5)')
+    if d1 <= d2:
+        print(d1, 'is less than or equal', d2)
+    else:
+        print(d2, 'is greater than', d1)
+    print(d1[0], d1[1], '(s/b 2 5)')
+    print(d1 + 2, '(s/b 12/5)')
+    print(d1 - 2, '(s/b -8/5)')
+```
+
 - basic plotting
 
 A simple example where data is entered by hand: x=[1,2,3,4], y=[1,4,9,16].
