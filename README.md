@@ -69,8 +69,7 @@ After cloning this repository to your computer open the following file on an int
 
 ## Examinable Topics
 
- 
-* We will attempt to cover all the following topics on the final exam, though not all topics will be given equal weight. For example, the single most important skill is the ability to devise solution procedures for problems in terms of sequence, selection (if) and iteration (for and while).
+We will attempt to cover all the following topics on the final exam, though not all topics will be given equal weight. For example, the single most important skill is the ability to devise solution procedures for problems in terms of sequence, selection (if) and iteration (for and while).
 
 * Base skill: IPO programming: Using Python to calculate values of formulas, e.g. wind-chill, unit conversions.
 * Core skill: Combining if, while, for to express algorithmic procedures.
