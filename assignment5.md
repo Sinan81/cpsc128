@@ -40,7 +40,7 @@ Since the file could be very long you will *not want to read the whole thing* in
 
 This is a simple exercise on writing to a file. Create a function called `touch(filename)` which accepts a filename as argument, and creates an empty file via writing an empty string to this file. The function should check if the file already exists (see below), and if so prompts the user that it can't create the empty file and quits
 
-```
+```python
 # Example Check if a file exists in the current working director:
 import os
 os.path.exists("file.txt")
