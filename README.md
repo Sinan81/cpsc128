@@ -26,6 +26,7 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* Jun 20, Thu, Slides for June 20 "class is posted.
 * Jun 19, Wed, Assignment #4 is marked.
 * Jun 18, Tue, Slides for June 18th class posted
 * Jun 17, Mon, Assignment #6 is posted.
@@ -94,12 +95,13 @@ We will attempt to cover all the following topics on the final exam, though not 
 * OOP: Defining (base) classes, reverse engineering them when necessary.
 * OOP: Modifying a class via inheritance. Using inheritance to avoid code duplication.
 * Software development:
-*     By hand → Pseudocode → Python
-*     Documentation
-*     Divide and conquer
-*     Design first; code second
-*     Incremental development
 * Problem domains: Playing cards, Hunt the Wumpus
+
+1. By hand → Pseudocode → Python
+2. Documentation
+3. Divide and conquer
+4. Design first; code second
+5. Incremental development
 
 
 ## Outline
@@ -140,7 +142,7 @@ You might want to check out the following online resources:
 | [May 28 Lists & Strings](files/cpsc128_slides_may28.pdf) | [May 30 Functions, Modules](files/cpsc128_slides_may30.pdf) |
 | [Jun 04 Dictionaries](files/cpsc128_slides_jun04.pdf) |  [Jun 06 Persistence: writing to files](files/cpsc128_slides_jun06.pdf)|
 | [Jun 11 Object Oriented Programming](files/cpsc128_slides_jun11.pdf) |  [Jun 13 Object Oriented Design](files/cpsc128_slides_jun13.pdf) |
-| [Jun 18 Inheritence & Polymorphism](files/cpsc128_slides_jun18.pdf) | | 
+| [Jun 18 Inheritence & Polymorphism](files/cpsc128_slides_jun18.pdf) | [Jun 20 Wrap up & Remarks & Final Exam](files/cpsc128_slides_jun20.pdf)| 
 
 ## git cheatsheet
 
