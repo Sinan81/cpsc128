@@ -1,5 +1,5 @@
 # Assignment 6, Due June 24th Monday
-This is an assignment on Object Oriented Programming. Note that this is the last assignment of the course, and it is worth 50% more than previous  assignments. It might be a good idea to complete problems in the order of: Problem 1, 3, and 2.
+This is an assignment on Object Oriented Programming. Note that this is the last assignment of the course. It might be a good idea to complete problems in the order of: Problem 1, 3, and 2.
 
 ## Problem-1 A little class of your own
 Write a Coin class that will enable this code to run,
