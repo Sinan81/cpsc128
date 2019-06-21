@@ -94,9 +94,8 @@ We will attempt to cover all the following topics on the final exam, though not 
 * OOP concepts: Abstraction, Inheritance, Polymorphism.
 * OOP: Defining (base) classes, reverse engineering them when necessary.
 * OOP: Modifying a class via inheritance. Using inheritance to avoid code duplication.
-* Software development:
 * Problem domains: Playing cards, Hunt the Wumpus
-
+* Software development:
 1. By hand → Pseudocode → Python
 2. Documentation
 3. Divide and conquer
