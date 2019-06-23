@@ -756,6 +756,23 @@ for _ in range(n):
 
 ```
 
+Exception handling usign `try...except` construct:
+
+Python enables us to anticipate runtime errors and handle them gracefully.
+
+```python
+# it is possible that a file the program wants to read doesn't exist
+# so handle this exception as follows.
+try:
+    with open('hellox.txt','r') as f:
+        for line in f:
+            print(line)
+
+
+except FileNotFoundError:
+    print("Caught it!")
+```
+
 ## CPSC 128 Python Style Guidelines
 
 These are extracted from the [official Python guidelines](https://www.python.org/dev/peps/pep-0008/) , so you will not have to wade through too many language features you won't recognize.
