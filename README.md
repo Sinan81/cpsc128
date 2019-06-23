@@ -7,7 +7,7 @@ See the syllabus: [CPSC 128 Spring 2018-19 Syllabus](files/CPSC_128_outline_2019
 
 * [Announcements](#announcements)
 * [Assignments](#assignments)
-* [Examinable topics](#examinable-topics)
+* [Remarks on the Final Exam](#remarks-on-the-final-exam)
 * [Slides](#slides)
 * [Lecture Notes](#lecture-notes)
 * [Python Resources](#online-python-resources)
@@ -68,7 +68,11 @@ After cloning this repository to your computer open the following file on an int
 
 [Assignment 6](assignment6.md) Due Jun 24, Monday
 
-## Examinable Topics
+## Remarks on the Final Exam
+
+Please see the [Sample Final Exam](files/sample_final_exam.pdf). The format of the final example will be similar. In preparing for the final exam, you might want to check out the following list of 'examinable topics'. 
+
+### Examinable Topics
 
 We will attempt to cover all the following topics on the final exam, though not all topics will be given equal weight. For example, the single most important skill is the ability to devise solution procedures for problems in terms of sequence, selection (if) and iteration (for and while).
 
