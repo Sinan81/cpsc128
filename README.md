@@ -348,6 +348,25 @@ help(mynumbers)
 help(mynumbers.is_even)
 ```
 
+Named and optional parameters:
+```python
+#inputs with default values like `b=0` are optional:
+def fpoly(x,a,b=0,c=0)
+    return a*x**2 + b*x + c
+
+#note below how Python is not complaining that
+#   we didn't provide b,c
+In [1]: fpoly(2,1)
+Out[1]: 4
+
+#'named parameter' trick enables us to enter input values out of order
+In [72]: fpoly(c=1,b=1,a=0,x=2)
+Out[72]: 3
+
+In [72]: fpoly(a=1,x=2)
+Out[72]: 4
+```
+
 - working with lists
 
 See `help(list)` or `dir(list)` for all list atrributes and methods.
