@@ -49,7 +49,7 @@ Remember  that `print` method can print an object only if `__str__` method is de
 
 ### 2A Complete the code to create a working Hunt the Wumpus program
 
-Complete [`wumpus_4_partial.py`](/home/sbulut/github/cpsc128/code/python3/wumpus_4_partial.py) to create a working Hunt the Wumpus program, i.e. you should fix the bugs, if there is any, and add the necessary new code. Make as few changes to the code as possible. Ideally you will just make additions to it.
+Complete [`wumpus_4_partial.py`](code/python3/wumpus_4_partial.py) to create a working Hunt the Wumpus program, i.e. you should fix the bugs, if there is any, and add the necessary new code. Make as few changes to the code as possible. Ideally you will just make additions to it.
 
 ### 2B Add a feature to Hunt the Wumpus, e.g.
 
