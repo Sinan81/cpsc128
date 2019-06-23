@@ -88,7 +88,7 @@ else:
 tims = tims + mollys
 print(tims)
 ```
-*Hint*: Since the order of the parameters varies between the two constructor calls in lines 1 and 2 we can tell that *named parameters* are being used. Also, the number of parameters indicated for two constructors at lines 1 and 2 are different, hence it is implicit that unspecified input parameters should default to a predefined value.
+*Hint*: Since the order of the parameters varies between the two constructor calls in lines 1 and 2 we can tell that *named parameters* are being used (_see the brief discussion in Python cheats_). Also, the number of parameters indicated for two constructors at lines 1 and 2 are different, hence it is implicit that unspecified input parameters should default to a predefined value.
 
 
 
