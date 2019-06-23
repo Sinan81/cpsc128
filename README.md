@@ -772,6 +772,7 @@ try:
 except FileNotFoundError:
     print("Caught it!")
 ```
+More details can be found at [Python Documentation: Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html).
 
 ## CPSC 128 Python Style Guidelines
 
