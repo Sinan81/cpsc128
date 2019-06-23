@@ -136,6 +136,9 @@ You might want to check out the following online resources:
 * [Hand-On Python: A Tutorial Introduction for Beginners](http://anh.cs.luc.edu//python/hands-on/handsonHtml/handson.html)
 
 ## Slides
+
+The slides for the entire course can be found at: [CPSC128 all slides](files/cpsc128_slides_complete.pdf)
+
 |	Tues	 | Thurs |
 |--------------------------------------- | --------------------------------------- |
 |                                        | [May  2 Computing Setup & Intro](files/cpsc128_slides_may2.pdf)  | 
