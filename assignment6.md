@@ -47,7 +47,7 @@ Remember  that `print` method can print an object only if `__str__` method is de
 
 ## Problem 2 Hunt the Wumpus game
 
-As a reference, a good implementation of this game can be found at [https://www.ifiction.org/games/playz.php](https://www.ifiction.org/games/playz.php)
+As a reference, a good implementation of this game can be found at [https://www.ifiction.org](https://www.ifiction.org/games/playz.php?cat=1&game=249&mode=html)
 
 ### 2A Complete the code to create a working Hunt the Wumpus program
 
