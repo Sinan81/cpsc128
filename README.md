@@ -70,7 +70,7 @@ After cloning this repository to your computer open the following file on an int
 
 ## Remarks on the Final Exam
 
-Please see the [Sample Final Exam](files/sample_final_exam.pdf). The format of the final example will be similar. In preparing for the final exam, you might want to check out the following list of 'examinable topics'. 
+Please see the [Sample Final Exam](files/sample_final_exam.pdf). The solution to most of the problems can be found in course slides. For others, I will try to post solutions soon. The format of the final example will be similar. In preparing for the final exam, you might want to check out the following list of 'examinable topics'. 
 
 ### Examinable Topics
 
