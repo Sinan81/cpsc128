@@ -768,7 +768,6 @@ try:
         for line in f:
             print(line)
 
-
 except FileNotFoundError:
     print("Caught it!")
 ```
