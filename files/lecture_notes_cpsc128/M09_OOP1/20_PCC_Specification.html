@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Playing Card Classes: Specification</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="07_PythonOOPSyntax.html" />
+  <link rel="Next" href="21_PCC_ClassIdentification.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Playing Card Classes: The Specification</h1>
+<p>Earlier we developed a series of functions to help write programs
+involving playing cards. Now we'll take the next step and make our code
+object-oriented. How shall we go about designing the class(es)? There are
+many possible answers to this question, but for a smallish domain like this one a good
+approach is wish fulfillment. That is we specify the kind of code we wish we could write but can't. In
+this case I wish I could say things like,</p>
+<pre>Get a deck of cards
+Shuffle the deck
+Display the deck
+Create a hand of cards for roxx
+Create a hand of cards for chris
+Deal five cards to roxx
+Display roxx's cards
+Deal five cards to chris
+Display chris' cards
+How many cards are left in the deck?
+If roxx has a flush
+    congratulate him</pre>
+<p>Using OOP our Python code can be almost that easy to read,</p>
+<pre><code class="python">d = Deck()
+d.shuffle()
+<span class="keyword">print</span> <span class="string">'d after shuffling ='</span>, d
+<span class="keyword">print</span> <span class="string">'d has'</span>, d.cards_left(), <span class="string">'cards'</span>
+roxx = Hand()
+chris = Hand()
+<span class="keyword">for</span> card <span class="keyword">in</span> range(<span class="number">5</span>):
+    roxx.add(d.deal())
+<span class="keyword">print</span> <span class="string">'Your hand of'</span>, roxx.size(), <span class="string">'cards contains:'</span>, roxx
+chris.add(d.deal(<span class="number">5</span>))
+<span class="keyword">print</span> <span class="string">'Your hand of'</span>, chris.size(), <span class="string">'cards contains:'</span>, chris
+<span class="keyword">print</span> <span class="string">'There are'</span>, d.cards_left(), <span class="string">'cards left in the deck.'</span>
+<span class="keyword">if</span> roxx.is_flush():
+    <span class="keyword">print</span> <span class="string">'roxx rocks!'</span></code></pre>
+<p>This code will serve as our specification. We'll know we're done when
+we've added sufficient code above this that it runs correctly.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+A small example: A dice class</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="05_ThePlan.html" />
+  <link rel="Next" href="07_PythonOOPSyntax.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>A small example: A dice class</h1>
+<p>Before considering an extended example let's consider a small one to see
+what the syntactical elements are that support OOP in Python. In Python as in
+most OOP languages (including C++ and Java&mdash;but <em>not</em> Javascript)
+the key OOP construct is the class. A class specifies the characteristics of
+an object type and provides a rubber stamp or template for creating objects
+of a particular type. Consider for example a die (as in one dice, not death!).
+A die is quite a simple object. It has a single attribute, its number of
+sides, and just one method, <code>roll</code>, i.e. the only message you can
+really send a die is to roll itself and report the result. Like I said it's a
+simple object. Here is a complete <code>import</code>able module that defines
+a <code>Die</code> class and some code to test it (minimally). First the code
+alone (I have left out the docstrings to avoid obscuring the functional code):</p>
+<pre><code class="python"><span class="comment"># die_class_0.py</span>
+<span class="keyword">import</span> random
+
+<span class="class"><span class="keyword">class</span> <span class="title">Die</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span>
+        self.nsides = n
+        
+    <span class="function"><span class="keyword">def</span> <span class="title">roll</span><span class="params">(self)</span>:</span>
+        spots = random.randint(<span class="number">1</span>,self.nsides)
+        <span class="keyword">return</span> spots
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    d1 = Die(6<span class="number"></span>)<span class="comment"></span>
+    red = Die(<span class="number">20</span>)<span class="comment"></span>
+    
+    <span class="keyword">print</span> <span class="string">'Rolling d1 ...'</span>,
+    result = d1.roll()
+    <span class="keyword">print</span> <span class="string">'result ='</span>, result
+    
+    <span class="keyword">print</span> <span class="string">'Rolling red and d1 together gets you:'</span>, d1.roll() + red.roll()
+    <span class="keyword">print</span> <span class="string">'The die d1 has %d sides'</span> % (d1.nsides)</code></pre>
+<p>and then the code with (hopefully helpful) annotations,</p>
+<p><img alt="." src="die_class_0_annotated.png" width="100%" /></p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

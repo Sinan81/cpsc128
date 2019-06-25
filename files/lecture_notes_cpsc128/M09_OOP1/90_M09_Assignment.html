@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Assignment) Module 9 Assignment</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="40_ProgrammingObservation.html" />
+  <link rel="Next" href="../M10_OOD/01_ObjectOrientedDesign.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Assignment 9</h1>
+<h2>Problems</h2>
+<ol>
+	<li><h3>A little class of your own</h3>
+  <p>Write a Coin class that will enable this code to run,</p>
+<pre><code class="python"><span class="comment"># Your class goes here...</span>
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    coin = Coin()
+    <span class="keyword">print</span> <span class="string">'Your first coin is a %s.'</span> % (coin)
+
+    purse = [coin]
+    <span class="keyword">print</span> <span class="string">'Adding four more coins to your purse...'</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):
+        coin = Coin(random.choice([<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">25</span>,<span class="number">100</span>,<span class="number">200</span>]))
+        purse.append(coin)
+
+    <span class="keyword">print</span> <span class="string">'In your purse you now have:'</span>
+    <span class="keyword">for</span> coin <span class="keyword">in</span> purse:
+        <span class="keyword">print</span> <span class="string">'<span class="escape">\t</span>a'</span>, coin
+
+    total = <span class="number">0</span>
+    <span class="keyword">for</span> coin <span class="keyword">in</span> purse:
+        total += coin.value
+    <span class="keyword">print</span> <span class="string">'The total value of the coins in your purse is'</span>, total, <span class="string">'cents.'</span>
+
+    <span class="keyword">print</span> <span class="string">'Flipping your coins you get:',</span>
+    <span class="keyword">for</span> coin <span class="keyword">in</span> purse:
+        <span class="keyword">print</span> coin.flip(),</code></pre>
+	<p>and produce this output,</p>
+  <pre><code>&gt;&gt;&gt; 
+Your first coin is a Penny.
+Adding four more coins to your purse...
+In your purse you now have:
+	  a Penny
+	  a Loonie
+	  a Penny
+	  a Dime
+	  a Quarter
+The total value of the coins in your purse is 137 cents.
+Flipping your coins you get: Tails Tails Tails Heads Tails
+&gt;&gt;&gt; </code></pre>
+  <p>Of 
+  course due to their random selection the exact coins that end up in the purse will vary from run to run, though the first coin created in the test above should always be a Penny, i.e. the default Coin to create is a Penny.</p>
+	</li>
+  <li><h3>Extending a class 1</h3>
+  <p>Extend the code in <a href="playing_cards_4.py"><code>playing_cards_4.py</code></a> 
+  so
+  we can find out if a five card poker hand is a flush, i.e. all cards are from the same suit. Here's the specification code to add to the end of the module,</p>
+<pre><code class="python"><span class="keyword">if</span> chris.is_flush():
+    <span class="keyword">print</span> <span class="string">'That is a flush!'</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> <span class="string">'Sorry, no flush.'</span></code></pre>
+  </li>
+  <li><h3>Extending a class 2</h3>
+    <p>Sometimes during the course of a card game we might want or need to
+    verify that the deck is not corrupted, for example that it does not have
+    any extra Aces in it. Extend the code in <a href="playing_cards_4.py"><code>playing_cards_4.py</code></a> so we can check that a deck is fair.</p>
+    <p>Here's the specification code to add to the end of the module,</p>
+<pre><code class="python"><span class="keyword">if</span> d.is_fair():
+    <span class="keyword">print</span> <span class="string">'The deck is fair.'</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> <span class="string">'Uh oh, this deck is unfair.'</span></code></pre>
+    <p>Include the tests you used to determine that your method was working
+    correctly in the code you submit.</p>
+    <!--<p><em>Hint</em><sub>1</sub>: To enable this, write a class method for
+    <code>Deck</code> objects called <code>is_fair</code> that returns
+    <code>True</code> if the <code>Deck</code> is a fair one and
+    <code>False</code> if it is not.</p>-->
+  </li>
+  <li><h3>An alternative playing card representation</h3>
+    <p>Many OO programmers would look at the playing card classes developed
+    in this module and shout,</p>
+    <blockquote><p>"Wait a minute! Actual physical playing cards
+    have two attributes, their suit and their face value. That means your
+    <code>Card</code> objects should have two attributes too that match the
+    physical attributes, not this sketchy card number thing that encodes the
+    values of the actual attributes in an opaque way."</p></blockquote>
+    <p>And you know, they
+    might be right. Modify the module <a href="playing_cards_4.py"><code>playing_cards_4.py</code></a> to use
+    <code>Card</code> objects with a pair of attributes. Name the attributes
+    <code>suit</code> and <code>face_value</code>.</p>
+    <p><em>Hint</em><sub>1</sub>: You shouldn't change <em>anything</em>
+    after the <code>if __name__ == '__main__':</code> statement. Remember
+    that one of the goals of encapsulation is to be able drop in a new class
+    implementation for an older one without having to rewrite any code that
+    uses it.</p>
+    <p><em>Hint</em><sub>2</sub>: You don't have to rewrite that much of the
+    code above the <code>if</code> either. Think carefully about what needs
+    to change.</p>
+    <!-- <p><em>Hint</em><sub>3</sub>: Start with the <code>Card</code> class,</p>
+    <pre>class Card:
+    def __init__(self, ...):
+        ...
+        self.suit = ...
+        self.face_value = ...</pre>-->
+  </li>
+</ol>
+<h2>Logistics</h2>
+<ul>
+  <li>
+    <p>Use the following naming scheme for your program files: <code>a</code><em>assignment#</em><code>p</code><em>problem#</em><code>v</code><em>version#</em><code>.py</code> . So your first attempt at problem 1 on this assignment will be named <code>a9p1v1.py</code> and your second attempt (should there be one) will
+      be named <code>a9p1v2.py</code> .</p>
+  </li>
+  <li>
+    <p>Submit your assignment by emailing your python programs to me. I advise to submit early and submit often, since I will often review your programs as they are submitted and provide feedback that will let you improve them.</p>
+  </li>
+</ul>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

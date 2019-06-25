@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Inheritance</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="02_Encapsulation.html" />
+  <link rel="Next" href="04_Polymorphism.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Inheritance</h1>
+<p>Experience creating objects soon showed programmers that many objects
+shared features, e.g. several might have text blocks, or creation dates, or screen positions, and they
+realized that they could further reduce the amount of new code they had to
+write if they could reuse existing code by having one type of object
+<em>inherit</em> behaviour and properties from another. Then if the
+ancestor's behaviour or properties were updated the descendant would
+instantly inherit the improvements. This can lead to large hierarchies of
+object types; some define thousands of object types. To give you a flavour of
+a type hierarchy here is a medium-sized inheritance hierarchy for a Python-based
+internet application development platform:</p>
+<p><img alt="."
+src="http://pyjs.org/assets/images/UIClassHierarchy.png"
+width="100%" /></p>
+<p>Inheritance hierarchies are easiest to read bottom up. For example, if we begin at the lower right the
+chart above tells us that a <code>FlexTable</code> is a kind of
+<code>HTMLTable</code> which is in turn a kind of
+<code>Panel</code> which is a kind of <code>Widget</code> which
+is a kind of <code>UIObject</code>. What this means is that if we improve our code for <code>Panel</code>s, <code>Widget</code>s and <code>UIObject</code>s will instantly and transparently inherit these improvements as well without us having to modify their code at all.</p>
+
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

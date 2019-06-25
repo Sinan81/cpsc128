@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Playing Card Classes: Deck Methods</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="26_PCC_InvisibleClass.html" />
+  <link rel="Next" href="28_PCC_HandMethods.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Deck methods</h1>
+<p>Let's begin filling in our empty class methods. A <code>Deck</code> is an
+ordered collection of cards so a list is a natural choice of container. Thus
+a <code>Deck</code>'s sole attribute will be the list of cards. When we
+initialize a new <code>Deck</code> we need to fill the list with all 52
+possible <code>Card</code>s:</p>
+<p><img alt="." src="Deck.__init__.png" /></p>
+<p>Notice that to do this we begin with an empty list then append to that
+list each one of 52 unique <code>Card</code> objects. The <code>Card</code>
+objects are created by calling the card constructor <code>Card</code> and
+passing it an id number, so now we know the <code>Card</code> constructor
+will take an argument specifying the card to create, i.e. <code>def
+Card(self, num):</code></p>
+<p>The remaining <code>Deck</code> methods are straightforward reworkings of
+our earlier playing card functions but now embedded into a class:</p>
+<p><img alt="." src="Deck.png" /></p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

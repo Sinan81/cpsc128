@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Playing Card Classes: Program Skeleton 2</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="24_PCC_InvisibleMethod.html" />
+  <link rel="Next" href="26_PCC_InvisibleClass.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Program Skeleton 2</h1>
+<p>Adding in the __str__ methods gives us:</p>
+<p><img alt="." src="playing_cards_2.png" width="432" height="563" /></p>
+<p>which when run produces,</p>
+<pre>&gt;&gt;&gt; 
+d after shuffling = 
+d has None cards
+Your hand of None cards contains: 
+Your hand of None cards contains: 
+There are None cards left in the deck.
+&gt;&gt;&gt; </pre>
+<p>Note that we can't use pass in the <code>__str__</code> methods because
+they are required to return a string, so instead we return a null string in
+each one.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Playing Card Classes: Method Identification</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="21_PCC_ClassIdentification.html" />
+  <link rel="Next" href="23_PCC_Skeleton_1.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Identifying the classes' methods</h1>
+<p>Our next step is to identify the methods these classes must provide. To do
+so we look for method syntax that is we look for the pattern <code><em>object</em>.<em>method</em>()</code>.
+Note that the parentheses are important. With them we know we are looking at
+a method, without them it would be an object attribute.</p>
+<p><img alt="." src="playing_cards_0_methods.png" width="390" height="233"
+/></p>
+<p>The methods prefixed with the <code>Deck</code> object name <code>d</code>
+indicate that the <code>Deck</code> class must provide the methods</p>
+<ul>
+  <li><code>shuffle</code>,</li>
+  <li><code>cards_left</code>, and</li>
+  <li><code>deal</code></li>
+</ul>
+<p>Furthermore if we look closely we can see that <code>deal</code> has an
+optional parameter that defaults to 1 based on the difference between the
+usages <code>d.deal()</code> and <code>d.deal(5)</code>.</p>
+<p>Similarly the methods prefixed with the names of the <code>Hand</code>
+objects <code>roxx</code> and <code>chris</code> indicate that the
+<code>Hand</code> class must provide</p>
+<ul>
+  <li><code>add</code>,</li>
+  <li><code>size</code>, and</li>
+  <li><code>is_full_house</code>.</li>
+</ul>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

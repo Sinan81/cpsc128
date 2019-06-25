@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Playing Card Classes: Class Identification</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="20_PCC_Specification.html" />
+  <link rel="Next" href="22_PCC_MethodIdentification.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Identifying the necessary classes</h1>
+<p>We can learn a lot about what code we have to write by carefully examining
+our specification code. First let's look for calls to constructors. The form
+of a constructor is that it uses a class name as a function. We've seen
+examples of this with Python's built-in classes, e.g.</p>
+<pre>&gt;&gt;&gt; num = <strong>int(</strong>43.72<strong>)</strong>
+&gt;&gt;&gt; num
+43
+&gt;&gt;&gt; lst = <strong>list(</strong>'Tim'<strong>)</strong>
+&gt;&gt;&gt; lst
+['T', 'i', 'm']
+&gt;&gt;&gt;</pre>
+<p>Now we want to look for similar syntax in our specification code,</p>
+<p><img alt="." src="playing_cards_0_classes.png" width="542" height="266"
+/></p>
+<p>Doing so reveals that two classes are explicitly referred to in our
+specification one called <code>Hand</code> and another called
+<code>Deck</code>.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>
