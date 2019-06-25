@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Appending to files</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="08_WritingToTextFiles.html" />
+  <link rel="Next" href="10_ReadingNumericData.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Appending to files</h1>
+<p>If opening a file to write to it destroys an existing file by that name
+you might be wondering how log files work. After all they just grow as new
+events occur and are added to the log of events that have already occurred.
+The answer is that there is one more mode, <code>a</code> for <strong>a</strong>ppend
+which allows you to open a file to append things to it, i.e. the existing
+file data is not destroyed, and the insertion point is  placed at the end of
+the file so further writes add to the  existing file content.</p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

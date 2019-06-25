@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Functions</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="01_Modularization.html" />
+  <link rel="Next" href="03_WritingFunctions_is_even.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Functions</h1>
+<p>So far my description of modularization may seem hopelessly
+abstract. What do these modules look like? In Python the simplest form of
+modularization is to create functions. We have already used of many of
+Python's built-in functions, e.g. <code>range()</code>, <code>math.sqrt()</code>, and <code>random.randint()</code>, and now it is time to learn to write our own functions.</p>
+<p>There is a bit of terminology that will help us talk about functions. We say that &quot;the function <code>range()</code> when called, returns a list specified by its
+  argument&quot;. What do the terms <em>called</em>, <em>return</em> and
+  <em>argument</em> refer to? Consider the specific statement,</p>
+<pre><code class="python"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</code></pre>
+<p>To <em>call</em> a function is to invoke it and we do that
+by <em></em>entering its name followed by parentheses. The name of the
+function being used here is <code>range</code>. To do its job it needs to
+know how large a range to generate. We tell it by providing the high end of
+the range, <code><acronym>10</acronym></code>, inside the parentheses. This
+value is the <em>argument</em> to the function. It is sometimes also called
+the function <em>parameter</em>. The function <code>range</code> will create
+the list <code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code>. This is the value
+it returns or its <em>return value</em>. You can imagine the return value
+replacing the function call so the code above is equivalent to</p>
+<pre><code class="python"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]:</code></pre>
+<p>So every function has,</p>
+<ul>
+  <li>a <em>name</em>,</li>
+  <li>a<em> list of parameters</em> enclosed in parentheses after the name of the
+    function (this list may be "empty", i.e. there may be no values
+    specified, but the parentheses must still be present to mark the
+    name as specifying a function rather than a variable), and</li>
+  <li>a <em>return value</em>, the value that will replace the expression calling the
+    function (this value may be <code>None</code> if the function
+    <em>does</em> <em>something</em> rather than <em>calculating</em>
+    <em>something</em>).</li>
+</ul>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

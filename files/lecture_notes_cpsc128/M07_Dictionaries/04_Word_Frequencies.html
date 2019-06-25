@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>Example: Word frequencies</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="03_Dictionaries.html" />
+  <link rel="Next" href="05_Scrabble_Scoring.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Example: Word Frequencies</h1>
+<p>Now that we have seen dictionary syntax let's put it to work and solve
+the problem of counting the frequencies of the words in a string. The input
+will be a string, and the desired output is a display of each word and the
+number of times it occurred in the string. We'll use a dictionary for our
+counters where each key-value pair in the dictionary will consist of a word
+and the number of times it occurred. </p>
+<h2>Pseudocode</h2>
+<p>The pseudocode description might be,</p>
+<pre><code>get the string
+break the string into a list of words
+initialize a dictionary of counters
+loop through the list of words
+    if the word is in the dictionary
+        increment its counter by 1
+    otherwise
+        set its counter to 1
+loop through the entries in the dictionary
+    for each entry display the key (the word) and the value (the count)</code></pre>
+<h2>Python</h2>
+<p>A straight translation into Python gives,</p>
+<pre><code class="python"><span class="comment"># WordFrequencies.py</span>
+<span class="comment"># Get the string:</span>
+test_string = <span class="string">'''The programmer, who needs clarity, who must talk all day to
+    a machine that demands declarations, hunkers down into a low-grade annoyance.
+    It is here that the stereotype of the programmer,
+    sitting in a dim room, growling from behind Coke cans, has its origins.
+    The disorder of the desk, the floor; the yellow Post-It notes everywhere;
+    the whiteboards covered with scrawl:
+    all this is the outward manifestation of the messiness of human thought.
+    The messiness cannot go into the program;
+    it piles up around the programmer.
+    ~ Ellen Ullman
+'''</span>
+
+<span class="comment"># Break the string into a list of words:</span>
+words = test_string.split()
+<span class="comment"># Initialize a dictionary of counters:</span>
+word_counts = {}
+
+<span class="comment"># Loop through the list of words:</span>
+<span class="keyword">for</span> word <span class="keyword">in</span> words:
+    <span class="comment"># If the word is in the dictionary:</span>
+    <span class="keyword">if</span> word_counts.has_key(word):
+        <span class="comment"># Increment its counter by 1:</span>
+        word_counts[word] = word_counts[word] + <span class="number">1</span>
+    <span class="comment"># Otherwise:</span>
+    <span class="keyword">else</span>:
+        <span class="comment"># Set its counter to 1:</span>
+        word_counts[word] = <span class="number">1</span>
+
+<span class="comment"># Loop through the entries in the dictionary:</span>
+<span class="keyword">for</span> word <span class="keyword">in</span> word_counts:
+    <span class="comment"># Display the key value pair:</span>
+    <span class="keyword">print</span> word, <span class="string">':'</span>, word_counts[word]</code></pre>
+<h2>Refinements</h2>
+<p>When you run it and examine the output you will see that while this is a
+useful core there are some erroneous entries in the output. Among them:</p>
+<pre><code>The : 3
+floor; : 1
+annoyance. : 1
+the : 10
+~ : 1</code></pre>
+<p>The problems here are that,</p>
+<ul>
+  <li>'The' and 'the' are the same word and so their counts should be
+    combined.</li>
+  <li>The trailing punctuation on 'floor;' and 'annoyance.' should be removed
+    since it is not part of the word, and could mislead counts since 'floor;'
+    and 'floor,' would be separate entries.</li>
+  <li>'~' is not a word at all and so should not be counted.</li>
+</ul>
+<p>Application of some string methods can fix some of these problems,</p>
+<ul>
+  <li>We can use the <code>lower</code> method to convert strings to all
+    lower case.</li>
+  <li>We can use <code>strip</code> to remove trailing (and leading)
+    punctuation characters.</li>
+  <li>We can use <code>isalpha</code> to test that the string is all letters
+    (and thus eliminate '~').</li>
+</ul>
+<p>The body of the loop then becomes,</p>
+<pre><code class="python"><span class="keyword">for</span> word <span class="keyword">in</span> words:
+    w = word.lower()
+    w = w.strip(<span class="string">'.,;:<span class="escape">\'</span>"?!()'</span>) <span class="comment"># Notice the \ to escape the ' inside the string</span>
+    <span class="keyword">if</span> w.isalpha():
+        <span class="keyword">if</span> word_counts.has_key(w):
+            word_counts[w] = word_counts[w] + <span class="number">1</span>
+        <span class="keyword">else</span>:
+            word_counts[w] = <span class="number">1</span></code></pre>
+<p>Of course <code>isalpha</code> is too blunt an instrument since we now
+lose the hyphenated words, but we could deal with that too (perhaps by
+writing our own little function to check that a string contains only letters
+and hyphens!), though it is a matter of details we will not pursue.</p>
+<p></p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

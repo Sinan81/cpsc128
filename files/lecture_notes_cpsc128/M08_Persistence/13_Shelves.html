@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Shelves</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="12_Pickling.html" />
+  <link rel="Next" href="14_ShelveGotcha.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Shelves</h1>
+<p>A shelve* is like a dictionary that is stored on disk. (The name continues
+the canning theme begun with pickle). The dictionary values can be any object
+that can be pickled. Retrieval is fast because the dictionary keys are hashed
+for fast retrieval.</p>
+<p>Here is an example that stores quotations into a shelve on disk. The
+comments should make it self-explanatory.</p>
+<pre><code class="python"><span class="comment"># shelve_test.py</span>
+<span class="keyword">import</span> shelve
+<span class="comment"># First here are a couple of quotes to work with.</span>
+b = [<span class="string">'Kent Beck'</span>, <span class="string">'Optimism is an occupational hazard of programming: testing is the treatment.'</span>]
+k = [<span class="string">'Brian Kernighan'</span>, <span class="string">'Controlling complexity is the essence of computer programming.'</span>]
+<span class="comment"># Now let's create an in-RAM dictionary with the quotes in it.</span>
+quotes = {}
+<span class="comment"># Add the quotes to the dictionary keyed by last name.</span>
+quotes[<span class="string">'Kernighan'</span>] = k
+quotes[<span class="string">'Beck'</span>] = b
+<span class="comment"># Now let's display what we have:</span>
+<span class="keyword">print</span> <span class="string">'Here<span class="escape">\'</span>s the dictionary:'</span>
+<span class="keyword">print</span> quotes
+<span class="keyword">print</span>
+<span class="keyword">print</span> <span class="string">'Here it is again by looping through it:'</span>
+<span class="keyword">for</span> person <span class="keyword">in</span> quotes.keys():
+    <span class="keyword">print</span> quotes[person]
+<span class="keyword">print</span>
+<span class="comment"># Now let's create a shelve and put the quotes in it.</span>
+<span class="comment"># Like a file we open it, but unlike with a file</span>
+<span class="comment"># opening a shelve is non-destructive so you can reopen it as often</span>
+<span class="comment"># as you want.</span>
+quotefile = shelve.open(<span class="string">'quotes'</span>)
+<span class="comment"># Notice how the access syntax mirrors the dictionary syntax above.</span>
+quotefile[<span class="string">'Kernighan'</span>] = k
+quotefile[<span class="string">'Beck'</span>] = b
+quotefile.close()
+<span class="comment"># The quotes should be stored on-disk now.</span>
+<span class="comment"># Let's reopen the shelve and display the quotes.</span>
+quotefile = shelve.open(<span class="string">'quotes'</span>)
+<span class="keyword">print</span> <span class="string">'Here<span class="escape">\'</span>s the content of the shelve:'</span>
+<span class="comment"># Notice how similar this is to working with the in-memory dictionary above.</span>
+<span class="keyword">for</span> key <span class="keyword">in</span> quotefile:
+    <span class="keyword">print</span> key, <span class="string">':'</span>, quotefile[key]
+quotefile.close()</code></pre>
+<p>The example shows how to store and retrieve data with the shelve, but what
+about deleting a stored item? Just use <code>del
+<em>dictionary</em>[<em>key</em>]</code> or in the specific example above we
+could use <code>del quotefile['Beck']</code> to remove the Kent Beck
+quote.</p>
+<h2>A small gotcha</h2>
+<p>Brian Kernighan is a very smart guy and has said many memorable things.
+What if we add a second quote by him to the shelve? Well if we use the same
+key, i.e. his last name <code>Kernighan</code>, it will replace the existing
+quote. What to do? One view is that last name was not a good choice for the
+key because it is not unique to the items being stored, i.e. two items can
+have the same key. Another is that it is a fine key, but the values in the
+dictionary should be a list of the quotes by Brian Kernighan not a single
+list element giving one quote, i.e. the entry should be a list of lists. In
+either case we probably want to be able to tell if we already have any quotes
+by him already and we can do that using the shelve's <code>has_key</code>
+method,</p>
+<pre><code>if quotefile.has_key('Kernighan'):
+   # deal with it...</code></pre>
+<hr />
+<p>* <a href="http://docs.python.org/library/shelve.html">Official
+documentation</a>.</p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

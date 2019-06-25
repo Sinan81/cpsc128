@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Documenting modules and functions</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="10_Modules.html" />
+  <link rel="Next" href="12_ModuleLayout.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Documenting modules and functions</h1>
+<p>The goal of documentation is to provide enough information for other
+programmers (or ourselves in six months!) to know how to use our code (that
+is to run a program, or import and use its components), and to understand it
+well enough to verify it and/or modify it.</p>
+<p>So far our documentation has consisted of a block of header comments
+identifying the module and programmer, and occasional comments inserted into
+the code to explain tricky points. Modules and the functions in them require
+further documentation. The primary mechanism used to provide it is
+docstrings. These are triple quoted strings that appear at the top of the
+module and immediately after each function definition. Here's an artificial
+example,</p>
+<pre><code class="python"><span class="comment"># module_docn.py</span>
+<span class="string">'''This is the module documentation pointing out that
+this is an artificial test module.'''</span>
+
+<span class="function"><span class="keyword">def</span> <span class="title">test_fn_1</span><span class="params">()</span>:</span>
+    <span class="string">'''This is the first test function.
+    It doesn't do anything.'''</span>
+    <span class="keyword">return</span>
+
+<span class="function"><span class="keyword">def</span> <span class="title">test_fn_2</span><span class="params">()</span>:</span>
+    <span class="string">'''This is the second test function which also does nothing.'''</span>
+    <span class="keyword">return</span></code></pre>
+<p>In an actual module these docstrings would be helpful to a programmer
+reading your code by explaining what the module and each function in it were
+designed to do. You can see lots of real examples in the standard library*
+modules.</p>
+<p>Python also has built-in commands that extract this documentation. Recall
+that when we import a module in the shell we can use <code>dir</code> to see
+it's attributes. Here's an example for a real module, <code>math</code>,</p>
+<pre><code>&gt;&gt;&gt; import math
+&gt;&gt;&gt; dir(math)
+['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 
+'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'exp', 'fabs', 
+'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'hypot', 'isinf', 'isnan', 'ldexp', 
+'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 
+'tan', 'tanh', 'trunc']
+&gt;&gt;&gt;</code> </pre>
+<p>and here's the <code>dir</code> for our atificial module,</p>
+<pre><code>&gt;&gt;&gt; import module_docn
+&gt;&gt;&gt; dir(module_docn)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'test_fn_1', 'test_fn_2']
+&gt;&gt;&gt; </code></pre>
+<p>You can see that in addition to the Python reserved names, i.e.
+<code>__builtins__</code> to <code>__package__</code> there are our two
+functions <code>test_fn_1</code> and <code>test_fn_2</code>. We've already
+seen that the reserved name <code>__name__</code> gives the current name of
+this module which will be <code>module_docn</code> if it has been imported or
+<code>__main__</code> if it is running. Now let's see what
+<code>__doc__</code> is,</p>
+<pre><code>&gt;&gt;&gt; print module_docn.__doc__
+This is the module documentation pointing out that
+this is an artificial test module.
+&gt;&gt;&gt;</code></pre>
+<p><code>module_docn.__doc__</code> contains the module docstring. And now you
+may  see why they are called docstrings: because they are the
+<em>strings</em> that get assigned to the <code>__doc__</code> attributes.
+The docstrings for <code>tst_fn_1</code> and <code>test_fn_2</code> are also
+available in their <code>__doc__</code> attributes,</p>
+<pre><code>&gt;&gt;&gt; print module_docn.test_fn_1.__doc__
+This is the first test function.
+    It doesn't do anything.
+&gt;&gt;&gt; print module_docn.test_fn_2.__doc__
+This is the second test function.
+    It also doesn't do anything.
+&gt;&gt;&gt;</code> </pre>
+<p>The docstrings are so useful but this is such a cumbersome way to access
+them that Python provides the built-in command <code>help</code> to provide wasy
+access to them and improve the formatting of their display, e.g.</p>
+<pre><code>&gt;&gt;&gt; help(module_docn)
+Help on module module_docn:
+NAME
+    module_docn
+FILE
+    c:\documents and settings\ttopper\my documents\present\ncit210.w09\m06_functions\module_docn.py
+DESCRIPTION
+    This is the module documentation pointing out that
+    this is an artificial test module.
+FUNCTIONS
+    test_fn_1()
+        This is the first test function.
+        It doesn't do anything.
+    
+    test_fn_2()
+        This is the second test function.
+        It also doesn't do anything.
+
+&gt;&gt;&gt;</code> </pre>
+<p>All the information displayed is automatically extracted from the
+docstrings in the module. The pydoc module which is used behind the scenes by
+<code>help</code> is also used to produce much of the HTML Python
+documentation you encounter on the web. Just for completeness I will point
+out that <code>help</code> can also be used on an individual member function, </p>
+<pre><code>&gt;&gt;&gt; help (module_docn.test_fn_1)
+Help on function test_fn_1 in module module_docn:
+test_fn_1()
+    This is the first test function.
+    It doesn't do anything.
+&gt;&gt;&gt;</code> </pre>
+<p>or more usefully on real functions,</p>
+<pre><code>&gt;&gt;&gt; help(math.sqrt)
+Help on built-in function sqrt in module math:
+sqrt(...)
+    sqrt(x)
+    
+    Return the square root of x.
+&gt;&gt;&gt;</code> </pre>
+<h2>Summary</h2>
+<ul>
+  <li>Place triple quoted docstrings at the top of each module and after each
+    function definition. These should provide provide descriptions of what
+    the module and each function does.</li>
+  <li>Use the <code>help()</code> builtin to access the docstrings of modules and
+    functions you import.</li>
+</ul>
+<p></p>
+<hr />
+<p>* See <a href="22_FindingTheStandardLib.html">Finding the Standard Libray</a>
+in Pythonic Details.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

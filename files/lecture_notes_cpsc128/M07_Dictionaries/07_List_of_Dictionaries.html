@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>Example: A list of dictionaries</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="06_Book_Database.html" />
+  <link rel="Next" href="99_M07_Assignment.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Example: A list of dictionaries</h1>
+<p>Hopefully the last example reminded you that the values in a dictionary
+can be of any Python type. In the same way that other types can occur inside
+dictionaries, dictionaries can occur inside other Python data structures. In
+fact much of the power of programming comes from the freedom with which we
+can combine its elements. In Part I of the course we saw the many ways that
+control structures can be combined. Similarly here in Part II we will see
+that the same applies to data structures. Accordingly our next exhibit is a
+list of dictionaries. <em>List</em> because the outermost brackets are
+square, <em>of dictionaries</em> because the inner brackets are curly.</p>
+<pre><code class="python">data = [ {<span class="string">'id'</span>:<span class="number">4721</span>, <span class="string">'sex'</span>:<span class="string">'F'</span>, <span class="string">'age'</span>:<span class="number">31</span>},
+         {<span class="string">'id'</span>:<span class="number">1828</span>, <span class="string">'sex'</span>:<span class="string">'M'</span>, <span class="string">'age'</span>:<span class="number">56</span>},
+         {<span class="string">'id'</span>:<span class="number">7816</span>, <span class="string">'sex'</span>:<span class="string">'M'</span>, <span class="string">'age'</span>:<span class="number">72</span>},
+         <span class="comment">#. . . lots more records . . .</span>
+         {<span class="string">'id'</span>:<span class="number">3286</span>, <span class="string">'sex'</span>:<span class="string">'M'</span>, <span class="string">'age'</span>:<span class="number">29</span>},
+         {<span class="string">'id'</span>:<span class="number">5063</span>, <span class="string">'sex'</span>:<span class="string">'F'</span>, <span class="string">'age'</span>:<span class="number">22</span>}
+       ]</code></pre>
+<h2>Problem 1</h2>
+<p>How could we display the entry of the oldest individual?</p>
+<h2>Pseudocode</h2>
+<pre><code>We have to start somewhere so let's begin with the first entry
+and set it to be the oldest record (after all it's the oldest 
+we have seen so far!)
+Consider each item in the database from the second to the end
+    If the age of this entry is older than our current oldest
+        Update our oldest record
+Display the oldest record</code></pre>
+<h2>Python code</h2>
+<pre><code class="python"><span class="comment"># ListOfDicts.py</span>
+data = [ {<span class="string">'id'</span>:<span class="number">4721</span>, <span class="string">'sex'</span>:<span class="string">'F'</span>, <span class="string">'age'</span>:<span class="number">31</span>},
+         {<span class="string">'id'</span>:<span class="number">1828</span>, <span class="string">'sex'</span>:<span class="string">'M'</span>, <span class="string">'age'</span>:<span class="number">56</span>},
+         {<span class="string">'id'</span>:<span class="number">7816</span>, <span class="string">'sex'</span>:<span class="string">'M'</span>, <span class="string">'age'</span>:<span class="number">72</span>},
+         <span class="comment">#. . . lots more records . . .</span>
+         {<span class="string">'id'</span>:<span class="number">3286</span>, <span class="string">'sex'</span>:<span class="string">'M'</span>, <span class="string">'age'</span>:<span class="number">29</span>},
+         {<span class="string">'id'</span>:<span class="number">5063</span>, <span class="string">'sex'</span>:<span class="string">'F'</span>, <span class="string">'age'</span>:<span class="number">22</span>}
+       ]
+
+oldest = data[<span class="number">0</span>]
+<span class="keyword">for</span> entry <span class="keyword">in</span> data[<span class="number">1</span>:]:
+    <span class="keyword">if</span> entry[<span class="string">'age'</span>] &gt; oldest[<span class="string">'age'</span>]:
+        oldest = entry
+<span class="keyword">print</span> <span class="string">'The oldest person is:'</span>, oldest</code></pre>
+<p>The output of this is,</p>
+<pre><code>&gt;&gt;&gt; 
+The oldest person is: {'age': 72, 'id': 7816, 'sex': 'M'}
+&gt;&gt;&gt;</code> </pre>
+<p>Notice that the order of the key-value pairs in the output does not match
+that in the input. This is generally the case with dictionaries. The output
+order matches the internal storage order of the pairs, not the input
+order.</p>
+<p>(For thought: what should the output be when there are two equally old
+people, e.g. in this case what if there were two 72 year olds?)</p>
+<h2>Problem 2</h2>
+<p>How could we output the number of male and female records?</p>
+<h2>Pseudocode</h2>
+<pre><code>Set counter of males to 0
+Set counter of females to 0
+Consider each item in the database
+    If the value for the key 'sex' is 'M'
+        Increment the counter of males
+    Elif the value of the key 'sex' is 'F'
+        Increment the counter of females
+Display the male and female counters</code></pre>
+<h2>Python Code</h2>
+<pre><code class="python">nmales = 0
+nfemales = 0
+<span class="keyword">for</span> entry <span class="keyword">in</span> data:
+    <span class="keyword">if</span> entry[<span class="string">'sex'</span>] == <span class="string">'M'</span>:
+        nmales = nmales + <span class="number">1</span>
+    <span class="keyword">elif</span> entry[<span class="string">'sex'</span>] == <span class="string">'F'</span>:
+        nfemales = nfemales + <span class="number">1</span>
+<span class="keyword">print</span> <span class="string">'There are'</span>, nmales, <span class="string">'males and'</span>, nfemales, <span class="string">'females.'</span></code></pre>
+<p>Notes:</p>
+<ul>
+  <li>You may be wondering why I used <code>elif</code> and another test
+    rather than just an <code>else</code>. The answer is that I don't know for sure how
+    the application should handle hermaphrodites.</li>
+  <li>The <code>n</code> prefix on the counts is a common (but optional)
+    naming practice. It indicates the name represents a count. Why
+    <code>n</code> and not <code>c</code> for count? Probably because
+    <code>n</code> is commonly used for counts in math courses.</li>
+</ul>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

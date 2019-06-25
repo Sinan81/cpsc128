@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Assignment) Module 8 Assignment</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="16_TheMainEventLoop.html" />
+  <link rel="Next" href="../M09_OOP1/01_ObjectOrientedProgramming.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Assignment 8</h1>
+<h2>Problems</h2>
+<ol>
+  <li><h3>Text file practice</h3>
+    <p>Write a module containing three functions. When run, the module should
+    prompt the user for a filename and a number of lines (let's refer to it as
+    <code>n</code>) and then call each function in turn with these
+    parameters.</p>
+    <ol type="a">
+      <li><p>The function <code>head</code> should return a list containing the
+        first <code>n</code> lines of the file.</p>
+      </li>
+      <li><p>The function <code>tail</code> should return a list containing the
+        last <code>n</code> lines of the file.</p>
+      </li>
+      <li><p>The function <code>longest</code> should return a list containing
+        the longest <code>n</code> lines of the file. </p>
+      </li>
+    </ol>
+    <p>The output of running the module might look like this:</p>
+    <pre><code>Name of file to test with: pooh.txt
+Number of lines to display: 3
+
+head says the first 3 lines are:
+The more it snows
+  (Tiddely pom),
+The more it goes
+
+tail says the last 3 lines are:
+ How cold my toes
+  (Tiddely pom),
+ Are growing.
+
+longest says the longest 3 lines are:
+The more it snows
+The more it goes
+And nobody knows
+    </code></pre>
+    <p>Since the file could be very long you will <strong>not</strong> want to
+    read the whole thing into memory as a list of lines... </p>
+  </li>
+  <li><h3>Testing <code>biggest()</code></h3>
+    <p>The last few assignments have provided you with examples of testing
+    harnesses to ensure programs are working correctly. Now it is time for you
+    to design some tests of your own. The file <a href="a8_2.py">a8_2.py</a>
+    contains six versions of a function named <code>biggest</code> that all
+    claim to return the largest of three values they are passed. Add test cases
+    to the program to determine which ones (if any) work correctly. Based on
+    your test cases identify the situations (if any) in which each version
+    fails, and the reason for the failure, i.e. what the problem is with the
+    code. Enter your answers into the docstrings for each function.</p>
+  </li>
+  <li><h3>CRUD Control</h3>
+    <p>Complete the program <a
+    href="crud_controller.py">crud_controller.py</a>, i.e. insert code for the
+    remaining functions, and make sure adding new quotes can't delete existing
+    ones. Rename it a8p3v1.py.</p>
+  </li>
+<!--  <li><h3>Report Generation</h3>
+    <p>Write a function called <code>summarize</code> that is passed the name
+    of a file whose contents are formatted like this,</p>
+    <pre>Asia:Japan:120:144
+North America:Mexico:78:762
+Europe:England:56:94
+Asia:USSR:275:8649
+Europe:Germany:61:96
+South America:Brasil:134:3286
+North America:USA:237:3615
+Asia:China:1032:3705
+North America:Canada:25:3852
+Europe:France:55:211
+Asia:India:746:1267</pre>
+    <p>and returns a string containing a report formatting the data like
+    this,</p>
+    <pre>CONTINENT       COUNTRY    POPULATION       AREA       POP. DEN.
+                          (,000,000s)   (,000s MI^2)  (POP./MI^2)
+Asia            China         1032          3705         278.5
+                India          746          1267         588.8
+                Japan          120           144         833.3
+                USSR           275          8649          31.8
+                              ----         -----
+                Total         2173         13765
+Europe          England         56            94         595.7
+                France          55           211         260.7
+                Germany         61            96         635.4
+                              ----         -----
+                Total          172           401
+North America   Canada          25          3852           6.5
+                Mexico          78           762         102.4
+                USA            237          3615          65.6
+                              ----         -----
+                Total          340          8229
+South America   Brasil         134          3286          40.8
+                              ----         -----
+                Total          134          3286</pre>
+    <p>The file <a href="a8_4.py">a8_4.py</a> contains a program to test your
+    function.</p>
+  </li>-->
+  <li><h3>Super hero name generator</h3>
+  <p>Write a function called <code>superhero_name_generator</code> that is passed a string containing someone's full name, e.g. <code>'Timothy Nicholas Topper'</code>, and returns their superhero name according to the chart below, e.g. my superhero name is Outlandish Psychic Tornado.</p>
+  <p>Put your function in a module with an <code>if __name__ == '__main__':</code> section that tests it.</p.
+    ><p><img src="SuperheroNameGenerator.jpg"></p>
+    <!--<h3>Weather Data Analysis</h3>
+    <p>The file <a href="weather.txt">weather.txt</a> contains many years worth
+    of Whitehorse temperature data beginning in 1942.</p>
+    <p>The file begins with three header lines. After that each line contains 3
+    values: the month number, the day of the month, and the daily maximum
+    temperature.</p>
+    <p>Write a program that answers the following questions.</p>
+    <ul type="square">
+      <li>What are the hottest and coldest days, months and years recorded in
+        the file?</li>
+      <li>What was the greatest temperature swing from one day to the next?</li>
+      <li>What was the longest run of days over which the temperature steadily
+        increased, i.e. in which each day's maximum temperature was warmer than
+        the day before's?</li>
+    </ul>
+    <p>Your program should make a single pass over the file. (Note: While you
+    should strive for a single program that makes a single pass through the
+    data, you may want to begin by writing separate small programs to answer
+    each question, and then combine them into a single program.)</p>
+    <p>Your output might look like this but with x's replaced by values (though
+    there are more attractive possibilities):</p>
+    <pre><code> 
+                  Temperature Summary
+             (All temperatures in Celsius)
+ 
+Warmest day:             xxx xx 19xx (temp = xx C).
+Coldest day:             xxx xx 19xx (temp = xx C).
+Warmest month:           xxx 19xx (avg temp = xx C)
+Coldest month:           xxx 19xx (avg temp = xx C)
+Warmest year:            19xx (avg temp = xx C)
+Coldest year:            19xx (avg temp = xx C)
+Biggest one day change:  xx degrees from xxx xx to xxx xx, 19xx.
+Longest warming series:  xx days from xxx xx to xxx xx 19xx.</code></pre>-->
+  </li>
+</ol>
+<h2>Logistics</h2>
+<ul>
+  <li>
+    <p>Use the following naming scheme for your program files: <code>a</code><em>assignment#</em><code>p</code><em>problem#</em><code>v</code><em>version#</em><code>.py</code> . So your first attempt at problem 1 on this assignment will be named <code>a8p1v1.py</code> and your second attempt (should there be one) will
+      be named <code>a8p1v2.py</code> .</p>
+  </li>
+  <li>
+    <p>Submit your assignment by emailing your python programs to me. I advise you to submit early and submit often, since I will often review your programs as they are submitted and provide feedback that will let you improve them.</p>
+  </li>
+</ul>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

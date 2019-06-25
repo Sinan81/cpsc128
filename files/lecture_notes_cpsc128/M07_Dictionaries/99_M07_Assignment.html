@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>(Assignment) Module 7 Assignment</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="07_List_of_Dictionaries.html" />
+  <link rel="Next" href="../M08_Persistence/01_Persistence.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Assignment 7</h1>
+<h2>Problems</h2>
+<ol>
+  <li><h3>Every letter counts</h3>
+    <p>First up a problem to give you a little practice working with the collection
+    types (lists and dictionaries). Write the following implementations of the
+    function <code>letter_frequency</code> that takes a string and returns a
+    collection type showing how often each letter of the alphabet occurs in the
+    string.</p>
+    <ol type="a">
+      <li><p>The first version (<code>letter_frequencyA</code>) should return a
+        list with 26 integer elements representing the frequency of occurrence
+        of each letter of the alphabet in order from a to z. </p>
+      </li>
+      <li><p>The second version (<code>letter_frequencyB</code>) should return
+        a list of 26 lists, each of which contains a letter and its associated
+        count.</p>
+      </li>
+      <li><p>The third version (<code>letter_frequencyC</code>) should return a
+        dictionary that uses the letters as keys and whose values are the
+        letters' counts. </p>
+      </li>
+    </ol>
+    <p>The program that will call these functions is <a
+    href="letter_frequency.py"><code>letter_frequency.py</code></a>.
+    Your job is to replace the <code>pass</code> statements with function
+    bodies that implement the functionality specified above. Studying the
+    embedded tests should answer any other questions you have about the
+    functions' operations.</p>
+  </li>
+  <li><h3>Anagrams</h3>
+    <p>An anagram is produced by rearranging the letters of one word or phrase
+    to produce another word or phrase, e.g. "cat" and "act" are anagrams, as
+    are "scare", "races", "acres" and "cares". Write two functions called
+    <code>anagramsA</code> and <code>anagramsB</code> each of which returns True if the
+    two strings it is passed are anagrams of each other and False otherwise.
+    <code>anagramsA</code> should be based on the observation that if two
+    strings are anagrams they each have the same numbers of each letter in
+    them. This means that their letter frequency counts will be identical.
+    <code>anagramsB</code> should be based on the observation that anagrams are
+    strings that could be rearranged to be the same. One easy way to rearrange
+    things is to use Python's built-in sort methods, so you could test to see
+    if two strings are anagrams by sorting them and comparing the sorted
+    versions.</p>
+  </li>
+  <li><h3>Win 32 Network Resource Anlayzer</h3>
+    <p>Many of the Win32 Network Resource enumeration tools return a list
+    of dictionaries:</p>
+    <pre><code>[ {'name':'YVB127','comment':'Rm A2507','type':WKSTATION},
+  {'name':'YVB143','comment':'Rm T1010','type':SERVER},
+  ...
+]</code></pre>
+    <p>Write the following functions to work with the <code>import</code>'ed
+    file <a
+    href="http://courses.yukoncollege.yk.ca/~ttopper/CPSC128.W14/M07_Dictionaries/net_res.py">net_res.py</a>:</p>
+    <ol type="a">
+      <li><code>count_summary()</code> should return a dictionary where the
+        machine type is the key and the count of machines of that type is the
+        value.</li>
+      <li><code>list_by_type(type)</code> should be passed a type, e.g. SERVER
+        and return a list of the rooms containing machines of that type.</li>
+      <li><code>max_count()</code> should return the name of the room, e.g. 'Rm
+        A2507', that contains the most computers.</li>
+    </ol>
+    <p>Embed your functions in a module with an <code>if __name__</code>... block that runs
+    them and displays their output. It should import the
+    file<code>net_res.py</code>.</p>
+  </li>
+  <li><h3>Topography</h3>
+    <p>No dictionaries required for this one. It just gives you some more
+    practice working with lists of lists. Suppose you are given some map
+    elevation data stored as a list of lists, e.g. </p>
+    <pre><code>data = [ [20, 54, 50, 64, 60, 63, 60, 48, 20, 20],
+         [20, 56, 72, 76, 72, 20, <span style="color: orange;">52</span>, <span style="color: orange;">62</span>, <span style="color: orange;">53</span>, 20],
+         [20, 52, 62, 81, 67, 23, <span style="color: orange;">48</span>, <strong><span style="color: red;">67</span></strong>, <span style="color: orange;">52</span>, 20],
+         [20, 54, <span style="color: orange;">54</span>, <span style="color: orange;">82</span>, <span style="color: orange;">72</span>, 22, <span style="color: orange;">42</span>, <span style="color: orange;">64</span>, <span style="color: orange;">50</span>, 20],
+         [20, 53, <span style="color: orange;">49</span>, <strong><span style="color: red;">87</span></strong>, <span style="color: orange;">69</span>, 47, 48, 49, 21, 20],
+         [20, 20, <span style="color: orange;">62</span>, <span style="color: orange;">71</span>, <span style="color: orange;">61</span>, 36, 28, 31, 22, 20],
+         [20, 20, 20, 20, 20, 22, 21, 28, 24, 20],
+         [20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
+         [20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
+         [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+       ]</code></pre>
+    <p>Write a function called <code>peaks</code> that is passed a list of
+    lists like this one and returns a list of the coordinates (row, col) of all
+    the peaks in the dataset. A peak is a point that is higher than its eight
+    surrounding neighbours (the red values at (2,7) and (4,3)
+    above are the peaks and the orange values aroung them are their eight neighbours). For the data set above the function should return,</p>
+    <pre><code>[(2, 6), (4, 3)]</code></pre>
+  </li>
+</ol>
+<h2>Logistics</h2>
+<ul>
+  <li>
+    <p>Use the following naming scheme for your program files: <code>a</code><em>assignment#</em><code>p</code><em>problem#</em><code>v</code><em>version#</em><code>.py</code> . So your first attempt at problem 1 on this assignment will be named <code>a7p1v1.py</code> and your second attempt (should there be one) will
+      be named <code>a7p1v2.py</code> .</p>
+  </li>
+  <li>
+    <p>Submit your assignment by emailing your python programs to me. I advise to submit early and submit often, since I will often review your programs as they are submitted and provide feedback that will let you improve them.</p>
+    <p>&nbsp;</p>
+  </li>
+</ul>  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

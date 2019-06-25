@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Writing to text files</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="07_IsThereMore.html" />
+  <link rel="Next" href="09_AppendingToFiles.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Writing to text files</h1>
+<p>The mechanics of writing to text files are very straightforward. Suppose
+we need to store a list of coordinates to a text file, e.g.</p>
+<pre><code>coords = [[12, 31], [75, 19], [28, 51]]</code></pre>
+<p>Writing them to a file could be done by code like this,</p>
+<pre><code class="python"><span class="comment"># write_coords.py</span>
+coords = [[<span class="number">12</span>, <span class="number">31</span>], [<span class="number">75</span>, <span class="number">19</span>], [<span class="number">28</span>, <span class="number">51</span>]]
+fname = raw_input(<span class="string">'Name of file to create? '</span>)
+f = open(fname, <span class="string">'w'</span>)
+<span class="keyword">for</span> coord <span class="keyword">in</span> coords:
+    f.write(str(coord[<span class="number">0</span>])+<span class="string">' '</span>+str(coord[<span class="number">1</span>])+<span class="string">'<span class="escape">\n</span>'</span>)
+f.close()</code></pre>
+<p>The pattern is similar to reading from a file:</p>
+<ul>
+  <li>We open the file, but with a mode of <code>w</code> for
+    <strong>w</strong>rite. Note the wording of the prompt <code>'Name of
+    file to create? '</code> Opening a file for writing deletes an existing
+    file of the same name if one exists. In production code it is critical to
+    either know you can clobber existing files, or to check whether a file
+    name has already been used and then prompt the user for another name if
+    existing files shouldn't be clobbered.</li>
+  <li>We direct output to the file using the file object's <code>write</code>
+    method. This method wants a string argument so we need to format our
+    coordinates accordingly (<code>f.write(coord[0]</code>)) would throw an
+    error). Note that we also have to add the newline character
+  ourselves.</li>
+  <li>When we are done we close the file.</li>
+</ul>
+<p>The resulting file looks like this if you open it in a text editor, e.g. IDLE,</p>
+<pre><code>12 31
+75 19
+28 51</code></pre>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

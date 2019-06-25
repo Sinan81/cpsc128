@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+List comprehensions</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="19_CopyingAList.html" />
+  <link rel="Next" href="21_pyc_files.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>List comprehensions</h1>
+<p>List comprehensions are not understandings of lists, but a shortcut
+notation for generating one list from another. The shortcut notation was
+created because we process a list to create another so often. Consider
+creating a list of playing card face values from a list of their card
+numbers. We could do it like this,</p>
+<pre><code class="python">hand = [<span class="number">12</span>, <span class="number">42</span>, <span class="number">8</span>, <span class="number">29</span>, <span class="number">11</span>]
+face_values = []
+<span class="keyword">for</span> card <span class="keyword">in</span> hand:
+    face_values.append( card%<span class="number">13</span> )</code></pre>
+<p>Or we could use theshortcut notation providede by list comprehensions and do this,</p>
+<pre><code class="python">face_values = [card%<span class="number">13</span> <span class="keyword">for</span> card <span class="keyword">in</span> hand]</code></pre>
+<p>(The square parentheses are a reminder that the expression on the right is
+creating a list.)</p>
+<p>A list comprehension is a general expression mechanism that generates
+lists instead of numbers or strings, e.g.</p>
+<pre><code class="python">[x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">5</span>)]</code></pre>
+<p>will generate,</p>
+<pre><code>&gt;&gt;&gt; [x**2 for x in range(5)]
+[0, 1, 4, 9, 16]
+&gt;&gt;&gt;</code></pre>
+<p>You can even add a test at the end to filter out some of the results,
+e.g.</p>
+<pre><code>&gt;&gt;&gt; [x**2 for x in range(5) if x**2 % 2 == 0]
+[0, 4, 16]
+&gt;&gt;&gt;</code></pre>
+<h2>Syntax summary</h2>
+<pre><code class="python">[ <em>expression</em> <span class="keyword">for</span> <em>name</em> <span class="keyword">in</span> <em>sequence</em> <span class="keyword">if</span> <em>test</em> ]</code></pre>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

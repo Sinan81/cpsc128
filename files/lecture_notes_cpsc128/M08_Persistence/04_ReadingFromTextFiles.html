@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Reading from text files</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="03_TextVsBinaryFiles.html" />
+  <link rel="Next" href="05_ExampleSearchingLogFiles.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Reading from text files</h1>
+<p>Here's how to read data from a text file.</p>
+<p>To begin with use IDLE to create a small  test text file:</p>
+<p><img alt="." src="text_file.png" width="330" height="190" /></p>
+<p>We can visualize this on disk as,</p>
+<table class="finelines">
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>h</td>
+      <td>e</td>
+      <td></td>
+      <td>f</td>
+      <td>i</td>
+      <td>r</td>
+      <td>s</td>
+      <td>t</td>
+      <td></td>
+      <td>l</td>
+      <td>i</td>
+      <td>n</td>
+      <td>e</td>
+      <td>.</td>
+      <td>\n</td>
+      <td>L</td>
+      <td>i</td>
+      <td>n</td>
+      <td>e</td>
+      <td></td>
+      <td>2</td>
+      <td>.</td>
+      <td>\n</td>
+      <td>T</td>
+      <td>h</td>
+      <td>e</td>
+      <td></td>
+      <td>t</td>
+      <td>h</td>
+      <td>i</td>
+      <td>r</td>
+      <td>d</td>
+      <td></td>
+      <td>a</td>
+      <td>n</td>
+      <td>d</td>
+      <td></td>
+      <td>l</td>
+      <td>a</td>
+      <td>s</td>
+      <td>t</td>
+      <td></td>
+      <td>l</td>
+      <td>i</td>
+      <td>n</td>
+      <td>e</td>
+      <td>.</td>
+      <td>\n</td>
+      <td>EOF</td>
+    </tr>
+  </tbody>
+</table>
+<p>The only new item here are the <code>\n</code> characters These denote newline characters which like EOF characters vary between operating sytems.
+(Don't worry the Python you installed was compiled to know what they are on
+your system).</p>
+<p>There are three common ways of reading a text file like this in:</p>
+<ol>
+  <li>one line at a time, processing lines as we go,</li>
+  <li>the whole file into a string,</li>
+  <li>the whole file into a list of strings, one entry per line.</li>
+</ol>
+<p>When possible, option 1. is preferred since it is the most memory efficient
+because it holds only a bit of the file (one line) in memory at any given time.</p>
+<p>Here's the Python code for each of these options.</p>
+<ol>
+  <li>One line at a time:
+    <pre><code class="python"><span class="comment"># file_read_1.py</span>
+f = open(<span class="string">'text_file.txt'</span>, <span class="string">'r'</span>) <span class="comment"># Open the file.</span>
+<span class="keyword">for</span> line <span class="keyword">in</span> f:                 <span class="comment"># Iterate through the file a line at a time.</span>
+    <span class="keyword">print</span> line,                <span class="comment"># Process the current line.</span>
+f.close()                      <span class="comment"># Close the file.</span></code></pre>
+    <p>Notes:</p>
+    <ul>
+      <li>The arguments to the <code>open</code> function are the name of the file to
+        open, and the mode in which to open it. Here the <code>r</code>
+        stands for <strong>read</strong>.</li>
+      <li>As you can see by the <code>for</code> statement, iteration over
+        file objects is defined just as it is for lists. The default
+        iteration is to grab one line each time.</li>
+      <li>You should always close files when you are finished reading from
+        them. The file object will be garbage collected eventually anyway and
+        the file closed at that time, but closing ASAP reduces memory
+        consumption and allows other processes to access the file sooner.</li>
+    </ul>
+    <p>Output:</p>
+    <pre><code>&gt;&gt;&gt; 
+The first line.
+Line 2.
+The third and last line.
+&gt;&gt;&gt;</code></pre>
+  </li>
+  <li>The whole file into a string:
+    <pre><code class="python"><span class="comment"># file_read_2.py</span>
+f = open(<span class="string">'text_file.txt'</span>, <span class="string">'r'</span>)
+s = f.read()
+<span class="keyword">print</span> <span class="string">'s is'</span>, len(s), <span class="string">'characters long.'</span>
+<span class="keyword">print</span> s
+f.close()</code></pre>
+    <ul>
+      <li>The read method of the file object <code>f</code> reads the entire file
+        including newline characters into memory.</li>
+    </ul>
+    <pre><code>&gt;&gt;&gt; 
+s is 49 characters long.
+The first line.
+Line 2.
+The third and last line.
+&gt;&gt;&gt;</code> </pre>
+    <ul>
+      <li>Note that the file looks the same as before when displayed because
+        the IDLE shell interprets the newline characters embedded in it as
+        instructions to start new lines.</li>
+      <li><code>read()</code> can also take an integer argument specifying
+        how many bytes to read from the file. Its default behaviour is to
+        read all of them.</li>
+    </ul>
+  </li>
+  <li>The whole file into a list of strings,
+    <pre><code class="python"><span class="comment"># file_read_3.py</span>
+f = open(<span class="string">'text_file.txt'</span>, <span class="string">'r'</span>)
+lines = f.readlines()
+<span class="keyword">print</span> lines
+f.close()</code></pre>
+    <p>Output:</p>
+    <pre><code>&gt;&gt;&gt; 
+['The first line.\n', 'Line 2.\n', 'The third and last line.\n']
+&gt;&gt;&gt;</code></pre>
+    <p>Note that the newline character is included. If you don't want it you
+    need to <code>strip</code> it yourself.</p>
+  </li>
+</ol>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Dictionary "derivation"</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="01_Introduction.html" />
+  <link rel="Next" href="03_Dictionaries.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Dictionary "derivation"</h1>
+<h2>Think back</h2>
+<p>Earlier we saw that we could use a list as an array of counters, e.g. to
+calculate <a
+href="http://courses.yukoncollege.yk.ca/~ttopper/CPSC128.W14/M05_ListsAndStrings/DiceOdds.html">dice
+odds</a>. The trick there was to map the outcomes of rolling a pair of fair
+dice, i.e. 2, 3, 4, ..., 11, 12, onto the entries in a list. Since lists are
+numbered from 0, we did that by subtracting 2 from each dice outcome. This
+mapped outcomes to counters as follows,</p>
+<table border="0" style="margin: auto;">
+  <tbody>
+    <tr>
+      <th style="text-align:center;">Dice outcome</th>
+      <td style="width: 50px;"></td>
+      <th style="text-align:center;">Counter</th>
+    </tr>
+    <tr>
+      <td style="text-align:center;">2</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[0]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">3</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[1]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">4</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[2]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">...</td>
+      <td style="text-align:center;">...</td>
+      <td style="text-align:center;">...</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">11</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[9]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">12</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[10]</td>
+    </tr>
+  </tbody>
+</table>
+<p>This is a nice little trick and programmers used similar ones to map all
+sorts of types onto list indexes so they could count them (or store
+information associated with them).</p>
+<h2>Counting letters</h2>
+<p>For example if you want to count letters you need to map the letters of
+the alphabet onto counters like this,</p>
+<table border="0" style="margin: auto;">
+  <tbody>
+    <tr>
+      <th style="text-align:center;">Letter</th>
+      <td style="width: 50px;"></td>
+      <th style="text-align:center;">Counter</th>
+    </tr>
+    <tr>
+      <td style="text-align:center;">'a'</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[0]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">'b'</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[1]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">'c'</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[2]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">...</td>
+      <td style="text-align:center;">...</td>
+      <td style="text-align:center;">...</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">'y'</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[24]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">'z'</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[25]</td>
+    </tr>
+  </tbody>
+</table>
+<p>This was done by taking advantage of the properties by which characters
+are stored in memory.</p>
+<p>Since the days of teletypes characters had to be represented digitally and
+so there was an encoding for them. The most common for a long time was
+ASCII*. This specified the binary encoding for the common keyboard characters
+and control codes as shown e.g. <a href="http://www.asciitable.com/">in this
+table</a>. You can see the control codes teletypes required in the first 32
+positions, followed by some special characters and digits, the capital
+letters, some more special characters, the lower case alphabet, and finally a
+few more special characters. Thankfully for the tricks below the letters were
+kept in sequence without intervening special characters. Most languages
+provide functions to get the ASCII value of a character. In Python this
+function is <code>ord</code>, (for <strong>ord</strong>inal position)</p>
+<pre><code>&gt;&gt;&gt; ord('a')
+97
+&gt;&gt;&gt;</code></pre>
+<p>Its inverse which returns a character corresponding to an ASCII code is
+<code>chr</code>,</p>
+<pre><code>&gt;&gt;&gt; chr(97)
+'a'
+&gt;&gt;&gt;</code></pre>
+<p>Using <code>ord</code> we can implement the mapping above by subtracting
+97 (or more readably <code>ord('a')</code>) from the ordinal values of the
+characters,</p>
+<pre><code class="python">test_str =<span class="string">'astringalingding'</span>
+counters = <span class="number">26</span>*[<span class="number">0</span>] <span class="comment"># Initialize list of counters to be 26 0s.</span>
+<span class="keyword">for</span> ch <span class="keyword">in</span> test_str:
+    <span class="comment"># Calculate index of counter for this letter in counters.</span>
+    index = ord(ch) - ord(<span class="string">'a'</span>)
+    <span class="comment"># Increment appropriate counter.</span>
+    counters[index] = counters[index] + <span class="number">1</span>
+<span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">26</span>):
+    <span class="comment"># Display letter corresponding to this index and its count.</span>
+    <span class="keyword">print</span> chr(ord(<span class="string">'a'</span>)+index), counters[index]</code></pre>
+<p>Try it, and examine the output. Note how fragile the code is, e.g. insert
+a space into <code>test_str</code>, or a capital letter. (Don't worry you'll
+get to make it more robust on the assignment.)</p>
+<h2>The limits of ingenuity...</h2>
+<p>Both these tricks we have seen for mapping sequences onto lists are
+ingenious but programmers' ingenuity hit a temporary stumbling block when
+they wanted to count the occurrences of words. At first it seems
+straightforward. We just need to map words onto counters something like
+this,</p>
+<table border="0" style="margin: auto;">
+  <tbody>
+    <tr>
+      <th style="text-align:center;">word</th>
+      <td style="width: 50px;"></td>
+      <th style="text-align:center;">Counter</th>
+    </tr>
+    <tr>
+      <td style="text-align:center;">'cat'</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[0]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">'dog'</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[1]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">'pie'</td>
+      <td style="text-align:center;">&rarr;</td>
+      <td style="text-align:center;">counters[2]</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">...</td>
+      <td style="text-align:center;">...</td>
+      <td style="text-align:center;">...</td>
+    </tr>
+  </tbody>
+</table>
+<p>But there are problems.</p>
+<p>First our mappings from dice outcomes and letters to counters were based
+on the fact that they were both short sequences. The list of possible words
+is not short: the English language alone boasts roughly a million words and
+this is without counting proper names like the names of people and
+places. We can hardly initialize a list of a million counters each time we
+need to count the occurrences of words in some paragraph.</p>
+<p>Second, it's not easy to see how to map 'cat' onto 0 and 'pie' onto 2. In
+our first two examples we were able to do so using simple arithmetic to deal
+with an offset between the two sequences first by subtracting 2 and then by
+subtracting 97. Here simple arithmetic will not suffice.</p>
+<h2>... call for greater ingenuity ...</h2>
+<p>Programmers tried numerous arithmetic tricks to map words onto indices.
+For example we could try adding together the ASCII codes for the letters in
+the words so 'cat' becomes ord('c') + ord('a') + ord('t') = 99 + 97 + 116 =
+312 while 'dog' becomes ord('d') + ord('o') + ord('g') = 100 + 111 + 103 =
+314. This works nicely for 'cat' and 'dog', but 'dog' and 'god' end up having
+the same code (as do all acronyms) which won't do.</p>
+<p>To distinguish 'dog' and 'god' we have to take account of the order of the
+letters. One way to do this draws its inspiration from numbers. After all 574
+and 475 are made from the same digits but we don't confuse them because the
+position of the numbers matters: 574 means "5 hundreds, 7 tens, and 4 ones"
+whereas 475 means "4 hundreds, 7 tens and 5 ones". We can adapt this
+positional scheme to code our strings. If 574 means (5 &times; 100) + (7
+&times; 10) + (4 &times; 1) or (5 &times; 10<sup>2</sup>) + (7 &times;
+10<sup>1</sup>) + (4 &times; 10<sup>0</sup>) then by analogy cat should mean
+(3 &times; 26<sup>2</sup>) + (1 &times; 26<sup>1</sup>) + (20 &times;
+26<sup>0</sup>) &mdash; because c, a and t are the 3rd, 1st and 20th letters
+of the alphabet. Here's a function that calculates this kind of a string
+index,</p>
+<pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">string_index</span><span class="params">( s )</span>:</span>
+    index = <span class="number">0</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):
+        index = index + (ord(s[-i]) - ord(<span class="string">'a'</span>) + 1) * <span class="number">26</span>**i
+    <span class="keyword">return</span> index
+        
+<span class="keyword">print</span> string_index(<span class="string">'cat'</span>)
+<span class="keyword">print</span> string_index(<span class="string">'dictionary'</span>)</code></pre>
+<p>(Note the use of the negative index in <code>s[-i]</code> to access the
+letters of the word from the back to the front, and <code>- ord('a') +
+1</code> to get the letter's position in the alphabet).</p>
+<p>This gives us unique numbers for words, but they get large quickly. 'cat's
+index is a modest 1199, but 'dictionary's is 49,655,615,398,718 which makes
+us long to deal with a mere million counters (that's 49
+<strong>trillion</strong>).</p>
+<h2>... which calls for even greater ingenuity</h2>
+<p>Ingenuity knows few bounds so there are fixes of course. We can reduce
+large numbers to small ones by, for example, using modulo, %. If we want to
+limit ourselves to a list with 1,000 counters we can just use %1000 and our
+numbers will all be scaled into the range 0-999. Of course we may have
+collisions between indices whose last three digits are the same if we do
+that, but we can watch for that situation and handle it. We might also run
+out of counters if we have more than 1,000 unique words, but we can watch for
+that too and enlarge the list of counters if and when it happens. Are there
+risks of errors? Yes. Are there performance costs? Yes again (testing for
+collisions takes time; resizing a list takes more time). In all it took
+programmers a couple of decades of sustained development effort to iron out
+the major problems. In fact it remains an ongoing area of development in
+which no best solution is known. But the libraries of major languages contain
+robust efficient code for doing just this, and that code lies behind the
+implementation of dictionaries/hash tables/collections/mappings.</p>
+<p>The <code>string_index</code> function above is called a <em>hashing</em>
+function. A <em>hash</em> is a unique identifier. In Python most objects can
+be hashed, not just strings. In fact you can see the internal hash for an
+object just by calling the built-in <code>hash</code> function, </p>
+<pre><code>&gt;&gt;&gt; hash('cat')
+405875055
+&gt;&gt;&gt; hash('dicitonary')
+-426043516</code></pre>
+<h2>Summary</h2>
+<p>A dictionary works by using a hashing function to get a unique numerical
+identifier (hash) for an object, and then using that hash to locate the data
+associated with the object (typically in a list). As long as the hashing
+function can be computed quickly, and is unique, dictionaries can be almost
+as fast as lists and yet allow for readable, meaningful indexes.</p>
+<p></p>
+<hr />
+<p>* ASCII is being slowly superseded by Unicode because the latter can
+handle all the characters in all human languages rather than just the few
+that appear on North American keyboards. Python 3 for example uses Unicode
+exclusively for its strings. Most other languages are still some ways from
+providing robust Unicode processing.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

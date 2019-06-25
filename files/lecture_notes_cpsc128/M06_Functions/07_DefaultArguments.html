@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Default arguments</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="06_dice_roll.html" />
+  <link rel="Next" href="08_playing_cards_1.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Default Arguments</h1>
+<p>On the previous page we improved our dice rolling function so that it
+could be used for dice with other than 6 sides, however this also made it
+more complicated to use in the most common case because we have to provide a
+parameter specifying the number of sides. To avoid this complication Python
+allows us to specify the default values of arguments. 'Default' in this context
+means that if a value isn't given the default value is used. Here's our dice
+rolling function with the default number of sides set to 6.</p>
+<pre><code class="python"><span class="keyword">import</span> random
+
+<span class="function"><span class="keyword">def</span> <span class="title">dice_roll</span><span class="params">(sides = 6)</span>:</span>
+    <span class="keyword">return</span> random.randint(<span class="number">1</span>,sides)
+
+<span class="keyword">print</span> <span class="string">'Your results are:'</span>
+<span class="keyword">print</span> <span class="string">'6-sided die:'</span>, dice_roll()
+<span class="keyword">print</span> <span class="string">'24-sided die:'</span>, dice_roll(<span class="number">24</span>)</code></pre>
+<p>and the output from a sample run is:</p>
+<pre><code>&gt;&gt;&gt; 
+Your results are:
+6-sided die: 5
+24-sided die: 17
+&gt;&gt;&gt;</code></pre>
+<p>Default argument values are common throughout Python. For example the
+<code>range</code> function defaults to a starting value of 0 and a stepsize
+of 1. IDLE shows you which arguments are requried and which ones have
+defaults by enclosing optional arguments in square brackets in the pop-up
+tool-tip, e.g.</p>
+<p><img alt="." src="IDLE_default_args.png" width="413" height="34" /></p>
+<p>It also shows you the type of object returned by the function &mdash; in this
+case a list of integers.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

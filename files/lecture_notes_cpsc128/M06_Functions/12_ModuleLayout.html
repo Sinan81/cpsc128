@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Summary: Module Layout</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="11_DocumentingModulesAndFunctions.html" />
+  <link rel="Next" href="13_playing_cards_2.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Summary: Module Layout</h1>
+<p>The standard layout for modules is,</p>
+<pre><code class="python"><span class="comment"># filename.py</span>
+<span class="comment"># ...</span>
+<span class="string">''' Module docstring '''</span>
+
+<span class="comment"># import statements</span>
+<span class="keyword">import</span> ...
+<span class="keyword">import</span> ...
+...
+
+<span class="comment"># Function definitions</span>
+<span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">( args )</span>:</span>
+    <span class="string">''' Function docstring '''</span>
+    ...
+
+<span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">( args )</span>:</span>
+    <span class="string">''' Function docstring '''</span>
+    ...
+
+...
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    <span class="comment"># Unit tests</span>
+    ...</code></pre>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

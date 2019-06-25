@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Writing functions: Syntax</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="03_WritingFunctions_is_even.html" />
+  <link rel="Next" href="05_is_odd.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Writing functions: Syntax summary</h1>
+<p>Here is a template for writing Python functions:</p>
+<pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title"><em>function-name</em></span><span class="params">( <em>parameter-list</em> )</span>:</span>
+    ...
+    ... <em>function-body</em>
+    ...
+    <span class="keyword">return</span> <em>expression</em>
+    ...
+    <span class="keyword">return</span> <em>expression</em></code></pre>
+
+<p>And here are a couple of guidelines:</p>
+<ul>
+<li>
+  <p>We <em>prefer</em> to have a single <code>return</code> expression as the last line of the function. If this guideline is followed then other programmers know where to look to find out what value is returned, and don't have to hunt through the function trying to spot all the return points. Having said that this is a preference <em>not a requirement</em>. Some code really is cleaner with multiple <code>return</code>s spread throughout the function, but this is unusual enough that you should do a quick mental check to verify that it is preferable.</p></li>
+<li>
+  <p>If you do not include a <code>return</code> statement the value returned will the special value <code>None</code>, but it is better to be explicit that this is your intention by placing a blank <code>return</code> statement in the function than by just not having one (because then other programmers will not waste brain cycles wondering if you intended to return <code>None</code>, or forgot to include a <code>return</code>).</p></li>
+</ul>
+  </section>
+
+  <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

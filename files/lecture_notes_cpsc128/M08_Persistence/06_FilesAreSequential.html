@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Important note: Files are sequential</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="05_ExampleSearchingLogFiles.html" />
+  <link rel="Next" href="07_IsThereMore.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Important note: Files are sequential</h1>
+<p>One thing that is not illustrated by the examples so far is that files are
+sequential. They derived from physical tape devices that only went forward or
+all the way back to the beginning of the file, so you are always moving
+forward through a file as you read from it. Thus after doing a
+<code>.read()</code> from a file you are at the end of it and doing another
+<code>.read()</code> will not reread it, e.g.</p>
+<pre><code>&gt;&gt;&gt; f = open('text_file.txt','r')
+&gt;&gt;&gt; s = f.read()
+&gt;&gt;&gt; s
+'The first line.\nLine 2.\nThe third and last line.\n'
+&gt;&gt;&gt; p = f.read()
+&gt;&gt;&gt; p
+''
+&gt;&gt;&gt; f.close()
+&gt;&gt;&gt; </code></pre>
+<p>Note that it is not an error to try and read from the end of a file
+(notice that there's no error message above), you just don't get anything because there is nothing more to
+get (see how
+  <code>p</code> is a null string above?).</p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Text versus Binary Files</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="02_NoteToTheStudent.html" />
+  <link rel="Next" href="04_ReadingFromTextFiles.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Text versus Binary Files</h1>
+<p>Files on disk are always just sequences of bytes so how can there be two
+types, text and binary? The difference between text and binary files is not a
+physical difference on disk, but a difference in the way those bytes are
+<em>interpreted</em>.</p>
+<p>Consider storing the two dimensional coordinate (12,
+  31) to disk. Storing it as text would be in essence to print it to a file
+  (instead of the screen). We can visualize the file contents to be,</p>
+<table class="finelines">
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>,</td>
+      <td>3</td>
+      <td>1</td>
+      <td>EOF</td>
+    </tr>
+  </tbody>
+</table>
+<p>where EOF is the character used to mark the end of a file*. Of course what
+is actually written to disk are the ASCII values of those characters, so what
+is on disk is,</p>
+<table class="finelines">
+  <tbody>
+    <tr>
+      <td>49</td>
+      <td>50</td>
+      <td>44</td>
+      <td>51</td>
+      <td>49</td>
+      <td>26</td>
+    </tr>
+  </tbody>
+</table>
+<p>To be even more precise the values will be stored in binary so the disk
+contents will be,</p>
+<table class="finelines">
+  <tbody>
+    <tr>
+      <td>00110001</td>
+      <td>00110010</td>
+      <td>00101100</td>
+      <td>00110011</td>
+      <td>00110001</td>
+      <td>00011010</td>
+    </tr>
+  </tbody>
+</table>
+<p>Thank goodness the computer can read it!</p>
+<p>What about storing it in a binary file? In this case we will write the
+binary representations of the numbers 12 and 31 to disk in sequence. The
+number of bytes used to do this on disk varies from 1 to 8, but using typical
+four byte representations we would write the following to disk:</p>
+<table class="finelines">
+  <tbody>
+    <tr>
+      <td>00000000</td>
+      <td>00000000</td>
+      <td>00000000</td>
+      <td>00001100</td>
+      <td>00000000</td>
+      <td>00000000</td>
+      <td>00000000</td>
+      <td>00011111</td>
+      <td>00011010</td>
+    </tr>
+  </tbody>
+</table>
+<p>As you can see both files have binary representations on disk so why do we
+call the first text and only the second binary? Because to be meaningful each
+should be <em>interpreted</em> differently. We call the first a text file because its
+bits should be interpreted as giving the ASCII values of text characters. We
+call the second binary because its bits should be read in four bytes at a
+time and interpreted as integer values. Notice that it doesn't say this
+inside the files. That knowledge has to be built into the suite of programs
+that create and manipulate the files.</p>
+<p>Note that either representation could be read in as either text, i.e. a
+sequence of bytes corresponding to ASCII codes of characters, or binary, i.e.
+a pair of 4-byte wide integers, but that in each case the wrong
+interpretation produces nonsense. <em>So</em> knowing the correct interpretation is
+crucial. In everyday computing you can often tell which interpretation is
+correct by displaying some of the file to a terminal, or opening it in a
+'pure' text editor, e.g. the IDLE editor. Here's a dump of a small Python
+program to a terminal,</p>
+<pre>ttopper@D1JWYSB1:~/Present/CPSC128.W13/M08_Persistence
+$ cat s2bin.py
+<strong># s2bin.py
+# Converts from a string to its binary representation.
+HEXBIN ={"0":"0000", "1":"0001", "2":"0010", "3":"0011", "4":"0100",
+         "5":"0101", "6":"0110", "7":"0111", "8":"1000", "9":"1001",
+         "A":"1010", "B":"1011", "C":"1100", "D":"1101", "E":"1110",
+         "F":"1111"}
+s = '112,31'
+for c in s:
+    n = ord(c)
+    print "".join([HEXBIN[i] for i in '%X'%n]),
+ttopper@D1JWYSB1:~/Present/CPSC128.W13/M08_Persistence</strong>
+$</pre>
+<p>And here's a partial dump of a Word document,</p>
+<pre>ttopper@D1JWYSB1:~/Present/CPSC128.W13/M08_Persistence
+$ cat MSWordFile.doc
+<strong>DI&#x25c4;&agrave;&iexcl;&plusmn;&rarr;&aacute;                &gt; &hearts; _&yuml;   &spades;           &#x263a;   *        &#x25ba;  ,   &#x263a;   _&yuml;&yuml;&yuml;    ) &yuml;
+&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;
+&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;
+&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;
+&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;
+&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;
+&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&yuml;&igrave;&yen;A %`   &diams;  d&#x2195;&iquest;      &#x25ba;     &spades;  / &#x266b; bjbjN&agrave;N&agrave;      &diams;
+&#x25ac; .&#x25ba;  ,S&#x263a; ,S&#x263a; /                               &yuml;&yuml;          &yuml;&yuml;          &yuml;&yuml;       &#x263c;
+     &#x263c;&hearts;      &#x263c;&hearts;  &#x263c;&hearts;      &#x263c;&hearts;      &#x263c;&hearts;      &#x263c;&hearts;      &#x263c;&hearts;  &para;           ,&hearts;      &uuml;&hearts;    &uuml;
+&hearts;      &uuml;&hearts;      &uuml;&hearts;  &#x2640;  &diams;  &#x2640;   ,&hearts;      &#x2640;&spades;  o    &diams;       &diams;       &diams;       &diams;       &diams;&ucirc;
+&diams;      &ucirc;&diams;      &ucirc;&diams;      &lt;&clubs;  &#x263b;   ?&clubs;      ?&clubs;      ?&clubs;      ?&clubs;      ?&clubs;      ?&clubs;  $   &diams;
+  h&#x263b;  l   &ordf;   &plusmn;&clubs;  &sect;                   &#x263c;&hearts;      &ucirc;&diams;                      &ucirc;&diams;      &ucirc;&diams;
+      &ucirc;&diams;      &ucirc;&diams;      &plusmn;&clubs;              &#x263c;&hearts;      &#x263c;&hearts;       &diams;               &diams;  U   &AElig;&clubs;
+  &#x25ac;   #&clubs;      #&clubs;      #&clubs;      &ucirc;&diams;
+   &#x263c;&hearts;       &diams;      &#x263c;&hearts;       &diams;      &lt;&clubs;              #&clubs;                          &ucirc;
+&diams;      &lt;&clubs;              #&clubs;              #&clubs;      &#x263c;&hearts;      &#x263c;&hearts;                      #
+&clubs;       &diams;      &para;&diams;  &#x2640;   `l"._A&Eacute;&#x263a;        &uuml;&hearts;      &clubs;
+   #&clubs;              &lt;&clubs;      &Uuml;&clubs;  0   &#x2640;&spades;      #&clubs;      &#x25ac;
+       &clubs;
+   &#x25ac;
+      #&clubs;                                                                       &#x25ac;
+              &#x263c;&hearts;      #&clubs;  h   &ucirc;&diams;      &ucirc;&diams;      #&clubs;      &ucirc;&diams;      &ucirc;&diams;               &ucirc;
+&diams;      &ucirc;&diams;      &ucirc;&diams;      &plusmn;&clubs;      &plusmn;&clubs;                                      &darr;&clubs;
+                                   &ucirc;&diams;      &ucirc;&diams;      &ucirc;&diams;      &#x2640;&spades;      &ucirc;&diams;      &ucirc;&diams;  &ucirc;
+&diams;      &ucirc;&diams;              ,&hearts;      ,&hearts;      ,&hearts;  D   &uuml;&hearts;      ,&hearts;      ,&hearts;      ,&hearts;      &uuml;
+&hearts;      ,&hearts;      ,&hearts;      ,&hearts;      &#x263c;&hearts;      &#x263c;&hearts;      &#x263c;&hearts;      &#x263c;&hearts;      &#x263c;&hearts;      &#x263c;&hearts;      &yuml;
+&yuml;&yuml;&yuml;    &#x263b; &#x2640;&#x263a;                                                                    T
+his is a very simple one line word document.                                   &spades;
+  &#x266b;   &sect; - . / o&eacute;oYoOo                                                          &para;</strong></pre>
+<p>As you can see it is easy to tell which file is a text file and which
+binary (though if you look toward the bottom of the dump of the word file you
+can see some text content).</p>
+<hr />
+<p><sup>*</sup> The character used for the end of file marker is operating system
+dependent. Windows uses Ctrl-Z, ASCII 26, to mark end-of-file.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

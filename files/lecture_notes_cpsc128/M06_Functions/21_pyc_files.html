@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+What are these pyc files?</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="20_ListComprehensions.html" />
+  <link rel="Next" href="22_FindingTheStandardLib.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>What are these pyc files?</h1>
+<p><img alt="." src="pyc_files.png" width="500" height="205" /></p>
+<p>By now you may have noticed pyc files appearing in your working
+directories without your having creating them. While it's true you didn't
+manually create them you did cause them to be created. Remember that when you
+import a module it is executed. One result of this execution is a pyc file.
+Those pyc files are compiled versions of modules. Having them makes later
+imports quicker because the modules do not have to be recompiled; instead the pyc file can be used immediately. So, each
+time you import a module you trigger the creation of a pyc file. You can
+delete them if they annoy you, but it will slow later imports, and they'll
+get recreated when needed anyway.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

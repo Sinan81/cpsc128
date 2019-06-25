@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Designing file formats</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="10_ReadingNumericData.html" />
+  <link rel="Next" href="12_Pickling.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Designing file formats</h1>
+<p>In the previous example we stored our coordinates "one pair to a line
+separated by white space". That description specifies a file format. Of
+course it's not the only file format possible. We could have put all the
+data onto one line, or separated items with commas instead of spaces, or...
+The limits to what we could design are just the limits of our ingenuity.</p>
+<p>The differences of one versus many lines, and commas versus spaces are
+just cosmetic, but sometimes quite different approaches can be taken to storing
+some data. One accessible problem that affords different alternatives is the
+problem of storing the state of the universe in Conway's Game of Life. You
+can read about this "game" on <a
+href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Wikipedia</a> and
+play it online <a href="http://www.radicaleye.com/lifepage/">here</a> (click
+on the image at the top of the page), <a
+href="http://www.bitstorm.org/gameoflife/">here</a> or <a
+href="http://psych.hanover.edu/JavaTest/Play/Life.html">here</a> (among many
+others).</p>
+<p>The universe in Conway's game of life is a grid of cells each of which can be in
+one of two states: alive or dead. A natural way to represent it in Python
+would be as a list of lists of cells (like a very large tic-tac-toe
+board):</p>
+<pre><code class="python">universe = [ [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]
+           ]</code></pre>
+<h2>Option 1</h2>
+<p>One way to write this to a text file would be to write lines of space-separated
+0s and 1s to the file:</p>
+<pre><code>0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 1 0 0 0 0
+0 0 0 0 1 0 0 0
+0 0 1 1 1 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0</code></pre>
+<p>The size of this file would be 136 bytes because we have one byte for the
+0 or 1 for each cell, 1 byte for the space to separate them, and 1 byte for
+the line end marking the end of each row of the universe, i.e. 1 &times; 8
+&times; 8 + 1 &times; 8 &times; 8 + 1 &times; 8 = 136 bytes. Generalizing
+this, an <em>n</em> &times; <em>n</em> universe would require
+2<em>n</em><sup>2</sup> + <em>n</em> bytes.</p>
+<h2>Option 2</h2>
+<p>Using text graphics the universe might be displayed onscreen using blanks
+to represent dead cells and asterisks to represent live cells like this:</p>
+<pre><code>   *
+    *
+  ***</code></pre>
+<p>This suggests a second approach: we could save the state of the universe
+by taking a "snapshot" of it and writing that snapshot to the file. Our file
+would look just like the universe, and would use somewhat less storage
+because this time we use one byte (to store a blank or an asterisk character)
+for each cell and one byte for the newline at the end of each row. Thus for
+an <em>n</em><em></em> &times; <em>n</em> universe we would require
+<em>n</em><sup>2</sup> + <em>n</em> bytes or roughly half as much storage
+(for medium and large values of <em>n</em>). For our 8 &times; 8 universe this
+approach uses 72 bytes.</p>
+<h2>Option 3</h2>
+<p>You will have noticed when playing the online games of life (you did play
+them didn't you?) that the universe is usually "sparse", that is there are
+usually relatively few live cells among a great many dead ones. This is a
+consequence of Conway's rules: cells die easily of overcrowding, so if an area
+becomes densely populated the cells in it quickly die off keeping overall
+densities low. This suggests that we may be wasting space storing all those dead
+cells. Instead we should just store the locations of live cells. Our file
+format for the universe above would then be:</p>
+<pre><code>8 8
+2 3
+3 4
+4 2
+4 3
+4 4</code></pre>
+<p>where each row after the first one records the location of one live cell in <em>row
+col</em> form, i.e. the first number gives the row of the cell and the second gives
+its column. What about the 8s in the first row? With this representation the
+file does not directly convey the size of the universe as it did in the first
+two options so we must explicitly state the size of the universe; it's the
+job of the first line of data to give the height and width of the
+universe.</p>
+<p>The storage requirement of this option depends not on the size of the
+universe, but on the number of live cells in it. For a universe less than 11
+&times; 11 in size it uses 4 bytes per live cell (1 for row, 1 for separating
+space, 1 for col and 1 for line end), plus another 4 for the universe size.
+Generalizing: 4<em>n</em> + 4 bytes where <em>n</em> gives the number of live
+cells.</p>
+<p>(Note that the memory storage is <em>affected</em> by the size of the
+universe just not solely determined by it. This is because more bytes are
+required to represent the row and column coordinates the larger the universe
+is. In a 1,000 &times; 1,000 universe most coordinates will be 3 digit
+numbers, e.g. (148, 763) so most lines will be 8 bytes long and the formula
+will become 8<em>n</em> + 8 bytes).</p>
+<p>How does this compare with the first two options? For this specific
+example it uses 24 bytes. As long as the universe is sparse it will be more
+efficient, but for a crowded universe it will be less efficient. We can
+calculate the point at which it ceases to become more efficient by finding
+the number of live cells at which the storage for the two schemes is equal.
+Assuming a 1,000 &times; 1,000 universe, Option 1 will require 2,001,000
+bytes, Option 2 will require 1,001,000 bytes, and Option 3's requirements
+will vary with the number of live cells:</p>
+<table class="finelines">
+  <tbody>
+    <tr>
+      <th>% live cells</th>
+      <td>0</td>
+      <td>5</td>
+      <td>10</td>
+      <td>15</td>
+      <td>20</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>Storage in bytes</th>
+      <td>8</td>
+      <td>400,008</td>
+      <td>800,008</td>
+      <td>1,200,008</td>
+      <td>1,600,008</td>
+      <td>2,000,008</td>
+    </tr>
+  </tbody>
+</table>
+<p>You can see that for this size of universe the break even point is around
+12.5% live cells.</p>
+<h2>Option 4</h2>
+<p>There are numerous other options, but one that often occurs to students is
+that since cells are either dead or alive their state could be stored using
+a single bit rather than an entire byte. This would reduce the storage
+requirements by a factor of 8 in the first two options. It is indeed possible
+to do this helped along by <a
+href="http://docs.python.org/reference/expressions.html#binary-bitwise-operations">Python's
+binary operators</a> which allow us to manipulate the bits inside bytes, but
+these are not a focus of the course so we will just nod at this possibility
+as we move on by. (There are also fussy end conditions to deal with when the
+universe is not a multiple of 8 in size because then our information does not
+exactly fill bytes).</p>
+<h2>Why no code?</h2>
+<p>Because it's part of the assignment!</p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

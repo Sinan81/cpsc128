@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Writing functions: Syntax</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="05_is_odd.html" />
+  <link rel="Next" href="07_DefaultArguments.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Example: dice_roll()</h1>
+<p>Now suppose we wish to write a function that rolls a die for us. We would
+like to be able to write code like this,</p>
+<pre><code>total = dice_roll() + dice_roll()</code></pre>
+<p>to simulate rolling a pair of dice. What can we tell by looking at this
+code?</p>
+<ul>
+  <li>the name of our function will be <code>dice_roll</code></li>
+  <li>it takes no arguments (because there is nothing inside the
+  brackets)</li>
+  <li>it returns something that can be added together and stored (so not <code>None</code>).</li>
+</ul>
+<p>This leads  to the code,</p>
+<pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">dice_roll</span><span class="params">()</span>:</span>
+    <span class="keyword">return</span> random.randint(<span class="number">1</span>,<span class="number">6</span>)</code></pre>
+<p>which we could use like this,</p>
+<pre><code class="python"><span class="keyword">import</span> random
+
+<span class="function"><span class="keyword">def</span> <span class="title">dice_roll</span><span class="params">()</span>:</span>
+    <span class="keyword">return</span> random.randint(<span class="number">1</span>,<span class="number">6</span>)
+
+total = dice_roll() + dice_roll()
+<span class="keyword">print</span> <span class="string">"On your first roll you got:"</span>, total</code></pre>
+<p>This code works, but could be improved by being generalized to dice with
+other than six sides like these (with 4, 6, 8, 12, 20 and 10 sides
+respectively),</p>
+<p><img alt=""
+src="http://upload.wikimedia.org/wikipedia/commons/8/85/DnD_Dice_Set.jpg"
+width="600" height="106" /> </p>
+<p>We can do that by having our function take an argument specifying the
+number of sides,</p>
+<pre><code class="python"><span class="keyword">import</span> random
+
+<span class="function"><span class="keyword">def</span> <span class="title">dice_roll</span><span class="params">(sides)</span>:</span>
+    <span class="keyword">return</span> random.randint(<span class="number">1</span>,sides)
+
+total = dice_roll(<span class="number">6</span>) + dice_roll(<span class="number">6</span>)
+<span class="keyword">print</span> <span class="string">"On your first roll you got:"</span>, total</code></pre>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

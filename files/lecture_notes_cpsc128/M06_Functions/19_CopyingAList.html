@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Copying a list</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="18_UsingVsChangingAList.html" />
+  <link rel="Next" href="20_ListComprehensions.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Copying a list</h1>
+<h2>What doesn't work</h2>
+<p>As with changing a list, our first attempt at copying a list may not
+succeed. The most common thing students try is something like this,</p>
+<pre><code>magnitudes = [41, 14, 27, 5, 32]
+copy = magnitudes</code></pre>
+<p>Reasoning that copy will now contain a copy of magnitudes. Of course a
+moments thought about how reference semantics works will show that <code>magnitudes</code> and <code>copy</code> are now just both references to the same list object, i.e.</p>
+<p><img alt="." src="CopyingAList_1.png" width="321" height="172" /></p>
+<h2>What works (sort of) 1</h2>
+<p>One way to copy a list is to create an empty one, and then loop through
+the source list appending elements to the new one,</p>
+<pre><code class="python">magnitudes = [<span class="number">41</span>, <span class="number">14</span>, <span class="number">27</span>, <span class="number">5</span>, <span class="number">32</span>]
+copy = []
+<span class="keyword">for</span> m <span class="keyword">in</span> magnitudes:
+    copy.append(m)</code></pre>
+<p>this gets us what we wanted,</p>
+<p><img alt="." src="CopyingAList_2.png" width="327" height="241" /></p>
+<h2>What works (sort of) 2 and 3</h2>
+<p>Copying a list is so common that there are some Pythonic shortcuts
+available. One is to take a slice of the entire list and assign it to
+copy,</p>
+<pre><code>copy = magnitudes[:]</code></pre>
+<p>This works because slices create new objects.</p>
+<p>Another is to use the class constructor* for lists, list, to create a new
+list from an existing one,</p>
+<pre><code>copy = list(magnitude)</code></pre>
+<h2>What's with the &quot;(sort of)&quot;?</h2>
+<p>Well sometimes these do all we want, but other times its important to
+realize they are all creating first level copies of the lists. Recall our
+Tic-Tac-Toe lists:</p>
+<pre><code class="python">g = [['X', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]</code></pre>
+<p>Watch what happens when make a copy and then modify the copy,</p>
+<pre><code>&gt;&gt;&gt; g = [['X', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]
+&gt;&gt;&gt; cc = g[:]
+&gt;&gt;&gt; print cc
+[['X', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]
+&gt;&gt;&gt; cc[0][0] = 'A'
+&gt;&gt;&gt; print cc
+[['A', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]
+&gt;&gt;&gt; print g
+[['A', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]
+&gt;&gt;&gt;</code></pre>
+<p>Do you see it? Changing element <code>cc[0][0]</code> to <code>'A'</code>
+also changed element <code>g[0][0]</code>. But if <code>cc</code> is a copy
+of <code>g</code> that shouldn't have happened! The problem is that
+<code>cc</code> isn't a complete copy of <code>g</code>. It's only copied the
+first level references in <code>g</code>. Those references still point to the
+same sublist objects, i.e.</p>
+<p><img alt="." src="CopyingAList_3.png" width="397" height="277" /></p>
+<p>So since <code>cc[0]</code> and <code>g[0]</code> still reference the same
+list object, changing <code>cc[0][0]</code> changes <code>g[0][0]</code>.</p>
+<h2>Deep copying</h2>
+<p>As the Tic-Tac-Toe example shows sometimes we have objects containing
+references to other objects, and in some applications there can be far more
+than just two levels of reference. What to do if we still need a copy of the
+complete structure? This comes up often enough that Python provides <a
+href="http://docs.python.org/library/copy.html">a standard library
+function</a> to create the copy for you,</p>
+<pre><code>&gt;&gt;&gt; import copy
+&gt;&gt;&gt; g = [['X', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]
+&gt;&gt;&gt; cc = copy.deepcopy(g)
+&gt;&gt;&gt; cc[0][0] = 'A'
+&gt;&gt;&gt; print cc
+[['A', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]
+&gt;&gt;&gt; print g
+[['X', 'O', ''], ['O', 'X', 'O'], ['', '', 'X']]
+&gt;&gt;&gt;</code></pre>
+<h2>Summary</h2>
+<p>Create a shallow copy using a slice, <code>copy = original[:]</code></p>
+<p>or the list constructor, <code>copy = list(original)</code>.</p>
+<p>If a deep copy is needed (it often isn't), use the copy module, <code>copy
+= copy.deepcopy(original)</code>.</p>
+<p></p>
+<hr />
+<p>* We used these before for converting from one object type to another, but
+they can also be used to create another object of one type from an existing
+object of that same type.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

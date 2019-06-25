@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Pickling</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="11_DesigningFileFormats.html" />
+  <link rel="Next" href="13_Shelves.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Pickling</h1>
+<p>Recall this bit of code from writing coordinates to a file,</p>
+<pre><code class="python"><span class="keyword">for</span> coord <span class="keyword">in</span> coords:
+    f.write(str(coord[<span class="number">0</span>])+<span class="string">' '</span>+str(coord[<span class="number">1</span>])+<span class="string">'<span class="escape">\n</span>'</span>)</code></pre>
+<p>It's straightforward enough, but it feels like busywork converting numbers
+to strings and bundling the strings together into lines. In fact it feels
+like such straightforward busywork that our intuitions suggest it could be
+automated, and in fact Python provides a module that automatically converts
+its built-in types to strings that can be stored in text files. The module is
+whimsically called <code>pickle</code> (because it <em>preserves</em> the objects the way pickling preserves foods).
+Its use is straightforward:</p>
+<pre><code class="python"><span class="comment"># life.py</span>
+universe = [ [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],
+             [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]
+           ]
+<span class="keyword">import</span> pickle
+f = open( <span class="string">'pickled_universe.txt'</span>, <span class="string">'w'</span>)
+pickle.dump(universe, f)
+f.close()
+f = open(<span class="string">'pickled_universe.txt'</span>, <span class="string">'r'</span>)
+u = pickle.load(f)
+f.close()
+<span class="keyword">print</span> u</code></pre>
+<p>Output:</p>
+<pre><code>&gt;&gt;&gt; 
+[[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0, 0, 0],
+ [0, 0, 0, 0, 1, 0, 0, 0], [0, 0, 1, 1, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
+&gt;&gt;&gt;</code> </pre>
+<p>Almost any Python object can be pickled (among the exceptions are odd
+ducks like sockets for network connections and file handles). Given how
+compact it is why would we not just always use it? The answer is that we
+<em>will</em> often use it, but not without thinking first. One reason we
+will sometimes avoid it is that the pickled representation is neither
+particularly compact nor particularly readable.
+<code>pickled_universe.txt</code> above looks like this,</p>
+<pre><code>(lp0
+(lp1
+I0
+aI0
+aI0
+aI0
+aI0
+aI0
+aI0
+aI0
+aa(lp2
+I0
+aI0
+aI0
+aI0
+aI0
+aI0
+aI0
+aI0
+aa(lp3
+I0
+aI0
+aI0
+aI1
+...</code></pre>
+<p>and is 383 bytes in size. That makes it 2 to 3 times as large as our
+hand-rolled solutions in Options 1 and 2.</p>
+<p>A more subtle reason is that it can be inefficient for some data types.
+One common situation is to want to store a dictionary of objects to disk. The
+dictionary can be pickled, but then to access any individual element of the
+dictionary the <em>whole</em> dictionary must be read into memory and unpickled before
+the element can be accessed. If the dictionary is large this can represent a
+significant amount of processing time and memory. Because this use case is so
+common Python provides the <code>shelve</code> module in its standard
+library. A <code>shelve</code> is like a dictionary that is stored on
+disk.</p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

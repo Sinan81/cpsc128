@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>Example: Book Database</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="05_Scrabble_Scoring.html" />
+  <link rel="Next" href="07_List_of_Dictionaries.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Example: Book Database</h1>
+<p>In this example we see that the items stored in the dictionary don't have
+to be numerical (as they were in the previous two examples).</p>
+<p>This time we have a small database of book information stored in a
+dictionary (notice the curly brackets?),</p>
+<pre><code>books = { "The C Programming Language": ['Brian W. Kernighan',
+                                         'Dennis M. Ritchie'],
+          "Harry Potter and the Philosopher's Stone" : ['J. K. Rowling'],
+          "The AWK programming language" : ['Alfred V. Aho',
+                                            'Brian W. Kernighan',
+                                            'Peter J. Weinberger'],
+          "The practice of programming": ['Brian W. Kernighan', 'Rob Pike']
+          "The cat in the hat": ['Dr. Seuss'],
+          "The UNIX Programming Environment": ['Brian W. Kernighan',
+                                               'Rob Pike'],
+        }</code></pre>
+<p>Hopefully you can tell by looking at it that the keys are book titles,
+and the values are book authors. Since books can have multiple authors, lists
+(notice the square brackets?) are used for these values even when there is a
+single author. Suppose we wish to write a function to list the titles of the
+books by a given author.</p>
+<h2>Pseudocode</h2>
+<pre><code>def search_by_author( database, author ):
+    Initialize book_list (the list of books by this author)
+    For each key-value pair in the database
+        If the value contains author
+            Add the key to the book_list
+    Return book_list</code></pre>
+<h2>Translated into Python</h2>
+<pre><code class="python"><span class="comment"># BooksDict.py</span>
+<span class="function"><span class="keyword">def</span> <span class="title">search_by_author</span><span class="params">(database, author)</span>:</span>
+    book_list = []
+    <span class="keyword">for</span> key <span class="keyword">in</span> database:
+        <span class="keyword">if</span> author <span class="keyword">in</span> database[key]:
+            book_list.append( key )
+    <span class="keyword">return</span> book_list
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    books = { <span class="string">"Harry Potter and the Philosopher's Stone"</span> : [<span class="string">'J. K. Rowling'</span>],
+              <span class="string">"The cat in the hat"</span>: [<span class="string">'Dr. Seuss'</span>],
+              <span class="string">"The C Programming Language"</span>: [<span class="string">'Brian W. Kernighan'</span>,
+                                             <span class="string">'Dennis M. Ritchie'</span>],
+              <span class="string">"The UNIX Programming Environment"</span>: [<span class="string">'Brian W. Kernighan'</span>,
+                                                   <span class="string">'Rob Pike'</span>],
+              <span class="string">"The AWK programming language"</span> : [<span class="string">'Alfred V. Aho'</span>,
+                                                <span class="string">'Brian W. Kernighan'</span>,
+                                                <span class="string">'Peter J. Weinberger'</span>],
+              <span class="string">"The practice of programming"</span>: [<span class="string">'Brian W. Kernighan'</span>, <span class="string">'Rob Pike'</span>]
+            }
+    <span class="keyword">print</span> <span class="string">'J. K. Rowling wrote:', </span>search_by_author(books, <span class="string">'J. K. Rowling'</span>)
+    <span class="keyword">print</span> <span class="string">'Brian W. Kernighan wrote:',</span>search_by_author(books, <span class="string">'Brian W. Kernighan'</span>)
+    <span class="keyword">print</span> <span class="string">'Tim Topper wrote', </span>search_by_author(books, <span class="string">'Tim Topper'</span>)
+    </code></pre>
+<p>which produces as output,</p>
+<pre><code>&gt;&gt;&gt; 
+J. K. Rowling wrote: ["Harry Potter and the Philosopher's Stone"]
+Brian W. Kernighan wrote: ['The UNIX Programming Environment', 
+'The practice of programming', 'The AWK programming language', 'The C Programming Language']
+Tim Topper wrote: []
+&gt;&gt;&gt;</code> </pre>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />  
+  <title>What can you do with a dictionary?</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="02_Dictionary_Derivation.html" />
+  <link rel="Next" href="04_Word_Frequencies.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>What can you do with a dictionary?</h1>
+<p>The full list of methods is in <a
+href="http://www.python.org/doc/2.2.1/lib/typesmapping.html">Section 2.2.7 of
+the Python Library Reference</a>. Here's an idea of how you might use and
+combine these methods to carry out common operations.</p>
+<p>Create a dictionary,</p>
+<ul>
+  <li><p>Using a dictionary literal*, e.g. <code>d = { 'Tim' : 775, 'Brian' :
+    869 }</code> we can visualize the dictionary that is created like this,</p>
+    <p><img alt="." src="Dictionaries_1.png" width="159" height="98" /></p>
+  </li>
+</ul>
+<p>Access an element,</p>
+<ul>
+  <li><code>print d['Tim']</code></li>
+</ul>
+<p>The general pattern here is <code><em>dictionary_name</em>[ <em>key</em> ] =
+<em>value</em></code>. So to modify a value,</p>
+<ul>
+  <li><code>d['Tim'] = 820</code></li>
+</ul>
+<p>and to insert a new value,</p>
+<ul>
+  <li><code>d['Doug'] = 870</code></li>
+</ul>
+<p>Check to see if there is already an entry with a particular key,</p>
+<ul>
+  <li><code>d.has_key('Brian')</code> will return <code>True</code></li>
+  <li><code>d.has_key('Jill')</code> will return <code>False</code></li>
+</ul>
+<p>or alternatively,</p>
+<ul>
+  <li><code>'Brian' in d</code> will return <code>True</code></li>
+  <li><code>'Jill' in d</code> will return <code>False</code></li>
+</ul>
+<p>Delete an entry in the dictionary (both the key and its associated
+value),</p>
+<ul>
+  <li><code>del( d['Brian'] )</code></li>
+</ul>
+<p>Remove an entry, but get the value,</p>
+<ul>
+  <li><code>d.pop('Tim')</code> removes the key value pair 'Tim':820 from the
+    dictionary but returns <code>820</code></li>
+</ul>
+<p>Find out how many key-value pairs are in the dictionary,</p>
+<ul>
+  <li><code>len( d )</code></li>
+</ul>
+<p>Get a list of all the keys in the dictionary,</p>
+<pre><code>&gt;&gt;&gt; d.keys()
+['Tim', 'Doug']
+&gt;&gt;&gt;</code></pre>
+<p>(Note the square brackets and commas: <code>d.keys</code> returns a
+list.)</p>
+<p>This is often used for iterating through the entries in the dictionary,
+e.g.</p>
+<pre><code class="python"><span class="keyword">for</span> key <span class="keyword">in</span> d.keys():
+    <span class="keyword">print</span> key, <span class="string">':'</span>, d[key]</code></pre>
+<p>produces the output,</p>
+<pre>&gt;&gt;&gt; 
+Tim : 820
+Doug : 870
+&gt;&gt;&gt; </pre>
+<p>In recent versions of Python this can be shortened to,</p>
+<pre><code class="python"><span class="keyword">for</span> key <span class="keyword">in</span> d:
+    <span class="keyword">print</span> key, <span class="string">':'</span>, d[key]</code></pre>
+<p>Get a list of all the values that occur in a dictionary,</p>
+<pre><code>&gt;&gt;&gt; d.values()
+[820, 870]
+&gt;&gt;&gt;</code> </pre>
+<p>Delete all the entries in the dictionary,</p>
+<pre><code>&gt;&gt;&gt; d.clear()
+&gt;&gt;&gt; d
+{}
+&gt;&gt;&gt;</code> </pre>
+<p>Note that the name <code>d</code> still exists; it just references (points
+at) an empty dictionary.</p>
+<p>Finally note that the <strong>keys</strong> don't have to be strings they
+can be any immutable type, and the <strong>values</strong> can be any Python
+object, e.g.</p>
+<pre><code>&gt;&gt;&gt; d['Tim'] = 775
+&gt;&gt;&gt; d[3] = ['a', 'small', 'list']
+&gt;&gt;&gt; d[(0,1)] = 'X'
+&gt;&gt;&gt; d
+{(0, 1): 'X', 'Tim': 775, 3: ['a', 'small', 'list']}
+&gt;&gt;&gt; for key in d:
+    print key, ':', d[key]
+(0, 1) : X
+Tim : 775
+3 : ['a', 'small', 'list']
+&gt;&gt;&gt;</code> </pre>
+<hr />
+<p>* <em>Literals</em> are how to write out values.</p>
+<ul>
+  <li><code>4</code> is an integer literal,</li>
+  <li><code>4.1</code> is a floating point literal,</li>
+  <li><code>'Tim'</code> is a string literal,</li>
+  <li><code>[0, 'Hi']</code> is a list literal (notice the square
+  brackets),</li>
+  <li><code>(0, 1)</code> is a tuple literal (notice the round parentheses),
+  and</li>
+  <li><code>{ 'Tim' : 775, 'Brian' : 869 }</code> is a dictionary literal
+    (notice the curly brackets).</li>
+</ul>
+<p></p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Playing card functions 1</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="07_DefaultArguments.html" />
+  <link rel="Next" href="09_ReusingFunctions.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Playing Card Functions 1</h1>
+<p>We've worked with playing cards a few times so far and will be doing so
+again, so it would save us time if we had a standard set of tools for working
+with them. In programming these tools are a set of functions (and later
+classes) for manipulating them. Let's start with functions that are passed a
+card number and return the face value of the card and the suit of the
+card.</p>
+<p>Recall that we determine the suit of a card by determining which block of
+13 it is in which we find by dividing the card number by thirteen. Similarly we
+determine the face value of a card by determining its offset within a group
+of thirteen using modulo. Packing those earlier methods into functions gives
+us,</p>
+<pre><code class="python">SUITS = (<span class="string">'Clubs'</span>, <span class="string">'Diamonds'</span>, <span class="string">'Hearts'</span>, <span class="string">'Spades'</span>)
+FACE_VALUES = (<span class="string">'Ace'</span>, <span class="string">'Two'</span>, <span class="string">'Three'</span>, <span class="string">'Four'</span>, <span class="string">'Five'</span>, <span class="string">'Six'</span>,
+               <span class="string">'Seven'</span>, <span class="string">'Eight'</span>, <span class="string">'Nine'</span>, <span class="string">'Ten'</span>, <span class="string">'Jack'</span>,
+               <span class="string">'Queen'</span>, <span class="string">'King'</span>)
+
+<span class="function"><span class="keyword">def</span> <span class="title">suit</span><span class="params">(cardnum)</span>:</span>
+    <span class="keyword">return</span> SUITS[cardnum / <span class="number">13</span>]
+
+<span class="function"><span class="keyword">def</span> <span class="title">face_value</span><span class="params">(cardnum)</span>:</span>
+    <span class="keyword">return</span> FACE_VALUES[cardnum % <span class="number">13</span>]
+
+card = <span class="number">15</span>
+<span class="keyword">print</span> <span class="string">"Card"</span>, card, <span class="string">"is the"</span>, face_value(card), <span class="string">"of"</span>, suit(card)
+ </code></pre>
+<p>with output</p>
+<pre><code>&gt;&gt;&gt; 
+Card 15 is the Three of Diamonds
+&gt;&gt;&gt;</code> </pre>
+<p>We'll probably have to display card labels, e.g. Three of Diamonds, fairly
+often so let's add a function for that too,</p>
+<pre><code class="python">SUITS = (<span class="string">'Clubs'</span>, <span class="string">'Diamonds'</span>, <span class="string">'Hearts'</span>, <span class="string">'Spades'</span>)
+FACE_VALUES = (<span class="string">'Ace'</span>, <span class="string">'Two'</span>, <span class="string">'Three'</span>, <span class="string">'Four'</span>, <span class="string">'Five'</span>, <span class="string">'Six'</span>,
+               <span class="string">'Seven'</span>, <span class="string">'Eight'</span>, <span class="string">'Nine'</span>, <span class="string">'Ten'</span>, <span class="string">'Jack'</span>,
+               <span class="string">'Queen'</span>, <span class="string">'King'</span>)
+
+<span class="function"><span class="keyword">def</span> <span class="title">suit</span><span class="params">(cardnum)</span>:</span>
+    <span class="keyword">return</span> SUITS[cardnum / <span class="number">13</span>]
+
+<span class="function"><span class="keyword">def</span> <span class="title">face_value</span><span class="params">(cardnum)</span>:</span>
+    <span class="keyword">return</span> FACE_VALUES[cardnum % <span class="number">13</span>]
+
+<span class="function"><span class="keyword">def</span> <span class="title">label</span><span class="params">(cardnum)</span>:</span>
+    <span class="keyword">return</span> face_value(cardnum) + <span class="string">" of "</span> + suit(cardnum)
+
+card = <span class="number">15</span>
+<span class="keyword">print</span> <span class="string">"Card"</span>, card, <span class="string">"is the"</span>, face_value(card), <span class="string">"of"</span>, suit(card)
+<span class="keyword">print</span> <span class="string">"Card"</span>, card, <span class="string">"is the"</span>, label(card)
+ </code></pre>
+<p>to get output like,</p>
+<pre><code>&gt;&gt;&gt; 
+Card 15 is the Three of Diamonds
+Card 15 is the Three of Diamonds
+&gt;&gt;&gt;</code> </pre>
+<p>Note how we reused our <code>suit</code> and <code>face_value</code>
+functions to define <code>label</code> in the same way we reused
+<code>is_even</code> to define <code>is_odd</code> earlier.</p>
+<p>Now if we have to write more programs that work with playing cards (and
+you will dear student!) we can use these functions and avoid rewriting this
+common functionality over and over again.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Reference Semantics</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="16_Mutability.html" />
+  <link rel="Next" href="18_UsingVsChangingAList.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Reference Semantics</h1>
+<p>How did you do on the last example on <a href="16_Mutability.html">the
+mutability page</a>? Don't worry if you figured it (or guessed!) wrong. The
+root cause of confusion about mutability is the underlying semantics of
+mutable types, and fortunately there is an orderly way of sorting them out
+using diagrams of memory.</p>
+<h2>Assignment creates a reference to an object</h2>
+<p>Python uses a <em>reference model</em> for the relation between (or
+semantics of) variables and values. It's summed up by the phrase,</p>
+<blockquote>
+  <p><strong>Assignment creates a reference to an object.</strong></p>
+</blockquote>
+<p>An assignment statement has the form,</p>
+<pre><em><code>name</code></em><code> = <em>expression</em></code></pre>
+<p>First, the expression on the right hand side is evaluated, and the result
+is an object (no surprise since Python is an object oriented language). Then
+the name on the right hand side is linked to the object. We say that the name
+refers to (or <em>references</em>) the object.</p>
+<h2>Diagramming memory</h2>
+<p>So a Python assignment statement like,</p>
+<pre><code>num = 48</code></pre>
+<p>is going to make the name <code>num</code> refer to the object
+<code>48</code> (and if it needs to it will create the object on the right
+hand side too!). After this statement we can visualize memory looking like
+this,</p>
+<p><img alt="." src="ReferenceSemantics_1.png" width="208" height="113" /></p>
+<p>Let's add a couple more statements,</p>
+<pre><code>num = 48
+n = num
+first = 'Tim'</code></pre>
+<p>We've already seen the first of these statements, and the third one is
+similar: the object 'Tim' is created as is the name <code>first</code> and the name <code>first</code> is set to refer to the object 'Tim'. The middle statement is only a little
+different because the object the name on the right hand side, <code>n</code>,
+will refer to already exists. Note that the result is to have two names
+referring to the same object &mdash; a common occurrence. The corresponding
+diagram of memory is,</p>
+<p><img alt="." src="ReferenceSemantics_2.png" width="242" height="133" /></p>
+<h2>Diagramming container types</h2>
+<p>The diagram is only a little more complicated for a mutable container type
+like a list. Suppose we add another line to our code,</p>
+<pre><code>num = 48
+n = num
+first = 'Tim'
+lst = [first, 11, num]</code></pre>
+<p>The resulting memory diagram is,</p>
+<p><img alt="." src="ReferenceSemantics_3.png" width="301" height="227" /></p>
+<p>The key thing to note is that the list is an object that contains object
+references, so the single statement <code>lst = [first, 11, num]</code> triggers the
+creation of 4 object references in all, the one named <code>lst</code> and three others
+which don't have individual names but can be referred to indirectly using
+list notation, i.e.<code> lst[0]</code>, <code>lst[1]</code> and <code>lst[2]</code>. In fact the diagram could have
+been drawn like this to make it explicit,</p>
+<p><img alt="." src="ReferenceSemantics_4.png" width="368" height="228" /></p>
+<h2>The example revisited</h2>
+<p>Let's reconsider the example from <a href="16_Mutability.html">mutability</a>
+and draw the diagrams after each statement has executed.</p>
+<table border="0">
+  <tbody>
+    <tr>
+      <td><code>a = 'Tim'</code></td>
+      <td><p><img alt="." src="ReferenceSemantics_5.png" width="193"
+        height="77" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>b = 'Tom'</code></td>
+      <td><p><img alt="." src="ReferenceSemantics_6.png" width="203"
+        height="99" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>lst = [b, a]</code></td>
+      <td><p><img alt="." src="ReferenceSemantics_7.png" width="241"
+        height="128" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>a = 'Matt'</code></td>
+      <td><p><img alt="." src="ReferenceSemantics_8.png" width="257"
+        height="167" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>lst[1] = lst[0]</code></td>
+      <td><p><img alt="." src="ReferenceSemantics_9.png" width="274"
+        height="183" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>print lst</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<p>From the final diagram it is obvious that the output of the
+<code>print</code> statement will be <code>['Tom', 'Tom']</code>.</p>
+<p>The only surprising operation may have been the statement <code>a =
+'Matt'</code>. Some students think this will change <code>'Tim'</code> to
+<code>'Matt'</code> so that not only will <code>a</code> refer to
+<code>'Matt'</code> but so will <code>lst[1]</code>. But this is clearly not
+in keeping with the phrase '<em>Assignment creates a reference'</em>. In this case,
+and precisely following the phrase, Python creates the object
+<code>'Matt'</code> and has <code>a</code> refer to it. The reference from
+<code>lst[1]</code> to <code>'Tim'</code> is left untouched.</p>
+<h2>Object destruction: Garbage collection* using reference counting</h2>
+<p>The other thing to note is that the assignment <code>lst[1] =
+lst[0]</code> not only causes <code>lst[1]</code> to refer to
+<code>'Tom'</code> like <code>lst[0]</code> does it also triggers the
+destruction of the object <code>'Tim'</code>. It does so because Python uses
+<em>reference counting</em> to decide when an object can safely be destroyed
+and the memory it is using reclaimed. Reference counting garbage collection
+is based on the insight that once the number of references to an object
+declines to 0 that object can never be accessed by a program, therefore it is
+safe to destroy it. This happens to <code>'Tim'</code> when the last
+reference to it (<code>lst[1]</code>) is removed.</p>
+<p>This is also what happens to local variables in functions when the
+function ends: as the local names are deleted the reference counts to the
+objects drop to 0 and they can be destroyed (unless they are passed back by a <code>return</code>
+statement which creates a reference to them from a name in the calling
+function).</p>
+<p>In terms of our diagrams an object's reference count is the number of
+arrow heads pointing to it. At the end of the code fragment above the
+reference count of <code>'Matt'</code> is 1, and the reference count of
+<code>'Tom'</code> is 3.</p>
+<p></p>
+<p>With practice these semantics will become second nature, but at first you
+may find it necessary to draw diagrams like those above when debugging your
+code.</p>
+<p></p>
+<hr />
+<p>* Memory management (the creation and deletion of memory structures,
+including objects), was the bane of C and C++ programmers' lives. If you did
+not carefully destroy objects once they were no longer needed you created a
+memory leak, so called because the amount of memory your program used slowly
+but steadily increased (since you weren't reclaiming memory), making it seem
+like your system was slowly leaking available memory. Java was the first
+widely successful language to make memory management automatic. That meant that
+programmers could create objects and that the system would automatically
+determine when it was safe to reclaim them. This reclamation process goes by
+the colourful name <em>garbage collection</em>. There are numerous ways of
+determining when given memory can safely be reclaimed; reference counting is
+just one of them.</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

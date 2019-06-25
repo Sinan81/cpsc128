@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Scope</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="14_RefiningImport.html" />
+  <link rel="Next" href="16_Mutability.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Scope</h1>
+<p class="intro">This is a somewhat technical issue I wish we could delay.
+But you're going to bump into it at some point, and we'd better see it before
+you do. If it doesn't make perfect sense on first reading make a mental note
+of it, and come back to it when you suspect you are bumping into it hard.</p>
+<p>Look again at our card functions,</p>
+<pre><code class="python"><span class="comment"># playing_cards.py</span>
+SUITS = (<span class="string">'Clubs'</span>, <span class="string">'Diamonds'</span>, <span class="string">'Hearts'</span>, <span class="string">'Spades'</span>)
+FACE_VALUES = (<span class="string">'Ace'</span>, <span class="string">'Two'</span>, <span class="string">'Three'</span>, <span class="string">'Four'</span>, <span class="string">'Five'</span>, <span class="string">'Six'</span>,
+               <span class="string">'Seven'</span>, <span class="string">'Eight'</span>, <span class="string">'Nine'</span>, <span class="string">'Ten'</span>, <span class="string">'Jack'</span>,
+               <span class="string">'Queen'</span>, <span class="string">'King'</span>)
+
+<span class="function"><span class="keyword">def</span> <span class="title">suit</span><span class="params">(cardnum)</span>:</span>
+    <span class="keyword">return</span> SUITS[cardnum / <span class="number">13</span>]
+
+<span class="function"><span class="keyword">def</span> <span class="title">face_value</span><span class="params">(cardnum)</span>:</span>
+    <span class="keyword">return</span> FACE_VALUES[cardnum % <span class="number">13</span>]
+
+card = <span class="number">15</span>
+<span class="keyword">print</span> <span class="string">"Card"</span>, card, <span class="string">"is the"</span>, face_value(card), <span class="string">"of"</span>, suit(card)</code></pre>
+<p>We saw earlier that names passed into functions get assigned aliases. For
+example the object <code>15</code> is referred to by the name
+<code>card</code> outside the function above, and by the name
+<code>cardnum</code> inside the function. The function <code>suit</code>
+"knows" about <code>cardnum</code> because it assigns the name in its
+definition statement. But, how does it know about <code>SUITS</code>?
+<code>SUITS</code> exists outside the function, and isn't aliased in it, so
+how does <code>suit</code> know what it is?</p>
+<h2>LEGB</h2>
+<p>The answer is that Python functions follow a clear process in trying to
+<em>resolve names</em>. This process is easy to remember using the mnemonic
+LEGB.</p>
+<ol>
+  <li>The letters remind us that Python first looks in the
+    <strong>Local</strong> context, i.e. the current function.</li>
+  <li>Then it looks in any <strong>Enclosing</strong> functions, i.e.
+    functions that contain the current one. (See <code>inner()</code> below for an example
+    of this.)</li>
+  <li>Then it looks in the <strong>Global</strong> context, i.e. the
+  module.</li>
+  <li>Finally it checks the <strong>Built-in</strong> names for a match.</li>
+</ol>
+<p>In going through this list Python stops as soon as it finds a match, i.e.
+if it finds the name defined in the current function it stops looking. So in
+our code above it finds <code>cardnum</code> defined in the local function.
+When it looks for <code>SUITS</code> it doesn't find it defined in the
+function, and then doesn't find an enclosing function, so it looks in the
+module, above the function, and finds it there. If it hadn't it would have
+checked to see if there is a built-in variable called <code>SUITS</code>.</p>
+<h2>Beware!</h2>
+<p>One way scope can trick new programmers is that local definitions hide
+global ones which in turn can hide built-in values and functions. Work
+through the following examples carefully noting the output. Sooner or later
+one of these will happen to you.</p>
+<pre><code class="python"><span class="comment"># scope_egs.py</span>
+<span class="keyword">print</span> <span class="string">'Example 1: Local variable'</span>
+<span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span>
+    x = <span class="number">1</span>
+    <span class="keyword">print</span> <span class="string">'Inside x is'</span>, x
+f()
+<span class="keyword">print</span> <span class="string">'Outside x is'</span>, x <span class="comment"># Error! Comment this line out once you understand why it is an error.</span>
+<span class="keyword">print</span>
+
+<span class="keyword">print</span> <span class="string">'Example 2: Global variable'</span>
+x = <span class="number">1</span>
+<span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span>
+    <span class="keyword">print</span> <span class="string">'Inside x is'</span>, x
+f()
+<span class="keyword">print</span> <span class="string">'Outside x is'</span>, x
+<span class="keyword">print</span>
+
+<span class="keyword">print</span> <span class="string">'Example 3: Local variable hides global variable inside function'</span>
+x = <span class="number">1</span>
+<span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span>
+    x = <span class="number">2</span>
+    <span class="keyword">print</span> <span class="string">'Inside x is'</span>, <span class="number">2</span>
+f()
+<span class="keyword">print</span> <span class="string">'Outside x is'</span>, x
+<span class="keyword">print</span>
+
+<span class="keyword">print</span> <span class="string">'Example 4: Lots of hiding'</span>
+x = <span class="number">1</span>
+<span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span>
+    x = <span class="number">2</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span>
+        x = <span class="number">3</span>
+        <span class="keyword">print</span> <span class="string">'Here in inner x is'</span>, x
+    inner()
+    <span class="keyword">print</span> <span class="string">'Here in outer x is'</span>, x
+inner() <span class="comment"># Error! Comment this line out once you understand why it is an error.</span>
+outer()
+<span class="keyword">print</span> <span class="string">'Out here x is'</span>, x
+
+<span class="keyword">print</span> <span class="string">'Example 5: Hiding the built-in len'</span>
+<span class="function"><span class="keyword">def</span> <span class="title">len</span><span class="params">()</span>:</span>
+    <span class="keyword">print</span> <span class="string">'I am not the real len'</span>
+len()</code></pre>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

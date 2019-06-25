@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Writing functions: is_even()</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="02_Functions.html" />
+  <link rel="Next" href="04_WritingFunctionsSyntax.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Writing functions: is_even()</h1>
+<p>We've used several of Python's built-in functions, but how do we write our
+own? This is most easily shown by example, so to be concrete let's suppose we
+want a function that tells us if a number is even.</p>
+<p>It's usually easiest to write a function by starting with how you want to
+use it. Let's say we are working on a game and wish we could write,</p>
+<pre><code class="python">num = random.randint(<span class="number">0</span>,<span class="number">100</span>)
+<span class="keyword">if</span> is_even(num):
+    <span class="keyword">print</span> <span class="string">"Good news your magic number is even! 10 bonus points for you."</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> <span class="string">"Bad news, your magic number is odd."</span></code></pre>
+<p>The good thing about specifying the use of our function before writing it
+is that we now know,</p>
+<ul>
+  <li>what the <em>name</em> of the function should be: <code>is_even</code>,</li>
+  <li>that it will take one <em>parameter</em>, <code>num</code> in our case,</li>
+  <li>that it <em>returns</em> a Boolean value, i.e. either <code>True</code> or <code>False</code> value.</li>
+</ul>
+<p>So we know its name, parameter and return type, and we know from previous experience how
+to implement its core functionality:</p>
+<pre><code class="python"><span class="keyword">if</span> n%<span class="number">2</span> == <span class="number">0</span>:
+    <span class="comment"># It's even</span>
+<span class="keyword">else</span>:
+    <span class="comment"># It's odd</span></code></pre>
+<p> All we need now is to tie these things
+  together with the necessary syntax like this,</p>
+<pre><code class="python"><span class="keyword">import</span> random
+
+<span class="function"><span class="keyword">def</span> <span class="title">is_even</span><span class="params">(n)</span>:</span>
+    <span class="keyword">if</span> n%<span class="number">2</span> == <span class="number">0</span>:
+        <span class="keyword">return</span> True
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> False
+        
+num = random.randint(<span class="number">0</span>,<span class="number">100</span>)
+
+<span class="keyword">if</span> is_even(num):
+    <span class="keyword">print</span> <span class="string">"Good news your magic number is even! 10 bonus points for you."</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span> <span class="string">"Bad news, your magic number is odd."</span></code></pre>
+<p>Notes:</p>
+<ul>
+  <li>The keyword <code>def</code> marks the begining of a function
+    definition. It is followed by the name of the function, the parameter
+    list enclosed in parentheses, and a colon.</li>
+  <li>The code to be executed when the function is called is indented after
+    the definition line.</li>
+  <li>The <code>return</code> statement terminates the execution of the
+    function as soon as it is executed and returns the specified value
+    (either <code>True</code> or <code>False</code> above). As you can see
+    above a single function may have more than one return statement.</li>
+  <li>The names of the parameter in the program and in the function do not
+    need to be the same. <code>num</code> in the program is referred to as <code>n</code> in the function.</li>
+</ul>
+<p>You may wonder looking at the code above what we have gained. After all we
+have removed <code>num%2 == 0</code> from an <code>if</code> test and
+replaced it with 5 lines of code &mdash; this hardly seems simpler! What you
+can't see in the example above (but will a few examples in the future) is
+that this new function can be reused easily in other programs.</p>
+<p>This speaks to why the names of the parameter do not need to be the same
+in the function and the program &mdash; if they did the function could not be
+easily reused! Imagine if the built-in square root function could only be
+used if the variable it was passed was named <code>x</code>. That's not very
+reusable.</p>
+<p>Instead the name in the function definition line is <em>aliased</em> to
+the value named in the call to the function. We can picture memory looking
+like this before the function is called,</p>
+<p class="img"><img alt="." src="is_even_1.png" width="169" height="24" /></p>
+<p>Like this while the function is executing (see how <code>n</code> the name
+of the parameter in the function is an alias for the value of
+<code>num</code> the name of 48 in the program?),</p>
+<p class="img"><img alt="." src="is_even_2.png" width="169" height="58" /></p>
+<p>And like this again after the function has terminated,</p>
+<p class="img"><img alt="." src="is_even_1.png" width="169" height="24" /></p>
+<p>Note that the value of <code>num</code> was not changed by the function
+and this is as it should be. We don't want a function that decides if a
+number is even to change the number in the course of deciding.</p>
+<p>Note also that functions do not leave any lasting trace in memory. When
+the function terminates any memory it has been using is freed and returned to
+the system. This can lead to a third benefit of functions. In some types of
+programs they reduce memory consumption because memory is only allocated
+while it is needed, whereas normal variables exist for the entire run of the
+program (or at least from the time they are created until the end of the
+program).</p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>

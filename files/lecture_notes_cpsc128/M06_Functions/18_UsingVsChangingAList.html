@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>
+Using versus changing a list</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+  <link rel="Contents" href="../index.html" />
+  <link rel="Prev" href="17_ReferenceSemantics.html" />
+  <link rel="Next" href="19_CopyingAList.html" />
+  <link rel="stylesheet" type="text/css" href="../lib/CPSC128F13.css" />
+  <script type="text/javascript" src="../lib/build_nav.js"></script>
+  <script type="text/javascript" src="../lib/ie_patches.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-193420-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <nav>
+  </nav>
+
+  <section>
+<h1>Using versus changing a list</h1>
+<p>Reference semantics provides some insight into the different approaches
+needed to <em>use</em> and to <em>change</em> a list.</p>
+<h2>Using a list</h2>
+<p>Frirst consider the case where you just want to use the values in a list.
+Perhaps they represent the lengths of bars to draw, e.g.</p>
+<pre><code>magnitudes = [41, 14, 27, 5, 32]
+for m in magnitudes:
+    print m*'='</code></pre>
+<p>This works nicely producing the output,</p>
+<pre><code>&gt;&gt;&gt; magnitudes = [41, 14, 27, 5, 32]
+&gt;&gt;&gt; for m in magnitudes:
+    print m*'='
+    
+=========================================
+==============
+===========================
+=====
+================================
+&gt;&gt;&gt;</code> </pre>
+<h2>Changing a list</h2>
+<h3>What doesn't work</h3>
+<p>Now suppose we want to add 10% to each value in the list. We might reason
+that in the for loop above <code>m</code> takes the value of each entry in the list, so
+changing it will change the values in the list and so try to do what we want
+like this,</p>
+<pre><code>for m in magnitudes:
+    m = m + m/10</code></pre>
+<p>but testing will reveal that it doesn't do what we want,</p>
+<pre><code>&gt;&gt;&gt; magnitudes = [41, 14, 27, 5, 32]
+&gt;&gt;&gt; for m in magnitudes:
+    m = m + m/10
+&gt;&gt;&gt; print magnitudes
+[41, 14, 27, 5, 32]
+&gt;&gt;&gt;</code> </pre>
+<p>because the list is unchanged. Have you already spotted the problem? The
+first part of our thinking that "m takes on the value of each entry in the
+list" was correct. The problem is with our second part "changing it will
+change the values in the list". Here's what memory looks like at the start of
+the first iteration of the loop and after the assignment statement inside has
+executed,</p>
+<table border="0">
+  <tbody>
+    <tr>
+      <td><code>for m in magnitudes:</code></td>
+      <td><p><img alt="." src="UsingVsChangingAList_1.png" width="330"
+        height="187" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>m = m + m/10</code></td>
+      <td><p><img alt="." src="UsingVsChangingAList_2.png" width="317"
+        height="202" /></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>Notice carefully what happened. The expression <code>m + m/10</code> was evaluated 41 +
+41/10 &rarr; 41 + 4 &rarr; 45 yielding the object 45, so the name <code>m</code> was set
+to refer to this object (remember: "Assignment creates a reference to an
+object"!) leaving the list unchanged.</p>
+<h3>What works 1</h3>
+<p>There are a number of ways to get around this problem. The most general*
+is to access the list contents by index,</p>
+<pre><code class="python"><span class="keyword">for</span> i <span class="keyword">in</span> range( len(magnitudes )):
+    magnitudes[i] = magnitudes[i] + magnitudes[i]/<span class="number">10</span></code></pre>
+    <p>and testing shows it works,</p>
+<pre><code>&gt;&gt;&gt; for i in range( len(magnitudes )):
+    magnitudes[i] = magnitudes[i] + magnitudes[i]/10
+&gt;&gt;&gt; print magnitudes
+[45, 15, 29, 5, 35]
+&gt;&gt;&gt;</code> </pre>
+<p>But why does it work? Because the assignment statement on the first
+iteration becomes <code>magnitudes[0] = magnitudes[0] +
+magnitudes[0]/10</code>. And <code>magnitudes[0]</code> is the precise name
+of the reference that is the first entry in the list so we are changing it
+directly. Similarly on the later iterations we will change
+<code>magnitudes[1]</code>, <code>magnitudes[2]</code> and so on. Remember
+that the entries in <code>magnitudes</code> do have indirect names!</p>
+<h3>What works 2</h3>
+<p>Another approach is to create a new list with the modified values and then
+assign it to the old name, e.g.</p>
+<pre><code class="python">tmp = []
+<span class="keyword">for</span> m <span class="keyword">in</span> magnitudes:
+    tmp.append(m + m/<span class="number">10</span>)
+magnitudes = tmp</code></pre>
+<h3>Other things that work</h3>
+<p>For more Pythonic approaches to the problem consult Pythonic Details.</p>
+<h2>Summary </h2>
+<p>When working with lists be clear in your own mind whether you are <em>using</em> the elements in the list, or <em>modifying</em> them and choose your coding approach
+accordingly.</p>
+<p>For <em>use</em>,</p>
+<pre><code class="python"><span class="keyword">for</span> item <span class="keyword">in</span> thelist:
+    <span class="comment"># do stuff with item</span></code></pre>
+<p>For <em>modification</em>,</p>
+<pre><code class="python"><span class="keyword">for</span> i <span class="keyword">in</span> range( len(thelist) ):
+    thelist[i] = ...</code></pre>
+<p></p>
+<hr />
+<p>* Most general because it can be done across many languages. Some would
+also say it is the least "Pythonic", but it's still the first one for us to
+consider because the aim of this course is to teach programming not just
+Python.</p>
+<p></p>
+  </section>
+
+    <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+  </footer>
+</body>
+</html>
