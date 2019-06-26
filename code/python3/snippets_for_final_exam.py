@@ -1,3 +1,4 @@
+#### problem 5
 #This code generates a playlist for a CD.
 #The strategy is to start with an empty playlist,
 #then generate random track numbers and
@@ -15,6 +16,8 @@ while ______________ < tracks:
 print(playlist)
 
 
+
+#### problem 10
 class Window:
     def __init__(self, width, height, ball_list):
         self.width = width
