@@ -26,6 +26,8 @@ Please make sure to subscribe to 'Announcements' issue so that you get notified.
 
 [https://github.com/Sinan81/cpsc128/issues/4]
 
+* Jun 27, Thu, Assignment-5's are marked.
+* Jun 26, Wed, Final exams are marked
 * Jun 22, Sat, the section 'Remarks on the final exam' is posted.
 * Jun 22, Sat, Slides for the entire course are posted.
 * Jun 20, Thu, Slides for June 20 "class is posted.
